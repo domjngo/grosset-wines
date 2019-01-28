@@ -23,7 +23,7 @@ $( document ).ready(function() {
 function resize()
 {
     if ( document.getElementById("home_banner") !== null ) {
-        var heights = window.innerHeight - 100;
+        var heights = window.innerHeight - 60;
         document.getElementById("home_banner").style.height = heights + "px";
     }
 }
