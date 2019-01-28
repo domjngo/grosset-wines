@@ -2,9 +2,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12 text-center">
-                <p>
-                    <img src="<?php bloginfo('stylesheet_directory'); ?>/img/aco-logo.png">
-                </p>
+                <p>Grosset Wines is an A-Grade Certified Organic Winery (ACO)</p>
                 <p>
                     <a href="<?php echo get_option('g_facebook'); ?>" target="_blank"><img src="<?php bloginfo('stylesheet_directory'); ?>/img/facebook.png"></a>
                     <a href="<?php echo get_option('g_twitter'); ?>" target="_blank"><img src="<?php bloginfo('stylesheet_directory'); ?>/img/twitter.png"></a>
@@ -33,11 +31,6 @@
                 </div>
             <?php } ?>
             <div class="col-md-12 text-center site-info">
-                <?php if ( get_option('g_tripadvisor') ) { ?>
-                    <p>
-                        <?php echo get_option('g_tripadvisor'); ?>
-                    </p>
-                <?php } ?>
                 <h3><?php bloginfo('name'); ?></h3>
                 <?php if ( get_option('g_location') ) { ?>
                     <p><?php echo get_option('g_location'); ?></p>

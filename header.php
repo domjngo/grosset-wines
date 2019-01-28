@@ -31,7 +31,7 @@
                     </button>
                     <a class="navbar-brand" href="<?php echo home_url(); ?>/"
                        title="<?php bloginfo('name'); ?>">
-                        <img src="<?php bloginfo('stylesheet_directory'); ?>/img/logo.png">
+                        <img src="<?php bloginfo('stylesheet_directory'); ?>/img/grosset-logo.png">
                     </a>
                 </div>
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
