@@ -1,4 +1,4 @@
-<div id="home_banner" class="header-home" style="background-image: url(<?php echo get_template_directory_uri() . '/img/bg.jpg' ?>);">
+<div id="home_banner" class="header-home">
     <div class="container">
         <div class="row">
             <div class="col-md-12">

@@ -92,30 +92,6 @@ ul.buttons li a:hover {
     text-decoration: underline;
 }
 
-/**
- * Carousel
- * ----------------------------------------------------------------------------
- */
-
-.carousel {
-    width: 100%;
-    height: 420px;
-}
-.carousel .item {
-    background-size: cover;
-    background-position: center top;
-    width: 100%;
-    height: 420px;
-}
-.carousel-caption {
-    right: 40%;
-    left: 5%;
-    text-align: left;
-}
-.carousel-caption h3 {
-    color: #fff;
-}
-
 
 /**
  * Nav
@@ -212,7 +188,7 @@ footer .site-info {
     color: #fff;
     padding: 2.6em 0 4.6em;
     text-shadow: #222 2px 3px 5px;
-    background-color: #eee;
+    background: #d4dddd;
     background-size: cover;
     background-position: center center;
 }
@@ -224,6 +200,7 @@ footer .site-info {
     display: table;
     background-size: cover;
     background-position: center center;
+    background: #d4dddd;
     width: 100%;
     min-height: 480px;
     color: #fff;
