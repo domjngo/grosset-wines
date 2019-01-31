@@ -49,6 +49,7 @@ function members_form() {
     $form = '
      <form action=""  id="members" method="POST">
         <input type="hidden" name="token" value="' . $token . '">
+        <input type="hidden" name="timestamp" value="' . time() . '">
         <fieldset>
 	        <legend>Join here</legend>
 	        <div class="form-row">
@@ -119,6 +120,14 @@ function member_shortcode() {
                 return;
             } else {
                 delete_transient( 'token-'.$_POST['token'] );
+            }
+        }
+        if (  isset( $_POST['timestamp'] ) ) {
+
+            if ( $_POST['timestamp'] + 5 > time() ) {
+                // Spam!!
+                echo members_form();
+                return;
             }
         }
 
