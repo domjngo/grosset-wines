@@ -375,6 +375,30 @@ iframe {
     margin: 1.6em 0;
 }
 
+
+.form-row {
+    max-width: 100%;
+    margin-bottom: 1.5em;
+}
+.form-row label {
+    width: 100%;
+    margin-right: 0;
+}
+.form-row input[type=color],
+.form-row input[type=email],
+.form-row input[type=number],
+.form-row input[type=tel],
+.form-row input[type=text],
+.form-row input[type=date],
+.form-row input[type=url],
+.form-row select,
+.form-row textarea {
+    width: 100%;
+}
+.form-message {
+    display: none;
+}
+
 /**
 * Temp
 * ----------------------------------------------------------------------------

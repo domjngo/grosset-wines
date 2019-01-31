@@ -6,6 +6,7 @@ include 'inc/functions-admin.php';
 include 'inc/functions-widgets.php';
 include 'inc/functions-wines.php';
 include 'inc/functions-temp.php';
+include 'inc/functions-forms.php';
 
 add_theme_support( 'post-thumbnails' );
 
