@@ -172,7 +172,7 @@ function member_shortcode() {
 function thanks( $name ) {
 
     $thanks = '
-    <p><img src="'.bloginfo("stylesheet_directory").'/img/grosset-logo.png"></p>
+    <p><img src="'.get_template_directory_uri().'/img/grosset-logo.png"></p>
     <p>Dear '.$name.'</p>
     <p>Thank you for signing up to join the Grosset Wine Club.</p>
     <p>Currently the members list is fully subscribed and there is a short waiting list.</p>
