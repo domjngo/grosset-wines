@@ -51,7 +51,6 @@ function members_form() {
         <input type="hidden" name="token" value="' . $token . '">
         <input type="hidden" name="timestamp" value="' . time() . '">
         <fieldset>
-	        <legend>Join here</legend>
 	        <div class="form-row">
                 <label for="first_name">First name</label>
                 <input type="text" id="first_name" name="first_name" ' . set_value( 'first_name' ) . '>
@@ -89,7 +88,7 @@ function members_form() {
                 <input type="text" id="message" name="message">
             </div>
             <div class="form-row">
-                <input class="btn btn-primary btn-lg" type="submit" alt="Submit" name="submit" id="members-submit" value="Join">
+                <input class="btn btn-primary btn-lg" type="submit" alt="Submit" name="member-submit" id="members-submit" value="Submit">
             </div>
         </fieldset>
     </form>
@@ -98,11 +97,97 @@ function members_form() {
     return $form;
 }
 
-add_shortcode( 'member-form', 'member_shortcode' );
+function call_back() {
 
+    $token = form_token();
+
+    $form = '
+     <form action=""  id="members" method="POST">
+        <input type="hidden" name="token" value="' . $token . '">
+        <input type="hidden" name="timestamp" value="' . time() . '">
+        <fieldset>
+            <div class="form-row">
+                <label for="contact_name">Name (optional)</label>
+                <input type="text" id="contact_name" name="contact_name" ' . set_value( 'contact_name' ) . '>
+            </div>
+            <div class="form-row">
+                <label for="number">Telephone or mobile number (required)</label>
+                <input type="tel" id="number" name="number" aria-required="true" required ' . set_value( 'number' ) . '>
+            </div>
+            <div class="form-row form-message">
+                <label for="message">Message</label>
+                <input type="text" id="message" name="message">
+            </div>
+            <div class="form-row">
+                <input class="btn btn-primary btn-lg" type="submit" alt="Submit" name="call-back-submit" id="members-submit" value="Request call back">
+            </div>
+        </fieldset>
+    </form>
+    ';
+
+    return $form;
+
+}
+
+add_shortcode( 'call-back-form', 'call_back_shortcode' );
+function call_back_shortcode() {
+
+    if ( ! is_admin() && isset( $_POST['call-back-submit'] ) ) {
+
+        // Is spam?
+        if (  isset( $_POST['message'] ) ) {
+            if ( trim($_POST['message'] ) != '' ) {
+                // Spam!!
+                return;
+            }
+        }
+        if (  isset( $_POST['token'] ) ) {
+
+            $token = filter_input( INPUT_POST, 'token' );
+            $saved_token = get_transient( 'token-'.$token );
+
+            if ( !$saved_token ) {
+                // Spam!!
+                return;
+            } else {
+                delete_transient( 'token-'.$token );
+            }
+        }
+        if (  isset( $_POST['timestamp'] ) ) {
+
+            if ( $_POST['timestamp'] + 5 > time() ) {
+                // Spam!!
+                echo members_form();
+                return;
+            }
+        }
+
+        // Process form
+        $number = filter_input( INPUT_POST, 'number' );
+        $name = filter_input( INPUT_POST, 'contact_name' );
+
+        $form_content = '
+        <p>Someone requested a call back for to purchase wine.</p>
+        <p>Name : '.$name.'</p>
+        <p>Telephone : '.$number.'</p>
+        ';
+
+        echo '<p><strong>Thank you! Your request was sent successfully.</strong></p>';
+
+        $email_headers = 'From: Grosset Wines <sales@grosset.com.au>';
+
+        // wp_mail( 'grossetsales@gmail.com', 'Membership call back request', $form_content, $email_headers );
+        wp_mail( 'cb.creatistic@gmail.com', 'Membership call back request', $form_content, $email_headers );
+
+    } else {
+        echo call_back();
+    }
+}
+
+add_shortcode( 'member-form', 'member_shortcode' );
 function member_shortcode() {
 
-    if ( ! is_admin() && isset( $_POST['submit'] ) ) {
+    if ( ! is_admin() && isset( $_POST['member-submit'] ) ) {
 
         // Is spam?
         if (  isset( $_POST['message'] ) ) {
@@ -158,7 +243,8 @@ function member_shortcode() {
 
         $email_headers = 'From: Grosset Wines <sales@grosset.com.au>';
 
-        wp_mail( 'domingobishop@gmail.com', 'Membership request', $form_content, $email_headers );
+        // wp_mail( 'grossetsales@gmail.com', 'Membership request', $form_content, $email_headers );
+        wp_mail( 'cb.creatistic@gmail.com', 'Membership request', $form_content, $email_headers );
 
         $thanks = thanks( $name );
 
@@ -172,13 +258,13 @@ function member_shortcode() {
 function thanks( $name ) {
 
     $thanks = '
-    <p><img src="'.get_template_directory_uri().'/img/grosset-logo.png"></p>
-    <p>Dear '.$name.'</p>
-    <p>Thank you for signing up to join the Grosset Wine Club.</p>
+    <p><img src="https://www.grosset.com.au/wp-content/themes/grosset3/img/Grosset-Logo.png"></p>
+    <p>Dear '.$name.',</p>
+    <p>Thank you for signing up to join the <strong>Grosset Wine Club</strong>.</p>
     <p>Currently the members list is fully subscribed and there is a short waiting list.</p>
     <p>As soon as this situation changes, we will notify you. This shouldn’t be more than a few weeks.</p>
     <p>In the meantime if you have any queries, please don’t hesitate to call the office on 1800 088 223.</p>
-    <p>Warm regards,<br><a href="https://grosset.com.au">Grosset Wines</a></p>
+    <p>Warm regards,<br><a href="https://www.grosset.com.au">Grosset Wines</a></p>
     ';
 
     return $thanks;
