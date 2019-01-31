@@ -394,6 +394,8 @@ iframe {
 .form-row select,
 .form-row textarea {
     width: 100%;
+    padding: 0.5em;
+    border: 2px #ddd solid;
 }
 .form-message {
     display: none;
