@@ -104,7 +104,7 @@ function member_shortcode() {
 
     if ( ! is_admin() && isset( $_POST['submit'] ) ) {
 
-        // Process form
+        // Is spam?
         if (  isset( $_POST['message'] ) ) {
             if ( trim($_POST['message'] ) != '' ) {
                 // Spam!!
@@ -113,13 +113,14 @@ function member_shortcode() {
         }
         if (  isset( $_POST['token'] ) ) {
 
-            $saved_token = get_transient( 'token-'.$_POST['token'] );
+            $token = filter_input( INPUT_POST, 'token' );
+            $saved_token = get_transient( 'token-'.$token );
 
             if ( !$saved_token ) {
                 // Spam!!
                 return;
             } else {
-                delete_transient( 'token-'.$_POST['token'] );
+                delete_transient( 'token-'.$token );
             }
         }
         if (  isset( $_POST['timestamp'] ) ) {
@@ -131,25 +132,54 @@ function member_shortcode() {
             }
         }
 
-        $email = '
-        <p>Name : '.filter_input( INPUT_POST, 'first_name' ).' '.filter_input( INPUT_POST, 'last_name' ).'</p>
-        <p>Email : '.filter_input( INPUT_POST, 'email' ).'</p>
-        <p>Telephone : '.filter_input( INPUT_POST, 'number' ).'</p>
-        <p>Address : '.filter_input( INPUT_POST, 'address' ).'</p>
-        <p>City : '.filter_input( INPUT_POST, 'city' ).'</p>
-        <p>State : '.filter_input( INPUT_POST, 'state' ).'</p>
-        <p>Postcode : '.filter_input( INPUT_POST, 'postcode' ).'</p>
+        // Process form
+        $name = filter_input( INPUT_POST, 'first_name' );
+        $surname = filter_input( INPUT_POST, 'last_name' );
+        $email = filter_input( INPUT_POST, 'email' );
+        $number = filter_input( INPUT_POST, 'number' );
+        $address = filter_input( INPUT_POST, 'address' );
+        $city = filter_input( INPUT_POST, 'city' );
+        $state = filter_input( INPUT_POST, 'state' );
+        $postcode = filter_input( INPUT_POST, 'postcode' );
+
+        $form_content = '
+        <p>Name : '.$name.' '.$surname.'</p>
+        <p>Email : '.$email.'</p>
+        <p>Telephone : '.$number.'</p>
+        <p>Address : '.$address.'</p>
+        <p>City : '.$city.'</p>
+        <p>State : '.$state.'</p>
+        <p>Postcode : '.$postcode.'</p>
         ';
 
         echo '<p><strong>Thank you! Your request was sent successfully.</strong></p>';
 
-        echo $email;
+        echo $form_content;
 
-        $email_headers = 'From: Grosset Wines (DO NOT REPLY) <no-reply@grosset.com.au>';
+        $email_headers = 'From: Grosset Wines <sales@grosset.com.au>';
 
-        wp_mail( 'domingobishop@gmail.com', 'Membership request', $email, $email_headers );
+        wp_mail( 'domingobishop@gmail.com', 'Membership request', $form_content, $email_headers );
+
+        $thanks = thanks( $name );
+
+        wp_mail( $email, 'Thank you for signing up to join the Grosset Wine Club', $thanks, $email_headers );
 
     } else {
         echo members_form();
     }
+}
+
+function thanks( $name ) {
+
+    $thanks = '
+    <p><img src="'.bloginfo("stylesheet_directory").'/img/grosset-logo.png"></p>
+    <p>Dear '.$name.'</p>
+    <p>Thank you for signing up to join the Grosset Wine Club.</p>
+    <p>Currently the members list is fully subscribed and there is a short waiting list.</p>
+    <p>As soon as this situation changes, we will notify you. This shouldn’t be more than a few weeks.</p>
+    <p>In the meantime if you have any queries, please don’t hesitate to call the office on 1800 088 223.</p>
+    <p>Warm regards,<br><a href="https://grosset.com.au">Grosset Wines</a></p>
+    ';
+
+    return $thanks;
 }
