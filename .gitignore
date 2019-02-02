@@ -1,1 +1,6 @@
 .idea
+/.sass-cache
+package-lock.json
+.grunt
+node_modules
+/vendor/
