@@ -1,0 +1,43 @@
+
+.wp-caption.aligncenter, img.aligncenter {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.entry-content img.alignright, .entry-content .wp-caption.alignright {
+  margin-right: 0px;
+  float: right;
+}
+
+.entry-content img.alignnone {
+  margin: 1.6em 0;
+}
+
+.wp-caption.alignright, img.alignright {
+  margin: 5px 0 5px 20px;
+}
+
+.entry-content img.alignleft, .entry-content .wp-caption.alignleft {
+  margin-left: 0px;
+  float: left;
+}
+
+.wp-caption.alignleft, img.alignleft {
+  margin: 5px 20px 5px 0px;
+}
+
+.wp-caption .wp-caption-text, .entry-caption, .gallery-caption {
+  color: #220e10;
+  font-size: 14px;
+  font-style: italic;
+  font-weight: 300;
+  padding: 1em;
+  background: #eee;
+}
+
+iframe {
+  margin: 1.6em 0;
+}
