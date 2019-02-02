@@ -3,43 +3,43 @@
  * Theme options
  */
 
-function mount_settings_menu() {
-    add_menu_page( 'Mount Horrocks settings', 'MH Settings', 'administrator', 'mount-settings-page', 'mount_settings_page', 'dashicons-admin-generic', 21  );
-    add_action( 'admin_init', 'mount_settings_page_admin' );
+function grosset_settings_menu() {
+    add_menu_page( 'Groseet Wines settings', 'Grosset', 'administrator', 'grosset-settings-page', 'grosset_settings_page', 'dashicons-admin-generic', 21  );
+    add_action( 'admin_init', 'grosset_settings_page_admin' );
 }
 
-function mount_settings_page_admin() {
+function grosset_settings_page_admin() {
 
-    register_setting( 'gsp-group', 'home_img' );
+    register_setting( 'gw-group', 'home_img' );
 
     for ( $i=1 ; $i<=3 ; $i++ ) {
-        register_setting( 'gsp-group', 'home_quote_'.$i );
-        register_setting( 'gsp-group', 'home_source_'.$i );
+        register_setting( 'gw-group', 'home_quote_'.$i );
+        register_setting( 'gw-group', 'home_source_'.$i );
     }
 
-    register_setting( 'gsp-group', 'g_facebook' );
-    register_setting( 'gsp-group', 'g_twitter' );
-    register_setting( 'gsp-group', 'g_instagram' );
-    register_setting( 'gsp-group', 'g_tripadvisor' );
-    register_setting( 'gsp-group', 'g_location' );
-    register_setting( 'gsp-group', 'google_analytics' );
+    register_setting( 'gw-group', 'g_facebook' );
+    register_setting( 'gw-group', 'g_twitter' );
+    register_setting( 'gw-group', 'g_instagram' );
+    register_setting( 'gw-group', 'g_tripadvisor' );
+    register_setting( 'gw-group', 'g_location' );
+    register_setting( 'gw-group', 'google_analytics' );
 
     for ( $i=1 ; $i<=3 ; $i++ ) {
-        register_setting( 'gsp-group', 'g_quote_'.$i );
-        register_setting( 'gsp-group', 'g_source_'.$i );
-        register_setting( 'gsp-group', 'g_image_'.$i );
+        register_setting( 'gw-group', 'g_quote_'.$i );
+        register_setting( 'gw-group', 'g_source_'.$i );
+        register_setting( 'gw-group', 'g_image_'.$i );
     }
 
     for ( $i=1 ; $i<=3 ; $i++ ) {
-        register_setting( 'gsp-group', 'g_title_'.$i );
-        register_setting( 'gsp-group', 'g_text_'.$i );
-        register_setting( 'gsp-group', 'g_button_'.$i );
-        register_setting( 'gsp-group', 'g_img_url_'.$i );
-        register_setting( 'gsp-group', 'g_url_'.$i );
+        register_setting( 'gw-group', 'g_title_'.$i );
+        register_setting( 'gw-group', 'g_text_'.$i );
+        register_setting( 'gw-group', 'g_button_'.$i );
+        register_setting( 'gw-group', 'g_img_url_'.$i );
+        register_setting( 'gw-group', 'g_url_'.$i );
     }
 }
 
-function mount_settings_page() {
+function grosset_settings_page() {
     if (!current_user_can('administrator'))  {
         wp_die( __('You do not have sufficient pilchards to access this page.')    );
     }
@@ -58,8 +58,8 @@ function mount_settings_page() {
     <div class="wrap g-admin">
         <h1>Mount Horrocks theme settings</h1>
         <form method="post" action="options.php" novalidate="novalidate">
-            <?php settings_fields( 'gsp-group' ); ?>
-            <?php do_settings_sections( 'gsp-group' ); ?>
+            <?php settings_fields( 'gw-group' ); ?>
+            <?php do_settings_sections( 'gw-group' ); ?>
 
             <h2>Homepage hero banner</h2>
             <table class="form-table">
