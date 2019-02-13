@@ -95,3 +95,21 @@ function get_option_img($i, $n='0') {
         return get_template_directory_uri() . '/img/bg'.$n.'.jpg';
     }
 }
+
+function get_home_img( $field ) {
+    $img = get_option( $field );
+    if ( $img ) {
+        $bg_img = 'style="background-image: url(%s);"';
+        return sprintf( $bg_img, $img );
+    }
+    return '';
+}
+
+function get_home_text( $field ) {
+    $text = esc_attr( get_option( $field ) );
+    if ($text) {
+        return $text;
+    } else {
+        return 'Lorem ipsum dolor sit amet, eam ex exerci hendrerit';
+    }
+}

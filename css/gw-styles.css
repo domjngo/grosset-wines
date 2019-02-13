@@ -4165,13 +4165,13 @@ footer .site-info {
 
 .section-img .btn-home {
   color: #fff;
-  border-color: #fff; }
+  border-color: #fff;
+  background-color: rgba(28, 63, 149, 0.5); }
 
 .header-home {
   display: table;
   background-size: cover;
   background-position: center center;
-  background: #d4dddd;
   width: 100%;
   min-height: 480px;
   color: #fff; }
@@ -4201,7 +4201,7 @@ footer .site-info {
   margin-bottom: 2.4em; }
 
 .home-entry img {
-  margin-bottom: 1.6em; }
+  margin: 0 auto; }
 
 .home-entry {
   margin: 1.6em 0; }
@@ -4238,8 +4238,9 @@ nav .next {
 
 .btn-header {
   color: #fff;
+  text-shadow: none;
   font-size: 1em;
-  background-color: transparent;
+  background-color: rgba(28, 63, 149, 0.7);
   border-color: #fff;
   min-width: 190px;
   padding: 1em 1.6em;
@@ -4247,6 +4248,7 @@ nav .next {
 
 .btn-home {
   color: #222;
+  text-shadow: none;
   font-size: 1em;
   background-color: transparent;
   border-color: #222;
@@ -4256,6 +4258,9 @@ nav .next {
 .btn:hover {
   color: #fff;
   background-color: #1c3f95; }
+
+.discover {
+  margin: 1.6em 0; }
 
 .wp-caption.aligncenter, img.aligncenter {
   display: block;

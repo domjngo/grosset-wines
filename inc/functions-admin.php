@@ -12,25 +12,13 @@ function grosset_settings_page_admin() {
 
     register_setting( 'gw-group', 'home_img' );
 
-    for ( $i=1 ; $i<=3 ; $i++ ) {
-        register_setting( 'gw-group', 'home_quote_'.$i );
-        register_setting( 'gw-group', 'home_source_'.$i );
-    }
-
     register_setting( 'gw-group', 'g_facebook' );
     register_setting( 'gw-group', 'g_twitter' );
     register_setting( 'gw-group', 'g_instagram' );
-    register_setting( 'gw-group', 'g_tripadvisor' );
     register_setting( 'gw-group', 'g_location' );
     register_setting( 'gw-group', 'google_analytics' );
 
-    for ( $i=1 ; $i<=3 ; $i++ ) {
-        register_setting( 'gw-group', 'g_quote_'.$i );
-        register_setting( 'gw-group', 'g_source_'.$i );
-        register_setting( 'gw-group', 'g_image_'.$i );
-    }
-
-    for ( $i=1 ; $i<=3 ; $i++ ) {
+    for ( $i=1 ; $i<=7 ; $i++ ) {
         register_setting( 'gw-group', 'g_title_'.$i );
         register_setting( 'gw-group', 'g_text_'.$i );
         register_setting( 'gw-group', 'g_button_'.$i );
@@ -56,7 +44,7 @@ function grosset_settings_page() {
         }
     </style>
     <div class="wrap g-admin">
-        <h1>Mount Horrocks theme settings</h1>
+        <h1>Grosset Wines theme settings</h1>
         <form method="post" action="options.php" novalidate="novalidate">
             <?php settings_fields( 'gw-group' ); ?>
             <?php do_settings_sections( 'gw-group' ); ?>
@@ -69,25 +57,9 @@ function grosset_settings_page() {
                     <td>Image size 1600px x 900px max</td>
                 </tr>
             </table>
-            <?php for ( $i=1 ; $i<=3 ; $i++ ) { ?>
-            <h3>Quote <?php echo $i; ?></h3>
-            <table class="form-table">
-                <tr valign="top">
-                    <th scope="row"><label for="home_quote_<?php echo $i; ?>">Quote</label></th>
-                    <td><textarea name="home_quote_<?php echo $i; ?>" style="height: 4em;"><?php echo esc_attr( get_option('home_quote_'.$i) ); ?></textarea></td>
-                    <td>12 words max</td>
-                </tr>
-                <tr valign="top">
-                    <th scope="row"><label for="home_source_<?php echo $i; ?>">Quote source</label></th>
-                    <td><input type="text" name="home_source_<?php echo $i; ?>" value="<?php echo esc_attr( get_option('home_source_'.$i) ); ?>" /></td>
-                    <td>9 words max</td>
-                </tr>
-            </table>
-            <?php } ?>
-            <?php submit_button(); ?>
 
-            <h2>Call to action</h2>
-            <?php for ( $i=1 ; $i<=3 ; $i++ ) { ?>
+            <h2>Homepage sections</h2>
+            <?php for ( $i=1 ; $i<=7 ; $i++ ) { ?>
                 <hr>
                 <h3>Section <?php echo $i; ?> </h3>
                 <table class="form-table">
@@ -103,17 +75,19 @@ function grosset_settings_page() {
                         <th scope="row"><label for="g_button_<?php echo $i; ?>">Button label</label></th>
                         <td><input type="text" name="g_button_<?php echo $i; ?>" value="<?php echo esc_attr( get_option('g_button_'.$i) ); ?>" /></td>
                     </tr>
-                    <!-- <tr valign="top">
-                        <th scope="row"><label for="g_img_url_<?php echo $i; ?>">Image URL</label></th>
-                        <td><input type="text" name="g_img_url_<?php echo $i; ?>" value="<?php echo get_option('g_img_url_'.$i); ?>" /></td>
-                    </tr> -->
                     <tr valign="top">
                         <th scope="row"><label for="g_url_<?php echo $i; ?>">Button URL</label></th>
                         <td><input type="text" name="g_url_<?php echo $i; ?>" value="<?php echo get_option('g_url_'.$i); ?>" /></td>
                     </tr>
+                    <?php if ($i % 2 == 0) { ?>
+                        <tr valign="top">
+                            <th scope="row"><label for="g_img_url_<?php echo $i; ?>">Image URL</label></th>
+                            <td><input type="text" name="g_img_url_<?php echo $i; ?>" value="<?php echo get_option('g_img_url_'.$i); ?>" /></td>
+                        </tr>
+                    <?php } ?>
                 </table>
+                <?php submit_button(); ?>
             <?php } ?>
-            <?php submit_button(); ?>
 
             <h2>Site settings</h2>
             <table class="form-table">
@@ -132,10 +106,6 @@ function grosset_settings_page() {
                 <tr valign="top">
                     <th scope="row"><label for="g_instagram">Instragram</label></th>
                     <td><input type="text" name="g_instagram" value="<?php echo get_option('g_instagram'); ?>" /></td>
-                </tr>
-                <tr valign="top">
-                    <th scope="row"><label for="g_tripadvisor">Tripadvisor code</label></th>
-                    <td><textarea name="g_tripadvisor"><?php echo esc_attr( get_option('g_tripadvisor') ); ?></textarea></td>
                 </tr>
                 <tr valign="top">
                     <th scope="row"><label for="google_analytics">Google analytics code</label></th>
