@@ -9,8 +9,10 @@
   padding: 2.6em 0 4.6em;
   text-shadow: #222 2px 3px 5px;
   background: #d4dddd;
-  background-size: cover;
+  background-attachment: fixed;
   background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 .section-img .btn-home {
   color: #fff;

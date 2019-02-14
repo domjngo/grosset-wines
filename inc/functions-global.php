@@ -99,8 +99,20 @@ function get_option_img($i, $n='0') {
 function get_home_img( $field ) {
     $img = get_option( $field );
     if ( $img ) {
-        $bg_img = 'style="background-image: url(%s);"';
-        return sprintf( $bg_img, $img );
+        $bg_img = 'style="
+        background-image: url(%s);
+          background-image: 
+            -webkit-image-set(
+              url(%s) 1x,
+              url(%s) 2x,
+            );
+          background-image: 
+            image-set(
+              url(%s) 1x,
+              url(%s) 2x,
+            );
+        "';
+        return sprintf( $bg_img, $img, $img, $img, $img, $img );
     }
     return '';
 }

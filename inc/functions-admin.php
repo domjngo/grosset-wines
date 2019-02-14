@@ -4,7 +4,7 @@
  */
 
 function grosset_settings_menu() {
-    add_menu_page( 'Groseet Wines settings', 'Grosset', 'administrator', 'grosset-settings-page', 'grosset_settings_page', 'dashicons-admin-generic', 21  );
+    add_menu_page( 'Grosset Wines settings', 'Grosset', 'administrator', 'grosset-settings-page', 'grosset_settings_page', 'dashicons-admin-generic', 21  );
     add_action( 'admin_init', 'grosset_settings_page_admin' );
 }
 
@@ -35,11 +35,11 @@ function grosset_settings_page() {
     <style>
         .g-admin input[type=text] {
             width: 100%;
-            max-width: 320px;
+            max-width: 480px;
         }
         .g-admin textarea {
             width: 100%;
-            max-width: 320px;
+            max-width: 480px;
             height: 12em;
         }
     </style>
@@ -69,7 +69,9 @@ function grosset_settings_page() {
                     </tr>
                     <tr valign="top">
                         <th scope="row"><label for="g_text_<?php echo $i; ?>">Text</label></th>
-                        <td><input type="text" name="g_text_<?php echo $i; ?>" value="<?php echo esc_attr( get_option('g_text_'.$i) ); ?>" /></td>
+                        <td>
+                            <textarea name="g_text_<?php echo $i; ?>"><?php echo esc_attr( get_option('g_text_'.$i) ); ?></textarea>
+                        </td>
                     </tr>
                     <tr valign="top">
                         <th scope="row"><label for="g_button_<?php echo $i; ?>">Button label</label></th>
