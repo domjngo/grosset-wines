@@ -5,7 +5,7 @@
                 <p>
                     <img src="<?php bloginfo('stylesheet_directory'); ?>/img/aco-logo.png">
                 </p>
-                <p>Grosset Wines is an A-Grade Certified Organic Winery (ACO)</p>
+                <p><small>Grosset Wines is an A-Grade Certified Organic Winery (ACO)</small></p>
                 <p>
                     <?php if ( get_option('g_facebook') ) { ?>
                     <a href="<?php echo get_option('g_facebook'); ?>" target="_blank"><img src="<?php bloginfo('stylesheet_directory'); ?>/img/facebook.png"></a>

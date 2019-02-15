@@ -5,15 +5,15 @@
                 <div class="home-entry text-center">
                     <img src="<?php echo get_template_directory_uri() . '/img/grosset-logo-trans.png' ?>" class="img-responsive">
                     <div class="discover">
+                        <?php if ( get_option('g_location') ) { ?>
+                        <p><?php echo get_option('g_location'); ?></p>
+                        <?php } ?>
                         <p>
-                            <a href="#" class="btn">
+                            <a href="<?php echo site_url( '/wines/' ) ?>" class="btn">
                                 Latest releases
                             </a>
-                            <a href="#" class="btn">
+                            <a href="<?php echo site_url( '/members-online/' ) ?>" class="btn">
                                 Buy wine
-                            </a>
-                            <a href="#" class="btn">
-                                About
                             </a>
                         </p>
                         <p>
