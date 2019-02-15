@@ -14,6 +14,7 @@
             <?php } else { ?>
             <div class="col-md-12 text-right">
                 <a href="https://www.grosset.com.au/my-account/" class="btn btn-xs">Sign in</a>
+                <a href="https://www.grosset.com.au/contact/grosset-wine-club-member/" class="btn btn-xs">Join</a>
                 <a href="https://www.grosset.com.au/club-member/help/" class="btn btn-xs">Help</a>
             </div>
             <?php } ?>

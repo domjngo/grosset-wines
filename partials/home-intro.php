@@ -1,7 +1,7 @@
 <section class="home-section section-intro">
     <div class="container">
         <div class="row">
-            <div class="col-md-8 col-md-offset-2 text-center">
+            <div class="col-sm-8 col-sm-offset-2 text-center">
                 <h1><?php echo get_home_text('g_title_1') ; ?></h1>
                 <p><?php echo get_home_text('g_text_1') ; ?></p>
                 <p>
