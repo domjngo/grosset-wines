@@ -16,6 +16,7 @@ function grosset_settings_page_admin() {
     register_setting( 'gw-group', 'g_twitter' );
     register_setting( 'gw-group', 'g_instagram' );
     register_setting( 'gw-group', 'g_location' );
+    register_setting( 'gw-group', 'g_trustwave' );
     register_setting( 'gw-group', 'google_analytics' );
 
     for ( $i=1 ; $i<=7 ; $i++ ) {
@@ -108,6 +109,10 @@ function grosset_settings_page() {
                 <tr valign="top">
                     <th scope="row"><label for="g_instagram">Instragram</label></th>
                     <td><input type="text" name="g_instagram" value="<?php echo get_option('g_instagram'); ?>" /></td>
+                </tr>
+                <tr valign="top">
+                    <th scope="row"><label for="g_trustwave">Trustwave Seal</label></th>
+                    <td><input type="text" name="g_trustwave" value="<?php echo get_option('g_trustwave'); ?>" /></td>
                 </tr>
                 <tr valign="top">
                     <th scope="row"><label for="google_analytics">Google analytics code</label></th>

@@ -12,7 +12,7 @@ get_header(); ?>
     <main id="main" class="main" role="main">
         <div class="content">
             <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-                
+
             </article>
         </div>
     </main>
