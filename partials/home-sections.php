@@ -1,5 +1,5 @@
-<section class="home-section">
-    <div class="container home-section section-intro">
+<section class="home-section section-intro">
+    <div class="container">
         <div class="row">
             <div class="col-md-8 col-md-offset-2 text-center">
                 <h1><?php echo get_home_text('g_title_1') ; ?></h1>

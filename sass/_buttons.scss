@@ -1,0 +1,23 @@
+.btn {
+  color: #fff;
+  text-shadow: none;
+  font-size: 0.9em;
+  background-color: rgba(0,0,0,0.6);
+  border-color: transparent;
+  border-radius: 0;
+  padding: 0.6em 1em;
+  margin: 0.6em 0;
+}
+.btn:hover {
+  color: #fff;
+  background-color: #1c3f95;
+}
+.btn-default:hover,
+.btn-default:focus,
+.btn-default:active,
+.btn-default.active,
+.open > .dropdown-toggle.btn-default {
+  color: #fff;
+  text-decoration: none;
+  background-color: #3b94d9;
+}

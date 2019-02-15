@@ -1,8 +1,39 @@
+.home-header {
+  display: table;
+  background-size: cover;
+  background-position: center center;
+  width: 100%;
+  min-height: 480px;
+  color: #fff;
+  .container {
+    display: table-cell;
+    vertical-align: middle;
+    .home-entry {
+      margin: 1.6em 0;
+      img {
+        margin: 0 auto;
+      }
+    }
+  }
+  .discover {
+    margin: 1.6em 0;
+    .btn {
+      margin: 0.5em;
+    }
+  }
+  p {
+    color: #fff;
+  }
+  a {
+    color: #fff;
+  }
+}
+
 .home-section {
   padding: 3.6em 0 2.6em;
-}
-.section-intro {
-  padding: 0 0 2.6em;
+  .section-intro {
+    padding: 0 0 2.6em;
+  }
 }
 .section-img {
   color: #fff;
@@ -13,112 +44,4 @@
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
-}
-.section-img .btn-home {
-  color: #fff;
-  border-color: #fff;
-  background-color: rgba(28,63,149,0.5);
-}
-
-.header-home {
-  display: table;
-  background-size: cover;
-  background-position: center center;
-  width: 100%;
-  min-height: 480px;
-  color: #fff;
-}
-.header-home a, .header-home a:hover {
-  color: #fff;
-}
-.header-home h1, .header-home p {
-  color: #fff;
-  text-shadow: #222 2px 3px 5px;
-}
-@media (min-width: 768px) {
-  .header-home h1, .header-home p {
-    margin-left: 10%;
-    margin-right: 10%;
-  }
-}
-@media (max-width: 768px) {
-  .header-home h1 {
-    font-size: 2em;
-  }
-}
-.header-home h1 {
-  margin-bottom: 0;
-}
-.header-home .container {
-  display: table-cell;
-  vertical-align: middle;
-}
-.header-home .home-call-to-action {
-  margin-bottom: 2.4em;
-}
-.home-entry img {
-  margin: 0 auto;
-}
-.home-entry {
-  margin: 1.6em 0;
-}
-.btn-action {
-  text-shadow: #222 2px 3px 5px;
-  font-size: 1em;
-  font-weight: 700;
-  background-color: transparent;
-  border-color: #fff;
-  padding: 1em 1.6em;
-  margin: 0 0.6em 0.6em 0.6em;
-}
-.paged-posts {
-  margin-bottom: 1.6em;
-}
-
-nav .previous {
-  float: left;
-}
-
-nav .next {
-  float: right;
-}
-
-.btn-default:hover,
-.btn-default:focus,
-.btn-default:active,
-.btn-default.active,
-.open > .dropdown-toggle.btn-default {
-  color: #fff;
-  text-decoration: none;
-  background-color: #3b94d9;
-}
-
-.call-to-action {
-  margin: 3.2em 0;
-}
-.btn-header {
-  color: #fff;
-  text-shadow: none;
-  font-size: 1em;
-  background-color: rgba(28,63,149,0.7);
-  border-color: #fff;
-  min-width: 190px;
-  padding: 1em 1.6em;
-  margin: 0.6em 0.3em;
-}
-.btn-home {
-  color: #222;
-  text-shadow: none;
-  font-size: 1em;
-  background-color: transparent;
-  border-color: #222;
-  padding: 1em 1.6em;
-  margin: 0.6em 0;
-}
-.btn:hover {
-  color: #fff;
-  background-color: #1c3f95;
-}
-.discover {
-  margin: 1.6em 0;
 }
