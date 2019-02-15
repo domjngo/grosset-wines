@@ -6,13 +6,13 @@ function wine_shortcode( $atts )
         'image' => '',
         'title' => '',
         'link' => '',
-        'first' => false,
+        'start' => false,
         'last' => false
     ), $atts);
 
     $first = '';
     $last = '';
-    if ( $a['first'] ) {
+    if ( $a['start'] ) {
         $first = '<div class="wines">';
     }
     if ( $a['last'] ) {
@@ -26,7 +26,7 @@ function wine_shortcode( $atts )
 
 function wine_html( $img, $title, $link ) {
 
-    $html = '<div class="wine-item">';
+    $html = '<div class="wine-item text-center">';
     $html .= '<a href="%s">';
     $html .= '<img src="%s" alt="%s" class="img-responsive">';
     $html .= '<h4>%s</h4>';

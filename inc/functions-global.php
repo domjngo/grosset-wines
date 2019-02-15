@@ -78,7 +78,7 @@ function get_feature_image_as_bg( $size = 'full' ) {
     if ( has_post_thumbnail() ) {
         $image = wp_get_attachment_image_src( get_post_thumbnail_id( $id ), $size );
     } else {
-        $image[0] = get_template_directory_uri() . '/img/bg0.jpg';
+        $image[0] = get_template_directory_uri() . '/img/bg.jpg';
     }
     if ( $image[0] ) {
         return 'style="background-image: url('. $image[0] . ');"';
