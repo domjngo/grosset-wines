@@ -4064,6 +4064,10 @@ ul {
   text-decoration: none;
   background-color: #3b94d9; }
 
+.btn-xs {
+  padding: 1px 5px;
+  margin: 0; }
+
 .navbar {
   margin: 0;
   text-transform: uppercase;
@@ -4150,6 +4154,11 @@ ul.buttons li a:hover {
   background-color: #eee;
   border: 2px solid #ccc;
   text-decoration: underline; }
+
+.members-bar {
+  padding: 0.4em;
+  background-color: #e4eaea;
+  font-size: 0.8em; }
 
 .social {
   background-color: #d4dddd;

@@ -22,6 +22,7 @@
 
 <body <?php body_class(); ?>>
     <header id="head" class="head">
+        <?php get_template_part( 'partials/members-bar' ); ?>
         <nav class="navbar navbar-default">
             <div class="container-fluid">
                 <div class="navbar-header">

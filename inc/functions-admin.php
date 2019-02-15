@@ -112,7 +112,7 @@ function grosset_settings_page() {
                 </tr>
                 <tr valign="top">
                     <th scope="row"><label for="g_trustwave">Trustwave Seal</label></th>
-                    <td><input type="text" name="g_trustwave" value="<?php echo get_option('g_trustwave'); ?>" /></td>
+                    <td><input type="text" name="g_trustwave" value="<?php echo esc_attr( get_option('g_trustwave') ); ?>" /></td>
                 </tr>
                 <tr valign="top">
                     <th scope="row"><label for="google_analytics">Google analytics code</label></th>
