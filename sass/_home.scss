@@ -30,18 +30,24 @@
 }
 
 .home-section {
-  padding: 3.6em 0 2.6em;
-  .section-intro {
-    padding: 0 0 2.6em;
+  .section-bg {
+    padding: 3.6em 0 2.6em;
   }
 }
 .section-img {
   color: #fff;
-  padding: 2.6em 0 4.6em;
   text-shadow: #222 2px 3px 5px;
   background: #d4dddd;
   background-attachment: fixed;
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
+  .section-bg {
+    background: rgba(0,0,0,0.2);
+  }
+}
+.section-intro {
+  .section-bg {
+    padding-top: 0;
+  }
 }

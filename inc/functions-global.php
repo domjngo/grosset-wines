@@ -87,6 +87,21 @@ function get_feature_image_as_bg( $size = 'full' ) {
     }
 }
 
+function get_feature_wine_img( $title, $size = 'full' ) {
+    global $post;
+    $id = $post->ID;
+    if ( has_post_thumbnail() ) {
+        $image = wp_get_attachment_image_src( get_post_thumbnail_id( $id ), $size );
+    } else {
+        $image[0] = '';
+    }
+    if ( $image[0] ) {
+        return '<img src="'.$image[0].'" class="img-responsive" alt="'.$title.'">';
+    } else {
+        return false;
+    }
+}
+
 function get_option_img($i, $n='0') {
     $img = get_option($i);
     if ($img) {

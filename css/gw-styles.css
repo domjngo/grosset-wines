@@ -4111,7 +4111,10 @@ ul.buttons li a:hover {
   text-transform: uppercase;
   border-radius: 0;
   border: none;
-  background: #fff; }
+  background: #fff;
+  -webkit-box-shadow: 0px 5px 7px 0px rgba(0, 0, 0, 0.15);
+  -moz-box-shadow: 0px 5px 7px 0px rgba(0, 0, 0, 0.15);
+  box-shadow: 0px 5px 7px 0px rgba(0, 0, 0, 0.15); }
 
 @media (min-width: 768px) {
   .navbar .container-fluid {
@@ -4202,20 +4205,22 @@ footer .site-info {
   .home-header a {
     color: #fff; }
 
-.home-section {
+.home-section .section-bg {
   padding: 3.6em 0 2.6em; }
-  .home-section .section-intro {
-    padding: 0 0 2.6em; }
 
 .section-img {
   color: #fff;
-  padding: 2.6em 0 4.6em;
   text-shadow: #222 2px 3px 5px;
   background: #d4dddd;
   background-attachment: fixed;
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover; }
+  .section-img .section-bg {
+    background: rgba(0, 0, 0, 0.2); }
+
+.section-intro .section-bg {
+  padding-top: 0; }
 
 .wp-caption.aligncenter, img.aligncenter {
   display: block;
@@ -4276,6 +4281,9 @@ iframe {
   @media (max-width: 480px) {
     .wines .wine-item {
       width: 48%; } }
+
+.wine-img img {
+  margin: 1.6em 0; }
 
 .vineyard h2 {
   margin-top: 0; }
