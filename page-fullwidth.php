@@ -10,7 +10,6 @@ get_header(); ?>
     <main id="main" class="main" role="main">
         <div class="content">
             <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-                <?php get_template_part( 'partials/page-header' ); ?>
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12">
