@@ -1,6 +1,6 @@
 <?php
 /**
- * Template Name: Home page
+ * Template Name: Home page temp
  *
  */
 get_header(); ?>
@@ -12,7 +12,7 @@ get_header(); ?>
     <main id="main" class="main" role="main">
         <div class="content">
             <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-                <?php get_template_part( 'partials/home-sections' ); ?>
+                <?php get_template_part( 'partials/home-intro' ); ?>
             </article>
         </div>
     </main>

@@ -1,15 +1,18 @@
-<div id="home_banner" class="header-home">
+<div id="home_banner" class="home-header" <?php echo get_home_img( 'home_img' ) ?>>
     <div class="container">
         <div class="row">
             <div class="col-md-12">
                 <div class="home-entry text-center">
-                    <img src="<?php echo get_template_directory_uri() . '/img/grosset-logo-trans.png' ?>">
+                    <img src="<?php echo get_template_directory_uri() . '/img/grosset-logo-trans.png' ?>" class="img-responsive">
                     <div class="discover">
+                        <?php if ( get_option('g_location') ) { ?>
+                        <p><?php echo get_option('g_location'); ?></p>
+                        <?php } ?>
                         <p>
-                            <a href="#" class="btn btn-header">
+                            <a href="<?php echo site_url( '/wines/' ) ?>" class="btn">
                                 Latest releases
                             </a>
-                            <a href="#" class="btn btn-header">
+                            <a href="<?php echo site_url( '/members-online/' ) ?>" class="btn">
                                 Buy wine
                             </a>
                         </p>
