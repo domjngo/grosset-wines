@@ -1,5 +1,6 @@
 <?php
-// Functions
+// Theme version
+define( 'GW_VSN', '0.1' );
 
 include 'inc/functions-global.php';
 include 'inc/functions-admin.php';

@@ -2,9 +2,9 @@
 
 // Enqueue styles and scripts
 function bc_styles() {
-    wp_register_style( 'gw-styles', get_template_directory_uri() . '/css/gw-styles.min.css', array(), 1.0, 'all' );
+    wp_register_style( 'gw-styles', get_template_directory_uri() . '/css/gw-styles.min.css', array(), GW_VSN, 'all' );
     wp_register_style( 'google-fonts',
-        'https://fonts.googleapis.com/css?family=Open+Sans:400,700,400italic|Lora', array(), 1.0, 'all' );
+        'https://fonts.googleapis.com/css?family=Open+Sans:400,700,400italic', array(), 1.0, 'all' );
     wp_enqueue_style( 'gw-styles' );
     wp_enqueue_style( 'google-fonts' );
 }
@@ -140,3 +140,27 @@ function get_home_text( $field ) {
         return 'Lorem ipsum dolor sit amet, eam ex exerci hendrerit';
     }
 }
+
+function wpb_list_child_pages() {
+
+    global $post;
+
+    $string = '';
+
+    if ( is_page() && $post->post_parent ) {
+        $childpages = wp_list_pages( 'sort_column=menu_order&title_li=&child_of=' . $post->post_parent . '&echo=0&exclude=2208,1367,67,434,437,440,443,445,447,451,453,2206,1352,57,400,402,405,407,416,420,423,427,1709,724,53,371,374,378,381,385,387,390,393,934,1753,808,72,1746,802,48,295,298,301,318,326,328,332,334,1750,805,42,268,270,273,276,279,283,287,291,2219,1360,61,337,340,343,346,349,352,355,358,361' );
+    }
+    else {
+        $childpages = wp_list_pages( 'sort_column=menu_order&title_li=&child_of=' . $post->ID . '&echo=0&exclude=2208,1367,67,434,437,440,443,445,447,451,453,2206,1352,57,400,402,405,407,416,420,423,427,1709,724,53,371,374,378,381,385,387,390,393,934,1753,808,72,1746,802,48,295,298,301,318,326,328,332,334,1750,805,42,268,270,273,276,279,283,287,291,2219,1360,61,337,340,343,346,349,352,355,358,361' );
+    }
+
+    if ( $childpages ) {
+
+        $string = '<ul>' . $childpages . '</ul>';
+    }
+
+    return $string;
+
+}
+
+add_shortcode('wpb_childpages', 'wpb_list_child_pages');
