@@ -30,4 +30,13 @@ ul {
 }
 .entry-sidebar {
   margin: 2.4em 0;
+  ul {
+    list-style-type: none;
+    li a {
+      padding: 0.3em 0;
+      border-bottom: 1px solid #eee;
+      width: 100%;
+      display: block;
+    }
+  }
 }

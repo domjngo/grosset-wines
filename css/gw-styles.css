@@ -4044,6 +4044,13 @@ ul {
 
 .entry-sidebar {
   margin: 2.4em 0; }
+  .entry-sidebar ul {
+    list-style-type: none; }
+    .entry-sidebar ul li a {
+      padding: 0.3em 0;
+      border-bottom: 1px solid #eee;
+      width: 100%;
+      display: block; }
 
 .entry-header h1 {
   margin: 1.6em 0;

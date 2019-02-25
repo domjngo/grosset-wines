@@ -1,6 +1,6 @@
 <?php
 // Theme version
-define( 'GW_VSN', '0.1' );
+define( 'GW_VSN', '0.2' );
 
 include 'inc/functions-global.php';
 include 'inc/functions-admin.php';
@@ -8,6 +8,7 @@ include 'inc/functions-widgets.php';
 include 'inc/functions-wines.php';
 include 'inc/functions-temp.php';
 include 'inc/functions-forms.php';
+include 'inc/functions-woo.php';
 
 add_theme_support( 'post-thumbnails' );
 
