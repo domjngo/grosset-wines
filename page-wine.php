@@ -10,7 +10,6 @@ get_header(); ?>
     <main id="main" class="main" role="main">
         <div class="content">
             <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-
                 <div class="container">
                     <div class="row">
                         <div class="col-md-8 col-md-offset-1 col-xs-9">

@@ -88,13 +88,19 @@ function members_form() {
                 <input type="text" id="message" name="message">
             </div>
             <div class="form-row">
+                <p><small><strong>Terms and conditions:</strong> By providing your contact details you subscribe to receive future special offers, wine release information 
+                    and items exclusive to members from Grosset Wines and from our agents until such time as you request us to stop. 
+                    Should you wish to opt out at any time simply let us know by phone or email. We will provide you with appropriate 
+                    contact details every time we contact you.</small></p>
+            </div>
+            <div class="form-row">
                 <input class="btn btn-primary btn-lg" type="submit" alt="Submit" name="member-submit" id="members-submit" value="Submit">
             </div>
         </fieldset>
     </form>
     ';
 
-    return $form;
+    return $form . disclaimer();
 }
 
 function call_back() {
@@ -155,7 +161,7 @@ function call_back_shortcode() {
         }
         if (  isset( $_POST['timestamp'] ) ) {
 
-            if ( $_POST['timestamp'] + 5 > time() ) {
+            if ( $_POST['timestamp'] + 3 > time() ) {
                 // Spam!!
                 echo members_form();
                 return;
@@ -172,15 +178,19 @@ function call_back_shortcode() {
         <p>Telephone : '.$number.'</p>
         ';
 
-        echo '<p><strong>Thank you! Your request was sent successfully.</strong></p>';
+        echo '<div class="alert alert-success"><p><strong>Thank you! Your request was sent successfully.</strong></p></div>';
 
         $email_headers = 'From: Grosset Wines <sales@grosset.com.au>';
 
-        // wp_mail( 'grossetsales@gmail.com', 'Membership call back request', $form_content, $email_headers );
+        add_filter('wp_mail_content_type', function( $content_type ) {
+            return 'text/html';
+        });
+
+        wp_mail( 'grossetsales@gmail.com', 'Membership call back request', $form_content, $email_headers );
         wp_mail( 'cb.creatistic@gmail.com', 'Membership call back request', $form_content, $email_headers );
 
     } else {
-        echo call_back();
+        return call_back();
     }
 }
 
@@ -210,7 +220,7 @@ function member_shortcode() {
         }
         if (  isset( $_POST['timestamp'] ) ) {
 
-            if ( $_POST['timestamp'] + 5 > time() ) {
+            if ( $_POST['timestamp'] + 3 > time() ) {
                 // Spam!!
                 echo members_form();
                 return;
@@ -237,13 +247,15 @@ function member_shortcode() {
         <p>Postcode : '.$postcode.'</p>
         ';
 
-        echo '<p><strong>Thank you! Your request was sent successfully.</strong></p>';
-
-        echo $form_content;
+        echo '<div class="alert alert-success"><p><strong>Thank you! Your request was sent successfully.</strong></p></div>';
 
         $email_headers = 'From: Grosset Wines <sales@grosset.com.au>';
 
-        // wp_mail( 'grossetsales@gmail.com', 'Membership request', $form_content, $email_headers );
+        add_filter('wp_mail_content_type', function( $content_type ) {
+            return 'text/html';
+        });
+
+        wp_mail( 'grossetsales@gmail.com', 'Membership request', $form_content, $email_headers );
         wp_mail( 'cb.creatistic@gmail.com', 'Membership request', $form_content, $email_headers );
 
         $thanks = thanks( $name );
@@ -251,7 +263,7 @@ function member_shortcode() {
         wp_mail( $email, 'Thank you for signing up to join the Grosset Wine Club', $thanks, $email_headers );
 
     } else {
-        echo members_form();
+        return members_form();
     }
 }
 
@@ -268,4 +280,19 @@ function thanks( $name ) {
     ';
 
     return $thanks;
+}
+
+function disclaimer() {
+
+    $disclaimer = '
+    <p>We will acknowledge your request by return, and advise as soon as we have you signed up! 
+    There is currently a high demand to join the Grosset Wine Club so please allow 14 days for your 
+    membership to be confirmed.</p>
+    <p>As a Grosset Wine Club Member you will receive one <strong>Spring Release</strong> newsletter by post or 
+    email if no postal address is provided. In addition, 3-4 emails detailing our <strong>Autumn Release</strong> 
+    and <strong>Special Offers</strong> to members.</p>
+    <p>To remain a Grosset Wine Club Member you are required to purchase six bottles from us each year. That\'s all!</p>
+    ';
+
+    return $disclaimer;
 }

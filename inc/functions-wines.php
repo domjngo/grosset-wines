@@ -57,7 +57,7 @@ function vineyard_html( $img, $title, $link, $text ) {
 
     $html = '<div class="vineyard-item col-md-2">';
     $html .= '<a href="%s"><img src="%s" alt="%s" class="img-responsive"></a>';
-    $html .= '<h2><a href="%s">%s</a></h2>';
+    $html .= '<h3><a href="%s">%s</a></h3>';
     $html .= '<p><small>%s</small></p>';
     $html .= '</div>';
 
