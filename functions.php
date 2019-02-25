@@ -1,6 +1,13 @@
 <?php
 // Theme version
-define( 'GW_VSN', '0.2' );
+define( 'GW_VSN', '0.3' );
+
+function maintenance_mode() {
+
+    if ( !current_user_can( 'edit_themes' ) || !is_user_logged_in() ) {wp_die('<h1>Grosset Wines</h1><p>Grosset Wines is currently down for maintenance. Please return back in a hour. Thank you!</p>');}
+
+}
+add_action('get_header', 'maintenance_mode');
 
 include 'inc/functions-global.php';
 include 'inc/functions-admin.php';
