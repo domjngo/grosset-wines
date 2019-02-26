@@ -6,6 +6,8 @@
   -webkit-flex-wrap: wrap;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
+  max-width: 1440px;
+  margin: 0 auto;
   .wine-item {
     float: left;
     width: 11%;

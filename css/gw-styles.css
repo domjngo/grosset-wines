@@ -4245,6 +4245,27 @@ footer .site-info {
 .section-intro .section-bg {
   padding-top: 0; }
 
+#verifyAge {
+  display: none; }
+
+#verifyAgeHeight {
+  display: table;
+  background-size: cover;
+  background-position: center center;
+  width: 100%;
+  min-height: 480px;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.4); }
+  #verifyAgeHeight .container {
+    display: table-cell;
+    vertical-align: middle; }
+    #verifyAgeHeight .container .home-entry {
+      margin: 1.6em 0; }
+      #verifyAgeHeight .container .home-entry img {
+        margin: 0 auto; }
+      #verifyAgeHeight .container .home-entry p {
+        margin: 1em 0; }
+
 .wp-caption.aligncenter, img.aligncenter {
   display: block;
   margin-left: auto;
@@ -4287,7 +4308,9 @@ iframe {
   display: flex;
   -webkit-flex-wrap: wrap;
   -ms-flex-wrap: wrap;
-  flex-wrap: wrap; }
+  flex-wrap: wrap;
+  max-width: 1440px;
+  margin: 0 auto; }
   .wines .wine-item {
     float: left;
     width: 11%;

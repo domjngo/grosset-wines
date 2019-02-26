@@ -54,3 +54,28 @@
     padding-top: 0;
   }
 }
+#verifyAge {
+  display: none;
+}
+#verifyAgeHeight {
+  display: table;
+  background-size: cover;
+  background-position: center center;
+  width: 100%;
+  min-height: 480px;
+  color: #fff;
+  background: rgba(0,0,0,0.4);
+  .container {
+    display: table-cell;
+    vertical-align: middle;
+    .home-entry {
+      margin: 1.6em 0;
+      img {
+        margin: 0 auto;
+      }
+      p {
+        margin: 1em 0;
+      }
+    }
+  }
+}
