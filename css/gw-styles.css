@@ -4367,6 +4367,12 @@ fieldset {
 
 .woocommerce table.shop_table td.product-thumbnail {
   display: none !important; }
+.woocommerce div.product div.images img {
+  width: auto;
+  max-height: 540px;
+  margin: 0 auto; }
+.woocommerce .woocommerce-tabs .tabs, .woocommerce .woocommerce-tabs h2 {
+  display: none; }
 
 .lcp_catlist {
   list-style: none;

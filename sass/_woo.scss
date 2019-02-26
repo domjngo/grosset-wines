@@ -1,3 +1,15 @@
-.woocommerce table.shop_table td.product-thumbnail {
-  display: none !important;
+.woocommerce {
+  table.shop_table td.product-thumbnail {
+    display: none !important;
+  }
+  div.product div.images img {
+    width: auto;
+    max-height: 540px;
+    margin: 0 auto;
+  }
+  .woocommerce-tabs {
+    .tabs, h2 {
+      display: none;
+    }
+  }
 }
