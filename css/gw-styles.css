@@ -4365,6 +4365,8 @@ fieldset {
 .checkbox input[type=checkbox], .checkbox-inline input[type=checkbox], .radio input[type=radio], .radio-inline input[type=radio] {
   position: inherit; }
 
+.woocommerce .single-product {
+  margin-top: 2.4em; }
 .woocommerce table.shop_table td.product-thumbnail {
   display: none !important; }
 .woocommerce div.product div.images img {
@@ -4372,6 +4374,8 @@ fieldset {
   max-height: 540px;
   margin: 0 auto; }
 .woocommerce .woocommerce-tabs .tabs, .woocommerce .woocommerce-tabs h2 {
+  display: none; }
+.woocommerce .entry-header {
   display: none; }
 
 .lcp_catlist {

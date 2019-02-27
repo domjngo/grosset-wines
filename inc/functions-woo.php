@@ -4,6 +4,14 @@ function woocommerce_support()
 {
     add_theme_support('woocommerce');
 }
+add_action('after_setup_theme', 'woocommerce_support');
+
+remove_theme_support( 'wc-product-gallery-zoom' );
+remove_theme_support( 'wc-product-gallery-lightbox' );
+remove_theme_support( 'wc-product-gallery-slider' );
+
+remove_action('woocommerce_before_main_content', 'woocommerce_breadcrumb', 20, 0);
+remove_action('woocommerce_single_product_summary', 'woocommerce_template_single_meta', 40);
 
 /**
  * Reduce the strength requirement on the woocommerce password.
@@ -117,9 +125,9 @@ remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_output_r
 
 function woo_wine_wrapper_start()
 {
-    echo '<main id="main" class="main" role="main">';
+    echo '<main id="main" class="main single-product" role="main">';
     echo '<div id="content" class="content"><div class="container"><div class="row">';
-    echo '<div class="col-md-12">';
+    echo '<div class="col-md-8 col-md-offset-2">';
 }
 function woo_wine_wrapper_end()
 {
@@ -135,10 +143,3 @@ function woo_remove_product_tabs( $tabs ) {
     unset( $tabs['additional_information'] );   // Remove the additional information tab
     return $tabs;
 }
-
-remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_excerpt', 20 );
-add_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_excerpt', 50 );
-
-
-remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_add_to_cart', 30 );
-add_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_add_to_cart', 20 );

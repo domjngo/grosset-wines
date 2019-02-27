@@ -1,4 +1,7 @@
 .woocommerce {
+  .single-product {
+    margin-top: 2.4em;
+  }
   table.shop_table td.product-thumbnail {
     display: none !important;
   }
@@ -11,5 +14,8 @@
     .tabs, h2 {
       display: none;
     }
+  }
+  .entry-header {
+    display: none;
   }
 }
