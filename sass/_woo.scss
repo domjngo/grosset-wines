@@ -18,4 +18,17 @@
   .entry-header {
     display: none;
   }
+  #respond input#submit.alt,
+  a.button.alt,
+  button.button.alt,
+  input.button.alt {
+    background-color: #444 !important;
+  }
+  div.product p.price,
+  div.product span.price {
+    color: #000;
+  }
+  .quantity .qty {
+    padding: .25em 1em;
+  }
 }

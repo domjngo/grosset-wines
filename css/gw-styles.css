@@ -4377,6 +4377,16 @@ fieldset {
   display: none; }
 .woocommerce .entry-header {
   display: none; }
+.woocommerce #respond input#submit.alt,
+.woocommerce a.button.alt,
+.woocommerce button.button.alt,
+.woocommerce input.button.alt {
+  background-color: #444 !important; }
+.woocommerce div.product p.price,
+.woocommerce div.product span.price {
+  color: #000; }
+.woocommerce .quantity .qty {
+  padding: .25em 1em; }
 
 .lcp_catlist {
   list-style: none;

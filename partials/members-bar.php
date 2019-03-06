@@ -8,7 +8,7 @@
             </div>
             <div class="col-md-6 text-right">
                 <a href="<?php echo site_url(); ?>/members-online/" class="btn btn-xs">Buy wine</a>
-                <a href="<?php echo wc_get_cart_url(); ?>" class="btn btn-xs">Cart</a>
+                <a href="<?php echo wc_get_cart_url(); ?>" class="btn btn-xs">Basket</a>
                 <a href="<?php echo wc_get_checkout_url(); ?>" class="btn btn-xs">Checkout</a>
                 <a href="<?php echo site_url(); ?>/my-account/" class="btn btn-xs">My account</a>
                 <a href="<?php echo site_url(); ?>/my-account/customer-logout/" class="btn btn-xs">Sign out</a>
