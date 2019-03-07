@@ -141,6 +141,16 @@ function get_home_text( $field ) {
     }
 }
 
+function get_button( $label, $url ) {
+    $label = esc_attr( get_option( $label ) );
+    $url = esc_attr( get_option( $url ) );
+    if ($url) {
+        return '<p><a href="'.$url.'" class="btn btn-home">'.$label.'</a></p>';
+    } else {
+        return '';
+    }
+}
+
 function wpb_list_child_pages() {
 
     global $post;
