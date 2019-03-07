@@ -11,6 +11,7 @@
         </div>
     </div>
 </section>
+<?php if ( get_option( 'g_title_2' ) ) { ?>
 <section class="home-section section-img" <?php echo get_home_img( 'g_img_url_2' ) ?>>
     <div class="section-bg">
         <div class="container">
@@ -24,6 +25,8 @@
         </div>
     </div>
 </section>
+<?php } ?>
+<?php if ( get_option( 'g_title_3' ) ) { ?>
 <section class="home-section">
     <div class="section-bg">
         <div class="container">
@@ -39,6 +42,8 @@
         </div>
     </div>
 </section>
+<?php } ?>
+<?php if ( get_option( 'g_title_4' ) ) { ?>
 <section class="home-section section-img" <?php echo get_home_img( 'g_img_url_4' ) ?>>
     <div class="section-bg">
         <div class="container">
@@ -52,6 +57,8 @@
         </div>
     </div>
 </section>
+<?php } ?>
+<?php if ( get_option( 'g_title_5' ) ) { ?>
 <section class="home-section">
     <div class="section-bg">
         <div class="container">
@@ -67,6 +74,8 @@
         </div>
     </div>
 </section>
+<?php } ?>
+<?php if ( get_option( 'g_title_6' ) ) { ?>
 <section class="home-section section-img" <?php echo get_home_img( 'g_img_url_6' ) ?>>
     <div class="section-bg">
         <div class="container">
@@ -80,6 +89,8 @@
         </div>
     </div>
 </section>
+<?php } ?>
+<?php if ( get_option( 'g_title_7' ) ) { ?>
 <section class="home-section">
     <div class="section-bg">
         <div class="container">
@@ -95,4 +106,4 @@
         </div>
     </div>
 </section>
-
+<?php } ?>
