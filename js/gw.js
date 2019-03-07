@@ -19,7 +19,7 @@ $( document ).ready(function() {
         resize();
     };
 
-    var age = getCookie("GWageConfirm");
+    /*var age = getCookie("GWageConfirm");
     if (age != "") {
         console.log( "GWageConfirm cookie set!" );
     } else {
@@ -32,7 +32,7 @@ $( document ).ready(function() {
     $("#verifyAgeBtn").click(function(){
         document.cookie = "GWageConfirm=true";
         $("#verifyAge").hide();
-    });
+    });*/
 });
 
 function resize()
@@ -43,7 +43,7 @@ function resize()
     }
 }
 
-function getCookie(cname)
+/*function getCookie(cname)
 {
     var name = cname + "=";
     var decodedCookie = decodeURIComponent(document.cookie);
@@ -58,4 +58,4 @@ function getCookie(cname)
         }
     }
     return "";
-}
+}*/

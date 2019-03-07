@@ -21,7 +21,6 @@
 </head>
 
 <body <?php body_class(); ?>>
-    <?php get_template_part( 'partials/home-verify' ); ?>
     <header id="head" class="head">
         <?php get_template_part( 'partials/members-bar' ); ?>
         <nav class="navbar navbar-default">
