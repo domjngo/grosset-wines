@@ -64,11 +64,11 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
-                    <p><?php echo get_home_text('g_text_5'); ?></p>
-                    <?php echo get_button('g_button_5', 'g_url_5' ) ; ?>
+                    <h2><?php echo get_home_text('g_title_5'); ?></h2>
                 </div>
                 <div class="col-md-6">
-                    <h2><?php echo get_home_text('g_title_5'); ?></h2>
+                    <p><?php echo get_home_text('g_text_5'); ?></p>
+                    <?php echo get_button('g_button_5', 'g_url_5' ) ; ?>
                 </div>
             </div>
         </div>
