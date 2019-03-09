@@ -4031,10 +4031,11 @@ p {
   margin: 0 0 1.6em; }
 
 a {
-  color: #1c3f95; }
+  color: #1c3f95;
+  text-decoration: underline; }
 
 a:hover, a:focus {
-  text-decoration: underline; }
+  text-decoration: none; }
 
 a:focus {
   background-color: #f7ecb5; }
@@ -4066,17 +4067,6 @@ ul {
   margin: 1.6em 0;
   font-size: 2.4em; }
 
-.entry-content a:hover, .entry-content a:focus {
-  text-decoration: none; }
-
-.header-page {
-  height: 74px;
-  background-position: center center;
-  background-size: cover; }
-
-@media (max-width: 768px) {
-  .header-page {
-    height: 48px; } }
 .page .entry-content, .single .entry-content {
   margin-bottom: 3em; }
 
@@ -4157,7 +4147,8 @@ ul.buttons li a:hover {
   padding-bottom: 1em; }
 
 .navbar-default .navbar-nav > li > a {
-  color: #123c3d; }
+  color: #123c3d;
+  text-decoration: none; }
 
 .navbar-default .navbar-brand {
   font-weight: 700;
@@ -4189,19 +4180,19 @@ ul.buttons li a:hover {
 footer {
   padding: 1em 0;
   background-color: #e4eaea; }
-
-footer ul {
-  list-style-type: none;
-  padding: 0; }
-
-footer .site-info {
-  padding: 1em; }
-
-.footer-col .widget {
-  padding-right: 3.4em; }
-
-.widFRR {
-  margin: 0 auto !important; }
+  footer a {
+    text-decoration: none; }
+  footer a:hover, footer a:focus {
+    text-decoration: underline; }
+  footer ul {
+    list-style-type: none;
+    padding: 0; }
+  footer .site-info {
+    padding: 1em; }
+  footer .footer-col .widget {
+    padding-right: 3.4em; }
+  footer .widFRR {
+    margin: 0 auto !important; }
 
 .home-header {
   display: table;
@@ -4350,6 +4341,7 @@ iframe {
   .form-row input[type=text],
   .form-row input[type=date],
   .form-row input[type=url],
+  .form-row input[type=password],
   .form-row select,
   .form-row textarea {
     width: 100%;
@@ -4387,6 +4379,17 @@ fieldset {
   padding: .25em 1em; }
 .woocommerce #ship-to-different-address label, .woocommerce #ship-to-different-address .checkbox {
   margin: 0; }
+.woocommerce .woocommerce-MyAccount-navigation ul {
+  margin: 0;
+  padding: 0;
+  list-style: none; }
+  .woocommerce .woocommerce-MyAccount-navigation ul li {
+    padding: 0.3em 0;
+    border-top: solid 1px #ddd; }
+  .woocommerce .woocommerce-MyAccount-navigation ul a {
+    text-decoration: none; }
+.woocommerce .woocommerce-MyAccount-navigation-link--downloads {
+  display: none; }
 
 .lcp_catlist {
   list-style: none;

@@ -163,3 +163,18 @@ function my_hide_shipping_when_free_is_available( $rates ) {
     return ! empty( $free ) ? $free : $rates;
 }
 add_filter( 'woocommerce_package_rates', 'my_hide_shipping_when_free_is_available', 100, 2 );
+
+function shop_is_member_shortcode()
+{
+
+    if ( is_user_logged_in() ) {
+        $html = '<h2>Welcome Grosset Wine Club member!</h2>';
+    } else {
+        $html = '<p>If you\'re a <strong>Grosset Wine Club member</strong> please ';
+        $html .= '<strong><a href="'.site_url().'/my-account/">sign in here</a></strong>.<br>';
+        $html .= 'Not yet a member? <a href="'.site_url().'/contact/grosset-wine-club-member/">Click here to join</a>.</p>';
+    }
+
+    return $html;
+}
+add_shortcode( 'is-member', 'shop_is_member_shortcode' );

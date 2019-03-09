@@ -33,4 +33,21 @@
       margin: 0;
     }
   }
+  .woocommerce-MyAccount-navigation {
+    ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      li {
+        padding: 0.3em 0;
+        border-top: solid 1px #ddd;
+      }
+      a {
+        text-decoration: none;
+      }
+    }
+  }
+  .woocommerce-MyAccount-navigation-link--downloads {
+    display: none;
+  }
 }

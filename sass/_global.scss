@@ -18,9 +18,10 @@ p {
 }
 a {
   color: #1c3f95;
+  text-decoration: underline;
 }
 a:hover, a:focus {
-  text-decoration: underline;
+  text-decoration: none;
 }
 a:focus {
   background-color: #f7ecb5;
