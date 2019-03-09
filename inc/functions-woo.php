@@ -147,6 +147,7 @@ function woo_remove_product_tabs( $tabs ) {
 /**
  * Hide shipping rates when free shipping is available.
  * Updated to support WooCommerce 2.6 Shipping Zones.
+ * https://gist.github.com/woogists/bd6938ccfdea0d03df5d060902561378
  *
  * @param array $rates Array of rates found for the package.
  * @return array
@@ -161,4 +162,4 @@ function my_hide_shipping_when_free_is_available( $rates ) {
     }
     return ! empty( $free ) ? $free : $rates;
 }
-add_filter( 'woocommerce_package_rates', 'my_hide_shipping_when_free_is_available', 100 );
+add_filter( 'woocommerce_package_rates', 'my_hide_shipping_when_free_is_available', 100, 2 );
