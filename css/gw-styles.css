@@ -4385,6 +4385,8 @@ fieldset {
   color: #000; }
 .woocommerce .quantity .qty {
   padding: .25em 1em; }
+.woocommerce #ship-to-different-address label, .woocommerce #ship-to-different-address .checkbox {
+  margin: 0; }
 
 .lcp_catlist {
   list-style: none;

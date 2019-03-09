@@ -28,4 +28,9 @@
   .quantity .qty {
     padding: .25em 1em;
   }
+  #ship-to-different-address {
+    label, .checkbox {
+      margin: 0;
+    }
+  }
 }
