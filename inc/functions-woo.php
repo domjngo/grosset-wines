@@ -164,6 +164,15 @@ function my_hide_shipping_when_free_is_available( $rates ) {
 }
 add_filter( 'woocommerce_package_rates', 'my_hide_shipping_when_free_is_available', 100, 2 );
 
+/**
+ * https://gist.github.com/JeroenSormani/87afe8432e05905587bd#file-woocommerce-custom-no-shipping-available-message-php
+ */
+function my_custom_no_shipping_message( $message ) {
+    return __( 'A minimum of 6 bottles are required for free shipping.' );
+}
+add_filter( 'woocommerce_no_shipping_available_html', 'my_custom_no_shipping_message' );
+add_filter( 'woocommerce_cart_no_shipping_available_html', 'my_custom_no_shipping_message' );
+
 function shop_is_member_shortcode()
 {
 

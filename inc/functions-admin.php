@@ -82,12 +82,10 @@ function grosset_settings_page() {
                         <th scope="row"><label for="g_url_<?php echo $i; ?>">Button URL</label></th>
                         <td><input type="text" name="g_url_<?php echo $i; ?>" value="<?php echo get_option('g_url_'.$i); ?>" /></td>
                     </tr>
-                    <?php if ($i % 2 == 0) { ?>
-                        <tr valign="top">
-                            <th scope="row"><label for="g_img_url_<?php echo $i; ?>">Image URL</label></th>
-                            <td><input type="text" name="g_img_url_<?php echo $i; ?>" value="<?php echo get_option('g_img_url_'.$i); ?>" /></td>
-                        </tr>
-                    <?php } ?>
+                    <tr valign="top">
+                        <th scope="row"><label for="g_img_url_<?php echo $i; ?>">Image URL</label></th>
+                        <td><input type="text" name="g_img_url_<?php echo $i; ?>" value="<?php echo get_option('g_img_url_'.$i); ?>" /></td>
+                    </tr>
                 </table>
                 <?php submit_button(); ?>
             <?php } ?>
