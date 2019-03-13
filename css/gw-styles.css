@@ -4031,10 +4031,11 @@ p {
   margin: 0 0 1.6em; }
 
 a {
-  color: #1c3f95; }
+  color: #1c3f95;
+  text-decoration: underline; }
 
 a:hover, a:focus {
-  text-decoration: underline; }
+  text-decoration: none; }
 
 a:focus {
   background-color: #f7ecb5; }
@@ -4066,17 +4067,6 @@ ul {
   margin: 1.6em 0;
   font-size: 2.4em; }
 
-.entry-content a:hover, .entry-content a:focus {
-  text-decoration: none; }
-
-.header-page {
-  height: 74px;
-  background-position: center center;
-  background-size: cover; }
-
-@media (max-width: 768px) {
-  .header-page {
-    height: 48px; } }
 .page .entry-content, .single .entry-content {
   margin-bottom: 3em; }
 
@@ -4157,7 +4147,8 @@ ul.buttons li a:hover {
   padding-bottom: 1em; }
 
 .navbar-default .navbar-nav > li > a {
-  color: #123c3d; }
+  color: #123c3d;
+  text-decoration: none; }
 
 .navbar-default .navbar-brand {
   font-weight: 700;
@@ -4189,19 +4180,19 @@ ul.buttons li a:hover {
 footer {
   padding: 1em 0;
   background-color: #e4eaea; }
-
-footer ul {
-  list-style-type: none;
-  padding: 0; }
-
-footer .site-info {
-  padding: 1em; }
-
-.footer-col .widget {
-  padding-right: 3.4em; }
-
-.widFRR {
-  margin: 0 auto !important; }
+  footer a {
+    text-decoration: none; }
+  footer a:hover, footer a:focus {
+    text-decoration: underline; }
+  footer ul {
+    list-style-type: none;
+    padding: 0; }
+  footer .site-info {
+    padding: 1em; }
+  footer .footer-col .widget {
+    padding-right: 3.4em; }
+  footer .widFRR {
+    margin: 0 auto !important; }
 
 .home-header {
   display: table;
@@ -4227,7 +4218,10 @@ footer .site-info {
     color: #fff; }
 
 .home-section .section-bg {
-  padding: 3.6em 0 2.6em; }
+  padding: 3.6em 0 4.8em; }
+.home-section img {
+  max-height: 360px;
+  margin: 0 auto; }
 
 .section-img {
   color: #fff;
@@ -4240,10 +4234,32 @@ footer .site-info {
   .section-img h1, .section-img h2, .section-img h3, .section-img h4, .section-img h5, .section-img h6 {
     color: #fff; }
   .section-img .section-bg {
-    background: rgba(0, 0, 0, 0.2); }
+    background: rgba(0, 0, 0, 0.2);
+    min-height: 480px; }
 
 .section-intro .section-bg {
   padding-top: 0; }
+
+#verifyAge {
+  display: none; }
+
+#verifyAgeHeight {
+  display: table;
+  background-size: cover;
+  background-position: center center;
+  width: 100%;
+  min-height: 480px;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.4); }
+  #verifyAgeHeight .container {
+    display: table-cell;
+    vertical-align: middle; }
+    #verifyAgeHeight .container .home-entry {
+      margin: 1.6em 0; }
+      #verifyAgeHeight .container .home-entry img {
+        margin: 0 auto; }
+      #verifyAgeHeight .container .home-entry p {
+        margin: 1em 0; }
 
 .wp-caption.aligncenter, img.aligncenter {
   display: block;
@@ -4287,7 +4303,9 @@ iframe {
   display: flex;
   -webkit-flex-wrap: wrap;
   -ms-flex-wrap: wrap;
-  flex-wrap: wrap; }
+  flex-wrap: wrap;
+  max-width: 1440px;
+  margin: 0 auto; }
   .wines .wine-item {
     float: left;
     width: 11%;
@@ -4327,6 +4345,7 @@ iframe {
   .form-row input[type=text],
   .form-row input[type=date],
   .form-row input[type=url],
+  .form-row input[type=password],
   .form-row select,
   .form-row textarea {
     width: 100%;
@@ -4342,8 +4361,40 @@ fieldset {
 .checkbox input[type=checkbox], .checkbox-inline input[type=checkbox], .radio input[type=radio], .radio-inline input[type=radio] {
   position: inherit; }
 
+.woocommerce .single-product {
+  margin-top: 2.4em; }
 .woocommerce table.shop_table td.product-thumbnail {
   display: none !important; }
+.woocommerce div.product div.images img {
+  width: auto;
+  max-height: 540px;
+  margin: 0 auto; }
+.woocommerce .woocommerce-tabs .tabs, .woocommerce .woocommerce-tabs h2 {
+  display: none; }
+.woocommerce #respond input#submit.alt,
+.woocommerce a.button.alt,
+.woocommerce button.button.alt,
+.woocommerce input.button.alt {
+  background-color: #444 !important; }
+.woocommerce div.product p.price,
+.woocommerce div.product span.price {
+  color: #000; }
+.woocommerce .quantity .qty {
+  padding: .25em 1em;
+  width: 5em; }
+.woocommerce #ship-to-different-address label, .woocommerce #ship-to-different-address .checkbox {
+  margin: 0; }
+.woocommerce .woocommerce-MyAccount-navigation ul {
+  margin: 0;
+  padding: 0;
+  list-style: none; }
+  .woocommerce .woocommerce-MyAccount-navigation ul li {
+    padding: 0.3em 0;
+    border-top: solid 1px #ddd; }
+  .woocommerce .woocommerce-MyAccount-navigation ul a {
+    text-decoration: none; }
+.woocommerce .woocommerce-MyAccount-navigation-link--downloads {
+  display: none; }
 
 .lcp_catlist {
   list-style: none;

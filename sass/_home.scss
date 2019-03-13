@@ -31,7 +31,11 @@
 
 .home-section {
   .section-bg {
-    padding: 3.6em 0 2.6em;
+    padding: 3.6em 0 4.8em;
+  }
+  img {
+    max-height: 360px;
+    margin: 0 auto;
   }
 }
 .section-img {
@@ -47,10 +51,36 @@
   }
   .section-bg {
     background: rgba(0,0,0,0.2);
+    min-height: 480px;
   }
 }
 .section-intro {
   .section-bg {
     padding-top: 0;
+  }
+}
+#verifyAge {
+  display: none;
+}
+#verifyAgeHeight {
+  display: table;
+  background-size: cover;
+  background-position: center center;
+  width: 100%;
+  min-height: 480px;
+  color: #fff;
+  background: rgba(0,0,0,0.4);
+  .container {
+    display: table-cell;
+    vertical-align: middle;
+    .home-entry {
+      margin: 1.6em 0;
+      img {
+        margin: 0 auto;
+      }
+      p {
+        margin: 1em 0;
+      }
+    }
   }
 }

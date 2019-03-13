@@ -1,5 +1,18 @@
 <?php
 
+function woocommerce_support()
+{
+    add_theme_support('woocommerce');
+}
+add_action('after_setup_theme', 'woocommerce_support');
+
+remove_theme_support( 'wc-product-gallery-zoom' );
+remove_theme_support( 'wc-product-gallery-lightbox' );
+remove_theme_support( 'wc-product-gallery-slider' );
+
+remove_action('woocommerce_before_main_content', 'woocommerce_breadcrumb', 20, 0);
+remove_action('woocommerce_single_product_summary', 'woocommerce_template_single_meta', 40);
+
 /**
  * Reduce the strength requirement on the woocommerce password.
  *
@@ -57,3 +70,125 @@ function am_woocommerce_catalog_orderby( $args ) {
     $args['meta_key'] = '_sku';
 }
 add_filter('woocommerce_get_catalog_ordering_args', 'am_woocommerce_catalog_orderby');
+
+/**
+ * Dynamic pricing
+ *
+ */
+function wc_member_product_field() {
+    woocommerce_wp_text_input( array( 'id' => 'member_price', 'class' => 'wc_input_price short', 'label' => __( 'Member price', 'woocommerce' ) . ' (' . get_woocommerce_currency_symbol() . ')' ) );
+}
+add_action( 'woocommerce_product_options_pricing', 'wc_member_product_field' );
+
+function wc_member_save_product( $product_id ) {
+
+    if (wp_verify_nonce($_POST['_inline_edit'], 'inlineeditnonce')) {
+        return;
+    }
+    if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
+        return;
+    }
+    if ( isset( $_POST['member_price'] ) ) {
+        if ( is_numeric( $_POST['member_price'] ) ) {
+            update_post_meta( $product_id, 'member_price', $_POST['member_price'] );
+        }
+    } else {
+        delete_post_meta( $product_id, 'member_price' );
+    }
+}
+add_action( 'save_post', 'wc_member_save_product' );
+
+function wc_member_price_for_login_users( $price, $product ) {
+
+    if (!is_user_logged_in()) {
+        return $price;
+    }
+    $member = get_post_meta( $product->get_id(), 'member_price', true );
+
+    if ( $member ) {
+        $price = $member;
+    }
+    return $price;
+}
+add_filter('woocommerce_product_get_price', 'wc_member_price_for_login_users', 10, 2);
+
+/**
+ * Remove related products
+ *
+ */
+function woo_wine_remove_related_products($args)
+{
+    return array();
+}
+add_filter('woocommerce_related_products_args', 'woo_wine_remove_related_products', 10);
+remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_output_related_products', 20 );
+
+function woo_wine_wrapper_start()
+{
+    echo '<main id="main" class="main single-product" role="main">';
+    echo '<div id="content" class="content"><div class="container"><div class="row">';
+    echo '<div class="col-md-8 col-md-offset-2">';
+}
+function woo_wine_wrapper_end()
+{
+    echo '</div></div></div></div></main>';
+}
+add_action('woocommerce_before_main_content', 'woo_wine_wrapper_start', 10);
+add_action('woocommerce_after_main_content', 'woo_wine_wrapper_end', 10);
+
+add_filter( 'woocommerce_product_tabs', 'woo_remove_product_tabs', 98 );
+
+function woo_remove_product_tabs( $tabs ) {
+    unset( $tabs['reviews'] );          // Remove the reviews tab
+    unset( $tabs['additional_information'] );   // Remove the additional information tab
+    return $tabs;
+}
+
+/**
+ * Hide shipping rates when free shipping is available.
+ * Updated to support WooCommerce 2.6 Shipping Zones.
+ * https://gist.github.com/woogists/bd6938ccfdea0d03df5d060902561378
+ *
+ * @param array $rates Array of rates found for the package.
+ * @return array
+ */
+function my_hide_shipping_when_free_is_available( $rates ) {
+    $free = array();
+    foreach ( $rates as $rate_id => $rate ) {
+        if ( 'free_shipping' === $rate->method_id ) {
+            $free[ $rate_id ] = $rate;
+            break;
+        }
+    }
+    return ! empty( $free ) ? $free : $rates;
+}
+add_filter( 'woocommerce_package_rates', 'my_hide_shipping_when_free_is_available', 100, 2 );
+
+/**
+ * https://gist.github.com/JeroenSormani/87afe8432e05905587bd#file-woocommerce-custom-no-shipping-available-message-php
+ */
+function my_custom_no_shipping_message( $message ) {
+    return __( 'A minimum of 6 bottles are required for free shipping.' );
+}
+add_filter( 'woocommerce_no_shipping_available_html', 'my_custom_no_shipping_message' );
+add_filter( 'woocommerce_cart_no_shipping_available_html', 'my_custom_no_shipping_message' );
+
+function shop_is_member_shortcode()
+{
+
+    if ( is_user_logged_in() ) {
+        $html = '<h2>Welcome Grosset Wine Club member!</h2>';
+    } else {
+        $html = '<p>If you\'re a <strong>Grosset Wine Club member</strong> please ';
+        $html .= '<strong><a href="'.site_url().'/my-account/">sign in here</a></strong>.<br>';
+        $html .= 'Not yet a member? <a href="'.site_url().'/contact/grosset-wine-club-member/">Click here to join</a>.</p>';
+    }
+
+    return $html;
+}
+add_shortcode( 'is-member', 'shop_is_member_shortcode' );
+
+function my_account_content_after() {
+    echo '<a href="'.site_url().'/members-online/" class="btn">Members wine shop</a>';
+}
+add_action( 'woocommerce_account_dashboard', 'my_account_content_after' );

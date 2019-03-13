@@ -5,17 +5,23 @@
 footer {
   padding: 1em 0;
   background-color: #e4eaea;
-}
-footer ul {
-  list-style-type: none;
-  padding: 0;
-}
-footer .site-info {
-  padding: 1em;
-}
-.footer-col .widget {
-  padding-right: 3.4em;
-}
-.widFRR {
-  margin: 0 auto !important;
+  a {
+    text-decoration: none;
+  }
+  a:hover, a:focus {
+    text-decoration: underline;
+  }
+  ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  .site-info {
+    padding: 1em;
+  }
+  .footer-col .widget {
+    padding-right: 3.4em;
+  }
+  .widFRR {
+    margin: 0 auto !important;
+  }
 }

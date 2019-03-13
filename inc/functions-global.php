@@ -12,7 +12,7 @@ function bc_styles() {
 function bc_scripts() {
     wp_register_script( 'jquery-js', 'https://code.jquery.com/jquery-2.2.4.min.js', array(), '2.2.4' );
     wp_register_script( 'bootstrap-js', 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js', array(), '3.3.7', true );
-    wp_register_script( 'global-js', get_template_directory_uri() . '/js/compiled/gw.min.js', array(), '1.0', true );
+    wp_register_script( 'global-js', get_template_directory_uri() . '/js/compiled/gw.min.js', array(), GW_VSN, true );
     wp_enqueue_script( 'jquery-js' );
     wp_enqueue_script( 'bootstrap-js' );
     wp_enqueue_script( 'global-js' );
@@ -138,6 +138,16 @@ function get_home_text( $field ) {
         return $text;
     } else {
         return 'Lorem ipsum dolor sit amet, eam ex exerci hendrerit';
+    }
+}
+
+function get_button( $label, $url ) {
+    $label = esc_attr( get_option( $label ) );
+    $url = esc_attr( get_option( $url ) );
+    if ($url) {
+        return '<p><a href="'.$url.'" class="btn btn-home">'.$label.'</a></p>';
+    } else {
+        return '';
     }
 }
 
