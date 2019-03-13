@@ -187,3 +187,8 @@ function shop_is_member_shortcode()
     return $html;
 }
 add_shortcode( 'is-member', 'shop_is_member_shortcode' );
+
+function my_account_content_after() {
+    echo '<a href="'.site_url().'/members-online/" class="btn">Members wine shop</a>';
+}
+add_action( 'woocommerce_account_dashboard', 'my_account_content_after' );

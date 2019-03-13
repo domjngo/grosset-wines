@@ -4220,7 +4220,8 @@ footer {
 .home-section .section-bg {
   padding: 3.6em 0 4.8em; }
 .home-section img {
-  max-height: 360px; }
+  max-height: 360px;
+  margin: 0 auto; }
 
 .section-img {
   color: #fff;
@@ -4233,7 +4234,8 @@ footer {
   .section-img h1, .section-img h2, .section-img h3, .section-img h4, .section-img h5, .section-img h6 {
     color: #fff; }
   .section-img .section-bg {
-    background: rgba(0, 0, 0, 0.2); }
+    background: rgba(0, 0, 0, 0.2);
+    min-height: 480px; }
 
 .section-intro .section-bg {
   padding-top: 0; }
@@ -4378,7 +4380,8 @@ fieldset {
 .woocommerce div.product span.price {
   color: #000; }
 .woocommerce .quantity .qty {
-  padding: .25em 1em; }
+  padding: .25em 1em;
+  width: 5em; }
 .woocommerce #ship-to-different-address label, .woocommerce #ship-to-different-address .checkbox {
   margin: 0; }
 .woocommerce .woocommerce-MyAccount-navigation ul {
