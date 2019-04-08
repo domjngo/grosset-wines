@@ -54,6 +54,16 @@
     min-height: 480px;
   }
 }
+@media (max-width: 960px) {
+  .section-img {
+    color: #fff;
+    text-shadow: #222 2px 3px 5px;
+    background: #d4dddd;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+}
 .section-intro {
   .section-bg {
     padding-top: 0;

@@ -4067,6 +4067,19 @@ ul {
   margin: 1.6em 0;
   font-size: 2.4em; }
 
+.page-header-banner {
+  margin-bottom: 2.4em;
+  padding: 1em; }
+  .page-header-banner .entry-header h1 {
+    margin: 4.2em 0 0.6em;
+    color: #fff;
+    text-shadow: #222 2px 3px 5px; }
+
+@media (max-width: 768px) {
+  .page-header-banner {
+    padding: 0; }
+    .page-header-banner .entry-header h1 {
+      margin: 0.6em 0; } }
 .page .entry-content, .single .entry-content {
   margin-bottom: 3em; }
 
@@ -4237,6 +4250,14 @@ footer {
     background: rgba(0, 0, 0, 0.2);
     min-height: 480px; }
 
+@media (max-width: 960px) {
+  .section-img {
+    color: #fff;
+    text-shadow: #222 2px 3px 5px;
+    background: #d4dddd;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover; } }
 .section-intro .section-bg {
   padding-top: 0; }
 

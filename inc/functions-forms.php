@@ -273,8 +273,8 @@ function thanks( $name ) {
     <p><img src="https://www.grosset.com.au/wp-content/themes/grosset3/img/Grosset-Logo.png"></p>
     <p>Dear '.$name.',</p>
     <p>Thank you for signing up to join the <strong>Grosset Wine Club</strong>.</p>
-    <p>Currently the members list is fully subscribed and there is a short waiting list.</p>
-    <p>As soon as this situation changes, we will notify you. This shouldn’t be more than a few weeks.</p>
+    <p>There is currently a high demand to join the Grosset Wine Club so please allow 14 days for your membership to be confirmed. 
+    We will notify you as soon as you are signed up. </p>
     <p>In the meantime if you have any queries, please don’t hesitate to call the office on 1800 088 223.</p>
     <p>Warm regards,<br><a href="https://www.grosset.com.au">Grosset Wines</a></p>
     ';
@@ -284,15 +284,7 @@ function thanks( $name ) {
 
 function disclaimer() {
 
-    $disclaimer = '
-    <p>We will acknowledge your request by return, and advise as soon as we have you signed up! 
-    There is currently a high demand to join the Grosset Wine Club so please allow 14 days for your 
-    membership to be confirmed.</p>
-    <p>As a Grosset Wine Club Member you will receive one <strong>Spring Release</strong> newsletter by post or 
-    email if no postal address is provided. In addition, 3-4 emails detailing our <strong>Autumn Release</strong> 
-    and <strong>Special Offers</strong> to members.</p>
-    <p>To remain a Grosset Wine Club Member you are required to purchase six bottles from us each year. That\'s all!</p>
-    ';
+    $disclaimer = '';
 
     return $disclaimer;
 }
