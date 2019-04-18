@@ -4044,7 +4044,7 @@ ul {
   margin-bottom: 1.6em; }
 
 .entry-sidebar {
-  margin: 2.4em 0; }
+  margin-bottom: 2.4em; }
   .entry-sidebar ul {
     list-style-type: none; }
     .entry-sidebar ul li a {
@@ -4069,9 +4069,13 @@ ul {
 
 .page-header-banner {
   margin-bottom: 2.4em;
-  padding: 1em; }
+  padding: 1em;
+  background: #d4dddd;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover; }
   .page-header-banner .entry-header h1 {
-    margin: 4.2em 0 0.6em;
+    margin: 5.8em 0 1em;
     color: #fff;
     text-shadow: #222 2px 3px 5px; }
 
