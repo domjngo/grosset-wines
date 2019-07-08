@@ -194,6 +194,7 @@ function my_account_content_after() {
 add_action( 'woocommerce_account_dashboard', 'my_account_content_after' );
 
 function user_profile_customer_status( $user ) {
+    // https://www.cssigniter.com/how-to-add-a-custom-user-field-in-wordpress/
     $status = esc_html( get_the_author_meta( 'customer_status', $user->ID ) );
     ?>
     <h2>Customer status</h2>
