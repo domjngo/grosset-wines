@@ -58,7 +58,7 @@ add_filter( 'woocommerce_get_order_item_totals', 'reordering_order_item_totals',
  * Display 24 products per page
  *
  */
-add_filter( 'loop_shop_per_page', create_function( '$cols', 'return 24;' ), 20 );
+// add_filter( 'loop_shop_per_page', create_function( '$cols', 'return 24;' ), 20 );
 
 /**
  * Catalog order
@@ -200,7 +200,7 @@ function user_profile_customer_status( $user ) {
     <h2>Customer status</h2>
     <table class="form-table">
         <tr>
-            <th><label for="customer_status">Customer status</label></th>
+            <th><label for="customer_status">Status</label></th>
             <td>
                 <select id="customer_status" name="customer_status">
                     <option value="">No status</option>
@@ -214,4 +214,14 @@ function user_profile_customer_status( $user ) {
         </tr>
     </table>
     <?php
+}
+
+function update_user_profile_customer_status( $user_id ) {
+
+    if ( ! current_user_can( 'edit_user', $user_id ) ) {
+        return false;
+    }
+    if ( ! empty( $_POST['customer_status'] ) ) {
+        update_user_meta( $user_id, 'customer_status', $_POST['customer_status'] );
+    }
 }
