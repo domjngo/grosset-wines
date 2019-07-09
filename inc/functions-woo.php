@@ -225,3 +225,19 @@ function update_user_profile_customer_status( $user_id ) {
         update_user_meta( $user_id, 'customer_status', $_POST['customer_status'] );
     }
 }
+
+function add_customer_status_column( $column ) {
+    $column['col_customer_status'] = 'Customer status';
+    return $column;
+}
+
+function add_customer_status_column_value( $val, $column_name, $user_id ) {
+    switch($column_name) {
+
+        case 'col_customer_status' :
+            return get_user_meta($user_id, 'customer_status', true); ;
+            break;
+
+        default:
+    }
+}

@@ -34,7 +34,10 @@ add_filter( 'previous_posts_link_attributes', 'posts_link_attributes' );
 add_shortcode( 'wine', 'wine_shortcode' );
 add_shortcode( 'vineyard', 'vineyard_shortcode' );
 
+// WooCommerce functions
 add_action( 'personal_options_update', 'update_user_profile_customer_status' );
 add_action( 'edit_user_profile_update', 'update_user_profile_customer_status' );
 add_action( 'show_user_profile', 'user_profile_customer_status' );
 add_action( 'edit_user_profile', 'user_profile_customer_status' );
+add_filter( 'manage_users_custom_column', 'add_customer_status_column_value', 10, 3 );
+add_filter( 'manage_users_columns', 'add_customer_status_column' );
