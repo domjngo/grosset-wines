@@ -289,103 +289,151 @@ function disclaimer() {
     return $disclaimer;
 }
 
-add_shortcode( 'gw_wc_reg_form', 'gw_wc_registration_form' );
-
-function gw_wc_registration_form() {
-    if ( is_admin() ) return;
-    ob_start();
-    if ( is_user_logged_in() ) {
-        wc_add_notice( sprintf( __( 'You are currently logged in. If you wish to register with a different account please <a href="%s">log out</a> first', 'bbloomer' ), wc_logout_url() ) );
-        wc_print_notices();
+function register_page_css() {
+    if ( isset( $_GET['register'] ) && $_GET['register'] == true ) {
+        return '<style>
+.woocommerce .col2-set .col-1, .woocommerce-page .col2-set .col-1 {
+    display: none;
+}
+.woocommerce .col2-set .col-2, .woocommerce-page .col2-set .col-2 {
+    float: left;
+    width: 100%
+}
+</style>';
     } else {
-        ?>
-        <form method="post" class="woocommerce-form woocommerce-form-register register" <?php do_action( 'woocommerce_register_form_tag' ); ?> >
-
-            <?php do_action( 'woocommerce_register_form_start' ); ?>
-
-            <?php if ( 'no' === get_option( 'woocommerce_registration_generate_username' ) ) : ?>
-
-                <p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
-                    <label for="reg_username"><?php esc_html_e( 'Username', 'woocommerce' ); ?>&nbsp;<span class="required">*</span></label>
-                    <input type="text" class="woocommerce-Input woocommerce-Input--text input-text" name="username" id="reg_username" autocomplete="username" value="<?php echo ( ! empty( $_POST['username'] ) ) ? esc_attr( wp_unslash( $_POST['username'] ) ) : ''; ?>" /><?php // @codingStandardsIgnoreLine ?>
-                </p>
-
-            <?php endif; ?>
-
-            <p class="form-row form-row-first">
-                <label for="reg_billing_first_name"><?php _e( 'First name', 'woocommerce' ); ?> <span class="required">*</span></label>
-                <input type="text" class="input-text" name="billing_first_name" id="reg_billing_first_name" value="<?php if ( ! empty( $_POST['billing_first_name'] ) ) esc_attr_e( $_POST['billing_first_name'] ); ?>" />
-            </p>
-            <p class="form-row form-row-last">
-                <label for="reg_billing_last_name"><?php _e( 'Last name', 'woocommerce' ); ?> <span class="required">*</span></label>
-                <input type="text" class="input-text" name="billing_last_name" id="reg_billing_last_name" value="<?php if ( ! empty( $_POST['billing_last_name'] ) ) esc_attr_e( $_POST['billing_last_name'] ); ?>" />
-            </p>
-            <p class="form-row form-row-wide">
-                <label for="reg_billing_phone"><?php _e( 'Phone', 'woocommerce' ); ?></label>
-                <input type="text" class="input-text" name="billing_phone" id="reg_billing_phone" value="<?php if ( ! empty( $_POST['billing_phone'] ) ) esc_attr_e( $_POST['billing_phone'] ); ?>" />
-            </p>
-            <p class="form-row form-row-wide">
-                <label for="reg_email"><?php esc_html_e( 'Email address', 'woocommerce' ); ?>&nbsp;<span class="required">*</span></label>
-                <input type="email" class="woocommerce-Input woocommerce-Input--text input-text" name="email" id="reg_email" autocomplete="email" value="<?php echo ( ! empty( $_POST['email'] ) ) ? esc_attr( wp_unslash( $_POST['email'] ) ) : ''; ?>" required />
-            </p>
-
-            <?php if ( 'no' === get_option( 'woocommerce_registration_generate_password' ) ) : ?>
-
-                <p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
-                    <label for="reg_password"><?php esc_html_e( 'Password', 'woocommerce' ); ?>&nbsp;<span class="required">*</span></label>
-                    <input type="password" class="woocommerce-Input woocommerce-Input--text input-text" name="password" id="reg_password" autocomplete="new-password" />
-                </p>
-
-            <?php else : ?>
-
-                <p><?php esc_html_e( 'A password will be sent to your email address.', 'woocommerce' ); ?></p>
-
-            <?php endif; ?>
-
-            <?php do_action( 'woocommerce_register_form' ); ?>
-
-            <p class="woocommerce-FormRow form-row">
-                <?php wp_nonce_field( 'woocommerce-register', 'woocommerce-register-nonce' ); ?>
-                <button type="submit" class="woocommerce-Button button" name="register" value="<?php esc_attr_e( 'Register', 'woocommerce' ); ?>"><?php esc_html_e( 'Register', 'woocommerce' ); ?></button>
-            </p>
-
-            <?php do_action( 'woocommerce_register_form_end' ); ?>
-
-        </form>
-        <?php
+        return '<style>
+.woocommerce .col2-set .col-1, .woocommerce-page .col2-set .col-1 {
+    float: left;
+    width: 100%
+}
+.woocommerce .col2-set .col-2, .woocommerce-page .col2-set .col-2 {
+    display: none;
+}
+</style>';
     }
-    return ob_get_clean();
 }
 
-function gw_wc_fields( $customer_id ) {
+function gw_wc_extra_register_fields() {
+    echo register_page_css();
+    ?>
+    <p class="form-row form-row-wide">
+        <label for="reg_billing_first_name"><?php _e( 'First name', 'woocommerce' ); ?></label>
+        <input type="text" class="input-text" name="billing_first_name" id="reg_billing_first_name" value="<?php if ( ! empty( $_POST['billing_first_name'] ) ) esc_attr_e( $_POST['billing_first_name'] ); ?>" />
+    </p>
+    <p class="form-row form-row-wide">
+        <label for="reg_billing_last_name"><?php _e( 'Last name', 'woocommerce' ); ?></label>
+        <input type="text" class="input-text" name="billing_last_name" id="reg_billing_last_name" value="<?php if ( ! empty( $_POST['billing_last_name'] ) ) esc_attr_e( $_POST['billing_last_name'] ); ?>" />
+    </p>
+    <p class="form-row form-row-wide">
+        <label for="reg_billing_phone"><?php _e( 'Phone', 'woocommerce' ); ?></label>
+        <input type="text" class="input-text" name="billing_phone" id="reg_billing_phone" value="<?php if ( ! empty( $_POST['billing_phone'] ) ) esc_attr_e( $_POST['billing_phone'] ); ?>" />
+    </p>
+    <div class="clear"></div>
+    <?php
+}
+add_action( 'woocommerce_register_form_start', 'gw_wc_extra_register_fields' );
+
+function gw_wc_save_extra_register_fields( $customer_id ) {
+    if ( isset( $_POST['register'] ) ) {
+        update_user_meta( $customer_id, 'customer_status', 'grosset-club-members' );
+    }
     if ( isset( $_POST['billing_phone'] ) ) {
-        // Phone input filed which is used in WooCommerce
         update_user_meta( $customer_id, 'billing_phone', sanitize_text_field( $_POST['billing_phone'] ) );
     }
     if ( isset( $_POST['billing_first_name'] ) ) {
-        //First name field which is by default
         update_user_meta( $customer_id, 'first_name', sanitize_text_field( $_POST['billing_first_name'] ) );
-        // First name field which is used in WooCommerce
         update_user_meta( $customer_id, 'billing_first_name', sanitize_text_field( $_POST['billing_first_name'] ) );
     }
     if ( isset( $_POST['billing_last_name'] ) ) {
-        // Last name field which is by default
         update_user_meta( $customer_id, 'last_name', sanitize_text_field( $_POST['billing_last_name'] ) );
-        // Last name field which is used in WooCommerce
         update_user_meta( $customer_id, 'billing_last_name', sanitize_text_field( $_POST['billing_last_name'] ) );
-        update_user_meta( $customer_id, 'customer_status', 'grosset-club-members' );
     }
 }
-add_action( 'woocommerce_created_customer', 'gw_wc_fields' );
+add_action( 'woocommerce_created_customer', 'gw_wc_save_extra_register_fields' );
 
-function wooc_validate_extra_register_fields( $username, $email, $validation_errors ) {
-    if ( empty( $_POST['billing_first_name'] ) ) {
-        $validation_errors->add( 'billing_first_name_error', __( '<strong>Error</strong>: First name is required!', 'woocommerce' ) );
-    }
-    if ( isset( $_POST['billing_last_name'] ) && empty( $_POST['billing_last_name'] ) ) {
-        $validation_errors->add( 'billing_last_name_error', __( '<strong>Error</strong>: Last name is required!.', 'woocommerce' ) );
-    }
-    return $validation_errors;
+// prevents the user from logging in automatically after registering their account
+function gw_wc_registration_redirect( $redirect_to ) {
+    wp_logout();
+    wp_redirect( '/my-account/?n=true');
+    exit;
 }
 
-add_action( 'woocommerce_register_post', 'wooc_validate_extra_register_fields', 10, 3 );
+// when the user logs in, checks whether their email is verified
+function gw_wc_authenticate_user( $userdata ) {
+    $has_activation_status = get_user_meta($userdata->ID, 'is_activated', false);
+    // checks if this is an older account without activation status; skips the rest of the function if it is
+    if ($has_activation_status) {
+        $isActivated = get_user_meta($userdata->ID, 'is_activated', true);
+        if ( !$isActivated ) {
+            // resends the activation mail if the account is not activated
+            my_user_register( $userdata->ID );
+            $userdata = new WP_Error(
+                'my_theme_confirmation_error',
+                __( '<strong>Error:</strong> Your account has to be activated before you can login. Please click the link in the activation email that has been sent to you.<br /> If you do not receive the activation email within a few minutes, check your spam folder or <a href="/verify/?u='.$userdata->ID.'">click here to resend it</a>.' )
+            );
+        }
+    }
+    return $userdata;
+}
+
+// when a user registers, sends them an email to verify their account
+function gw_wc_user_register($user_id) {
+    $user_info = get_userdata($user_id);
+    $code = md5(time());
+    $string = array('id'=>$user_id, 'code'=>$code);
+    update_user_meta($user_id, 'is_activated', 0);
+    update_user_meta($user_id, 'activationcode', $code);
+    $url = get_site_url(). '/verify/?p=' .base64_encode( serialize($string));
+    $html = ( 'Please click <a href="'.$url.'">here</a> to verify your email address and complete the registration process.' );
+    wc_mail($user_info->user_email, __( 'Activate your Account' ), $html);
+}
+
+// handles all this verification stuff
+function gw_wc_verification_init(){
+    // If accessed via an authentification link
+    if(isset($_GET['p'])){
+        $data = unserialize(base64_decode($_GET['p']));
+        $code = get_user_meta($data['id'], 'activationcode', true);
+        // checks if the account has already been activated. We're doing this to prevent someone from logging in with an outdated confirmation link
+        $isActivated = get_user_meta($data['id'], 'is_activated', true);
+        // generates an error message if the account was already active
+        if( $isActivated ) {
+            wc_add_notice( __( 'This account has already been activated. Please log in with your username and password.' ), 'error' );
+        }
+        else {
+            // checks whether the decoded code given is the same as the one in the database
+            if($code == $data['code']){
+                // updates the database upon successful activation
+                update_user_meta($data['id'], 'is_activated', 1);
+                // logs the user in
+                $user_id = $data['id'];
+                $user = get_user_by( 'id', $user_id );
+                if( $user ) {
+                    wp_set_current_user( $user_id, $user->user_login );
+                    wp_set_auth_cookie( $user_id );
+                    do_action( 'wp_login', $user->user_login, $user );
+                }
+                wc_add_notice( __( '<strong>Success:</strong> Your account has been activated! You have been logged in and can now use the site to its full extent.' ), 'notice' );
+            } else {
+                $user_id = $data['id'];
+                wc_add_notice( __( '<strong>Error:</strong> Account activation failed. Please try again in a few minutes or <a href="/verify/?u='.$user_id.'">resend the activation email</a>.<br />Please note that any activation links previously sent lose their validity as soon as a new activation email gets sent.<br />If the verification fails repeatedly, please contact our administrator.' ), 'error' );
+            }
+        }
+    }
+    // If resending confirmation mail
+    if(isset($_GET['u'])){
+        my_user_register($_GET['u']);
+        wc_add_notice( __( 'Your activation email has been resent. Please check your email and your spam folder.' ), 'notice' );
+    }
+    // If account has been freshly created
+    if(isset($_GET['n'])){
+        wc_add_notice( __( '<p><strong>Thank you for creating your account</strong></p><p>You will need to confirm your email address in order to activate your account. An email containing the activation link has been sent to your email address. If the email does not arrive within a few minutes, check your spam folder.</p>' ), 'notice' );
+    }
+}
+
+// the hooks to make it all work
+add_action( 'init', 'gw_wc_verification_init' );
+add_filter('woocommerce_registration_redirect', 'gw_wc_registration_redirect');
+add_filter('wp_authenticate_user', 'gw_wc_authenticate_user',10,2);
+add_action('user_register', 'gw_wc_user_register',10,2);
+
