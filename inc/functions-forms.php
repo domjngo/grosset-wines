@@ -288,3 +288,104 @@ function disclaimer() {
 
     return $disclaimer;
 }
+
+add_shortcode( 'gw_wc_reg_form', 'gw_wc_registration_form' );
+
+function gw_wc_registration_form() {
+    if ( is_admin() ) return;
+    ob_start();
+    if ( is_user_logged_in() ) {
+        wc_add_notice( sprintf( __( 'You are currently logged in. If you wish to register with a different account please <a href="%s">log out</a> first', 'bbloomer' ), wc_logout_url() ) );
+        wc_print_notices();
+    } else {
+        ?>
+        <form method="post" class="woocommerce-form woocommerce-form-register register" <?php do_action( 'woocommerce_register_form_tag' ); ?> >
+
+            <?php do_action( 'woocommerce_register_form_start' ); ?>
+
+            <?php if ( 'no' === get_option( 'woocommerce_registration_generate_username' ) ) : ?>
+
+                <p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
+                    <label for="reg_username"><?php esc_html_e( 'Username', 'woocommerce' ); ?>&nbsp;<span class="required">*</span></label>
+                    <input type="text" class="woocommerce-Input woocommerce-Input--text input-text" name="username" id="reg_username" autocomplete="username" value="<?php echo ( ! empty( $_POST['username'] ) ) ? esc_attr( wp_unslash( $_POST['username'] ) ) : ''; ?>" /><?php // @codingStandardsIgnoreLine ?>
+                </p>
+
+            <?php endif; ?>
+
+            <p class="form-row form-row-first">
+                <label for="reg_billing_first_name"><?php _e( 'First name', 'woocommerce' ); ?> <span class="required">*</span></label>
+                <input type="text" class="input-text" name="billing_first_name" id="reg_billing_first_name" value="<?php if ( ! empty( $_POST['billing_first_name'] ) ) esc_attr_e( $_POST['billing_first_name'] ); ?>" />
+            </p>
+            <p class="form-row form-row-last">
+                <label for="reg_billing_last_name"><?php _e( 'Last name', 'woocommerce' ); ?> <span class="required">*</span></label>
+                <input type="text" class="input-text" name="billing_last_name" id="reg_billing_last_name" value="<?php if ( ! empty( $_POST['billing_last_name'] ) ) esc_attr_e( $_POST['billing_last_name'] ); ?>" />
+            </p>
+            <p class="form-row form-row-wide">
+                <label for="reg_billing_phone"><?php _e( 'Phone', 'woocommerce' ); ?></label>
+                <input type="text" class="input-text" name="billing_phone" id="reg_billing_phone" value="<?php if ( ! empty( $_POST['billing_phone'] ) ) esc_attr_e( $_POST['billing_phone'] ); ?>" />
+            </p>
+            <p class="form-row form-row-wide">
+                <label for="reg_email"><?php esc_html_e( 'Email address', 'woocommerce' ); ?>&nbsp;<span class="required">*</span></label>
+                <input type="email" class="woocommerce-Input woocommerce-Input--text input-text" name="email" id="reg_email" autocomplete="email" value="<?php echo ( ! empty( $_POST['email'] ) ) ? esc_attr( wp_unslash( $_POST['email'] ) ) : ''; ?>" required />
+            </p>
+
+            <?php if ( 'no' === get_option( 'woocommerce_registration_generate_password' ) ) : ?>
+
+                <p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
+                    <label for="reg_password"><?php esc_html_e( 'Password', 'woocommerce' ); ?>&nbsp;<span class="required">*</span></label>
+                    <input type="password" class="woocommerce-Input woocommerce-Input--text input-text" name="password" id="reg_password" autocomplete="new-password" />
+                </p>
+
+            <?php else : ?>
+
+                <p><?php esc_html_e( 'A password will be sent to your email address.', 'woocommerce' ); ?></p>
+
+            <?php endif; ?>
+
+            <?php do_action( 'woocommerce_register_form' ); ?>
+
+            <p class="woocommerce-FormRow form-row">
+                <?php wp_nonce_field( 'woocommerce-register', 'woocommerce-register-nonce' ); ?>
+                <button type="submit" class="woocommerce-Button button" name="register" value="<?php esc_attr_e( 'Register', 'woocommerce' ); ?>"><?php esc_html_e( 'Register', 'woocommerce' ); ?></button>
+            </p>
+
+            <?php do_action( 'woocommerce_register_form_end' ); ?>
+
+        </form>
+        <?php
+    }
+    return ob_get_clean();
+}
+
+function gw_wc_fields( $customer_id ) {
+    if ( isset( $_POST['billing_phone'] ) ) {
+        // Phone input filed which is used in WooCommerce
+        update_user_meta( $customer_id, 'billing_phone', sanitize_text_field( $_POST['billing_phone'] ) );
+    }
+    if ( isset( $_POST['billing_first_name'] ) ) {
+        //First name field which is by default
+        update_user_meta( $customer_id, 'first_name', sanitize_text_field( $_POST['billing_first_name'] ) );
+        // First name field which is used in WooCommerce
+        update_user_meta( $customer_id, 'billing_first_name', sanitize_text_field( $_POST['billing_first_name'] ) );
+    }
+    if ( isset( $_POST['billing_last_name'] ) ) {
+        // Last name field which is by default
+        update_user_meta( $customer_id, 'last_name', sanitize_text_field( $_POST['billing_last_name'] ) );
+        // Last name field which is used in WooCommerce
+        update_user_meta( $customer_id, 'billing_last_name', sanitize_text_field( $_POST['billing_last_name'] ) );
+        update_user_meta( $customer_id, 'customer_status', 'grosset-club-members' );
+    }
+}
+add_action( 'woocommerce_created_customer', 'gw_wc_fields' );
+
+function wooc_validate_extra_register_fields( $username, $email, $validation_errors ) {
+    if ( empty( $_POST['billing_first_name'] ) ) {
+        $validation_errors->add( 'billing_first_name_error', __( '<strong>Error</strong>: First name is required!', 'woocommerce' ) );
+    }
+    if ( isset( $_POST['billing_last_name'] ) && empty( $_POST['billing_last_name'] ) ) {
+        $validation_errors->add( 'billing_last_name_error', __( '<strong>Error</strong>: Last name is required!.', 'woocommerce' ) );
+    }
+    return $validation_errors;
+}
+
+add_action( 'woocommerce_register_post', 'wooc_validate_extra_register_fields', 10, 3 );
