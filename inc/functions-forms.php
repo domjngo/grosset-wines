@@ -369,7 +369,7 @@ function gw_wc_authenticate_user( $userdata ) {
             my_user_register( $userdata->ID );
             $userdata = new WP_Error(
                 'my_theme_confirmation_error',
-                __( '<strong>Error:</strong> Your account has to be activated before you can login. Please click the link in the activation email that has been sent to you.<br /> If you do not receive the activation email within a few minutes, check your spam folder or <a href="/verify/?u='.$userdata->ID.'">click here to resend it</a>.' )
+                __( '<strong>Error:</strong> Your account has to be activated before you can login. Please click the link in the activation email that has been sent to you.<br /> If you do not receive the activation email within a few minutes, check your spam folder or <a href="/my-account/?u='.$userdata->ID.'">click here to resend it</a>.' )
             );
         }
     }
@@ -383,9 +383,9 @@ function gw_wc_user_register($user_id) {
     $string = array('id'=>$user_id, 'code'=>$code);
     update_user_meta($user_id, 'is_activated', 0);
     update_user_meta($user_id, 'activationcode', $code);
-    $url = get_site_url(). '/verify/?p=' .base64_encode( serialize($string));
-    $html = ( 'Please click <a href="'.$url.'">here</a> to verify your email address and complete the registration process.' );
-    wc_mail($user_info->user_email, __( 'Activate your Account' ), $html);
+    $url = get_site_url(). '/my-account/?p=' .base64_encode( serialize($string));
+    $html = ( '<p><img src="https://www.grosset.com.au/wp-content/themes/grosset-wines/img/grosset-logo.png"></p><h1>Activate your Grosset Wine Club account</h1><p>Thank you for joining the <strong>Grosset Wine Club</strong>.</p><p>Please <a href="'.$url.'"><strong>click here</strong></a> to verify your email address and complete the registration process.</p><p>If you have any queries, please don’t hesitate to call the office on 1800 088 223.</p><p>Warm regards,<br><a href="https://www.grosset.com.au">Grosset Wines</a></p>' );
+    wc_mail($user_info->user_email, __( 'Activate your Grosset Wine Club account' ), $html);
 }
 
 // handles all this verification stuff
@@ -416,13 +416,13 @@ function gw_wc_verification_init(){
                 wc_add_notice( __( '<strong>Success:</strong> Your account has been activated! You have been logged in and can now use the site to its full extent.' ), 'notice' );
             } else {
                 $user_id = $data['id'];
-                wc_add_notice( __( '<strong>Error:</strong> Account activation failed. Please try again in a few minutes or <a href="/verify/?u='.$user_id.'">resend the activation email</a>.<br />Please note that any activation links previously sent lose their validity as soon as a new activation email gets sent.<br />If the verification fails repeatedly, please contact our administrator.' ), 'error' );
+                wc_add_notice( __( '<strong>Error:</strong> Account activation failed. Please try again in a few minutes or <a href="/my-account/?u='.$user_id.'">resend the activation email</a>.<br />Please note that any activation links previously sent lose their validity as soon as a new activation email gets sent.<br />If the verification fails repeatedly, please contact our administrator.' ), 'error' );
             }
         }
     }
     // If resending confirmation mail
     if(isset($_GET['u'])){
-        my_user_register($_GET['u']);
+        gw_wc_user_register($_GET['u']);
         wc_add_notice( __( 'Your activation email has been resent. Please check your email and your spam folder.' ), 'notice' );
     }
     // If account has been freshly created
@@ -436,4 +436,3 @@ add_action( 'init', 'gw_wc_verification_init' );
 add_filter('woocommerce_registration_redirect', 'gw_wc_registration_redirect');
 add_filter('wp_authenticate_user', 'gw_wc_authenticate_user',10,2);
 add_action('user_register', 'gw_wc_user_register',10,2);
-
