@@ -299,6 +299,12 @@ function register_page_css() {
     float: left;
     width: 100%
 }
+.g-recaptcha {
+    margin: 1.6em 0;
+}
+.g-recaptcha iframe {
+    margin: 0;
+}
 </style>';
     } else {
         return '<style>
@@ -308,6 +314,12 @@ function register_page_css() {
 }
 .woocommerce .col2-set .col-2, .woocommerce-page .col2-set .col-2 {
     display: none;
+}
+.g-recaptcha {
+    margin: 1.6em 0;
+}
+.g-recaptcha iframe {
+    margin: 0;
 }
 </style>';
     }
@@ -414,6 +426,11 @@ function gw_wc_verification_init(){
                     do_action( 'wp_login', $user->user_login, $user );
                 }
                 wc_add_notice( __( '<strong>Success:</strong> Your account has been activated! You have been logged in and can now use the site to its full extent.' ), 'notice' );
+                $content = $user->user_login.' has activated their account.';
+                $subject = 'New membership activated';
+                $header = 'From: Grosset Wines <sales@grosset.com.au>';
+                wp_mail( 'grossetsales@gmail.com', $subject, $content, $header );
+                wp_mail( 'cb.creatistic@gmail.com', $subject, $content, $header );
             } else {
                 $user_id = $data['id'];
                 wc_add_notice( __( '<strong>Error:</strong> Account activation failed. Please try again in a few minutes or <a href="/my-account/?u='.$user_id.'">resend the activation email</a>.<br />Please note that any activation links previously sent lose their validity as soon as a new activation email gets sent.<br />If the verification fails repeatedly, please contact our administrator.' ), 'error' );
@@ -431,8 +448,39 @@ function gw_wc_verification_init(){
     }
 }
 
+function gw_wc_email_as_username( $data ) {
+    $data['user_login'] = $data['user_email'];
+    return $data;
+}
+
 // the hooks to make it all work
 add_action( 'init', 'gw_wc_verification_init' );
 add_filter('woocommerce_registration_redirect', 'gw_wc_registration_redirect');
 add_filter('wp_authenticate_user', 'gw_wc_authenticate_user',10,2);
 add_action('user_register', 'gw_wc_user_register',10,2);
+add_filter( 'woocommerce_new_customer_data', 'gw_wc_email_as_username' );
+
+add_filter('manage_users_columns', 'gw_wc_add_user_activated_column');
+function gw_wc_add_user_activated_column($columns) {
+    $columns['is_activated'] = 'Activated';
+    $columns['customer_status'] = 'Status';
+    return $columns;
+}
+
+add_action('manage_users_custom_column',  'gw_wc_show_user_activated_column_content', 10, 3);
+function gw_wc_show_user_activated_column_content($value, $column_name, $user_id) {
+    $isActivated = get_user_meta($user_id, 'is_activated', true);
+    $status = get_user_meta($user_id, 'customer_status', true);
+    if ( 'is_activated' == $column_name ) {
+        if ( $isActivated == 1 ) {
+            $active = 'Active';
+        } else {
+            $active = 'Pending';
+        }
+        return $active;
+    }
+    if ( 'customer_status' == $column_name ) {
+        return $status;
+    }
+    return $value;
+}
