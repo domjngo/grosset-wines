@@ -384,7 +384,7 @@ function gw_wc_user_register($user_id) {
     update_user_meta($user_id, 'is_activated', 0);
     update_user_meta($user_id, 'activationcode', $code);
     $url = get_site_url(). '/my-account/?p=' .base64_encode( serialize($string));
-    $html = ( '<p><img src="https://www.grosset.com.au/wp-content/themes/grosset-wines/img/grosset-logo.png"></p><h1>Activate your Grosset Wine Club account</h1><p>Thank you for joining the <strong>Grosset Wine Club</strong>.</p><p>Please <a href="'.$url.'"><strong>click here</strong></a> to verify your email address and complete the registration process.</p><p>If you have any queries, please don’t hesitate to call the office on 1800 088 223.</p><p>Warm regards,<br><a href="https://www.grosset.com.au">Grosset Wines</a></p>' );
+    $html = ( '<p><img src="https://www.grosset.com.au/wp-content/themes/grosset-wines/img/grosset-logo.png"></p><h1>Activate your Grosset Wine Club account</h1><p>Thank you for joining the <strong>Grosset Wine Club</strong>.</p><p>Please <a href="'.$url.'"><strong>click here</strong></a> to verify your email address and complete the registration process.</p><p><strong>Your password has also been sent to you in a separate email</strong>.</p><p>If you have any queries, please don’t hesitate to call the office on 1800 088 223.</p><p>Warm regards,<br><a href="https://www.grosset.com.au">Grosset Wines</a></p>' );
     wc_mail($user_info->user_email, __( 'Activate your Grosset Wine Club account' ), $html);
 }
 
@@ -427,7 +427,7 @@ function gw_wc_verification_init(){
     }
     // If account has been freshly created
     if(isset($_GET['n'])){
-        wc_add_notice( __( '<p><strong>Thank you for creating your account</strong></p><p>You will need to confirm your email address in order to activate your account. An email containing the activation link has been sent to your email address. If the email does not arrive within a few minutes, check your spam folder.</p>' ), 'notice' );
+        wc_add_notice( __( '<p><strong>Thank you for creating your account</strong></p><p>You will need to confirm your email address in order to activate your account. An email containing the activation link has been sent to your email address. If the email does not arrive within a few minutes, check your spam folder.</p><p><strong>Your password will be sent to you in a separate email</strong>.</p>' ), 'notice' );
     }
 }
 
