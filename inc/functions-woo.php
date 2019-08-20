@@ -82,7 +82,7 @@ add_action( 'woocommerce_product_options_pricing', 'wc_member_product_field' );
 
 function wc_member_save_product( $product_id ) {
 
-    if (wp_verify_nonce($_POST['_inline_edit'], 'inlineeditnonce')) {
+    if (isset($_POST['_inline_edit']) && wp_verify_nonce($_POST['_inline_edit'], 'inlineeditnonce')) {
         return;
     }
     if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {

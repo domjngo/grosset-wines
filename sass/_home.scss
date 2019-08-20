@@ -37,6 +37,15 @@
     max-height: 360px;
     margin: 0 auto;
   }
+  .entry-img {
+    position: relative;
+    max-width: 340px;
+    height: 340px;
+    margin: 0 auto;
+    background: #eee no-repeat center center;
+    background-size: cover;
+    border: solid 24px #d4dddd;
+  }
 }
 .section-img {
   color: #fff;
@@ -52,6 +61,12 @@
   .section-bg {
     background: rgba(0,0,0,0.2);
     min-height: 480px;
+  }
+  .bg-to-right {
+    background: linear-gradient(to right, rgba(0,0,0,0.6), rgba(0,0,0,0));
+  }
+  .bg-to-left {
+    background: linear-gradient(to left, rgba(0,0,0,0.6), rgba(0,0,0,0));
   }
 }
 @media (max-width: 960px) {
