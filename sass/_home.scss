@@ -47,6 +47,17 @@
     border: solid 24px #d4dddd;
   }
 }
+.wine-hero {
+  position: relative;
+  margin: 0 auto;
+  width: 280px;
+  height: 360px;
+  background: transparent no-repeat center center;
+  background-size: cover;
+}
+.bg-grey {
+  background-color: #e4eaea;
+}
 .section-img {
   color: #fff;
   text-shadow: #222 2px 3px 5px;
