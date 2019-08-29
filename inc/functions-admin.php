@@ -28,6 +28,13 @@ function grosset_settings_page_admin() {
         register_setting( 'gw-group', 'g_img_url_'.$i );
         register_setting( 'gw-group', 'g_url_'.$i );
     }
+
+    for ( $i=1 ; $i<=9 ; $i++ ) {
+        register_setting( 'gw-group', 'g_wine_title_'.$i );
+        register_setting( 'gw-group', 'g_wine_text_'.$i );
+        register_setting( 'gw-group', 'g_wine_img_'.$i );
+        register_setting( 'gw-group', 'g_wine_url_'.$i );
+    }
 }
 
 function grosset_wines_settings_page() {
@@ -53,8 +60,31 @@ function grosset_wines_settings_page() {
             <?php do_settings_sections( 'gw-group' ); ?>
 
             <h2>Content</h2>
-
-            <?php submit_button(); ?>
+            <?php for ( $i=1 ; $i<=9 ; $i++ ) { ?>
+                <hr>
+                <h3>Wine <?php echo $i; ?> </h3>
+                <table class="form-table">
+                    <tr valign="top">
+                        <th scope="row"><label for="g_wine_title_<?php echo $i; ?>">Title</label></th>
+                        <td><input type="text" name="g_wine_title_<?php echo $i; ?>" value="<?php echo esc_attr( get_option('g_wine_title_'.$i) ); ?>" /></td>
+                    </tr>
+                    <tr valign="top">
+                        <th scope="row"><label for="g_wine_text_<?php echo $i; ?>">Text</label></th>
+                        <td>
+                            <textarea name="g_wine_text_<?php echo $i; ?>"><?php echo esc_attr( get_option('g_wine_text_'.$i) ); ?></textarea>
+                        </td>
+                    </tr>
+                    <tr valign="top">
+                        <th scope="row"><label for="g_wine_url_<?php echo $i; ?>">Wine page URL</label></th>
+                        <td><input type="text" name="g_wine_url_<?php echo $i; ?>" value="<?php echo get_option('g_wine_url_'.$i); ?>" /></td>
+                    </tr>
+                    <tr valign="top">
+                        <th scope="row"><label for="g_wine_img_<?php echo $i; ?>">Image URL</label></th>
+                        <td><input type="text" name="g_wine_img_<?php echo $i; ?>" value="<?php echo get_option('g_wine_img_'.$i); ?>" /></td>
+                    </tr>
+                </table>
+                <?php submit_button(); ?>
+            <?php } ?>
         </form>
     </div>
     <?php
