@@ -69,25 +69,29 @@ $data = array (
 foreach ($data as $item) {
     if ( $item['position'] == 'left' ) {
         $class = 'bg-grey';
-        $left = '<div class="wine-hero" style="background-image: url('.$item['image'].')"></div>';
-        $right = '<h2>'.$item['title'].'</h2><p>'.$item['excerpt'].'</p><p><a href="'.$item['url'].'" class="btn">Read more</a></p>';
+        $first_col_position = 'col-md-6';
+        $second_col_position = 'col-md-6';
     } else {
         $class = 'bg-white';
-        $right = '<div class="wine-hero" style="background-image: url('.$item['image'].')"></div>';
-        $left = '<h2>'.$item['title'].'</h2><p>'.$item['excerpt'].'</p><p><a href="'.$item['url'].'" class="btn">Read more</a></p>';
+        $first_col_position = 'col-md-6 col-md-push-6';
+        $second_col_position = 'col-md-6 col-md-pull-6';
     } ?>
 <section class="wine-section <?php echo $class ?>">
     <div class="section-bg">
         <div class="container">
             <div class="row">
-                <div class="col-md-6">
-                    <?php echo $left ?>
+                <div class="<?php echo $first_col_position ?>">
+                    <div class="wine-hero" style="background-image: url(<?php echo $item['image'] ?>)"></div>
                 </div>
-                <div class="col-md-6">
-                    <?php echo $right ?>
+                <div class="<?php echo $second_col_position ?>">
+                    <h2><?php echo $item['title'] ?></h2>
+                    <p><?php echo $item['excerpt'] ?></p>
+                    <p><a href="<?php echo $item['url'] ?>" class="btn">Read more</a></p>
                 </div>
             </div>
         </div>
     </div>
 </section>
 <?php } ?>
+
+
