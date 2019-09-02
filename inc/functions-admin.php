@@ -30,10 +30,10 @@ function grosset_settings_page_admin() {
     }
 
     for ( $i=1 ; $i<=9 ; $i++ ) {
-        register_setting( 'gw-group', 'g_wine_title_'.$i );
-        register_setting( 'gw-group', 'g_wine_text_'.$i );
-        register_setting( 'gw-group', 'g_wine_img_'.$i );
-        register_setting( 'gw-group', 'g_wine_url_'.$i );
+        register_setting( 'gw-wines-group', 'g_wine_title_'.$i );
+        register_setting( 'gw-wines-group', 'g_wine_text_'.$i );
+        register_setting( 'gw-wines-group', 'g_wine_img_'.$i );
+        register_setting( 'gw-wines-group', 'g_wine_url_'.$i );
     }
 }
 
@@ -56,8 +56,8 @@ function grosset_wines_settings_page() {
     <div class="wrap g-admin">
         <h1>Wines landing page settings</h1>
         <form method="post" action="options.php" novalidate="novalidate">
-            <?php settings_fields( 'gw-group' ); ?>
-            <?php do_settings_sections( 'gw-group' ); ?>
+            <?php settings_fields( 'gw-wines-group' ); ?>
+            <?php do_settings_sections( 'gw-wines-group' ); ?>
 
             <h2>Content</h2>
             <?php for ( $i=1 ; $i<=9 ; $i++ ) { ?>
@@ -109,12 +109,12 @@ function grosset_settings_page() {
     <div class="wrap g-admin">
         <h1>Grosset Wines theme settings</h1>
         <form method="post" action="options.php" novalidate="novalidate">
-            <?php settings_fields( 'gw-group' ); ?>
-            <?php do_settings_sections( 'gw-group' ); ?>
+            <?php settings_fields( 'gw-theme-group' ); ?>
+            <?php do_settings_sections( 'gw-theme-group' ); ?>
 
             <h2>General settings</h2>
 
-            <?php submit_button(); ?>
+            <p>Coming soon...</p>
         </form>
     </div>
     <?php
