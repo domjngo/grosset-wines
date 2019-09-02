@@ -7,6 +7,7 @@ function grosset_settings_menu() {
     add_menu_page( 'Grosset Wines settings', 'Grosset', 'administrator', 'grosset-settings-page', 'grosset_settings_page', 'dashicons-admin-generic', 21  );
     add_submenu_page( 'grosset-settings-page', 'Homepage settings', 'Home', 'administrator', 'grosset-settings-page/home', 'grosset_home_settings_page');
     add_submenu_page( 'grosset-settings-page', 'Wines landing page settings', 'Wines', 'administrator', 'grosset-settings-page/wines', 'grosset_wines_settings_page');
+    add_submenu_page( 'grosset-settings-page', 'Vineyards landing page settings', 'Vineyards', 'administrator', 'grosset-settings-page/vineyards', 'grosset_vineyards_settings_page');
     add_action( 'admin_init', 'grosset_settings_page_admin' );
 }
 
@@ -34,6 +35,13 @@ function grosset_settings_page_admin() {
         register_setting( 'gw-wines-group', 'g_wine_text_'.$i );
         register_setting( 'gw-wines-group', 'g_wine_img_'.$i );
         register_setting( 'gw-wines-group', 'g_wine_url_'.$i );
+    }
+
+    for ( $i=1 ; $i<=6 ; $i++ ) {
+        register_setting( 'gw-vineyards-group', 'g_vineyards_title_'.$i );
+        register_setting( 'gw-vineyards-group', 'g_vineyards_text_'.$i );
+        register_setting( 'gw-vineyards-group', 'g_vineyards_img_'.$i );
+        register_setting( 'gw-vineyards-group', 'g_vineyards_url_'.$i );
     }
 }
 
@@ -81,6 +89,59 @@ function grosset_wines_settings_page() {
                     <tr valign="top">
                         <th scope="row"><label for="g_wine_img_<?php echo $i; ?>">Image URL</label></th>
                         <td><input type="text" name="g_wine_img_<?php echo $i; ?>" value="<?php echo get_option('g_wine_img_'.$i); ?>" /></td>
+                    </tr>
+                </table>
+                <?php submit_button(); ?>
+            <?php } ?>
+        </form>
+    </div>
+    <?php
+}
+
+function grosset_vineyards_settings_page() {
+    if (!current_user_can('administrator'))  {
+        wp_die( __('You do not have sufficient pilchards to access this page.')    );
+    }
+    ?>
+    <style>
+        .g-admin input[type=text] {
+            width: 100%;
+            max-width: 480px;
+        }
+        .g-admin textarea {
+            width: 100%;
+            max-width: 480px;
+            height: 12em;
+        }
+    </style>
+    <div class="wrap g-admin">
+        <h1>Vineyards landing page settings</h1>
+        <form method="post" action="options.php" novalidate="novalidate">
+            <?php settings_fields( 'gw-vineyards-group' ); ?>
+            <?php do_settings_sections( 'gw-vineyards-group' ); ?>
+
+            <h2>Content</h2>
+            <?php for ( $i=1 ; $i<=6 ; $i++ ) { ?>
+                <hr>
+                <h3>Vineyard <?php echo $i; ?> </h3>
+                <table class="form-table">
+                    <tr valign="top">
+                        <th scope="row"><label for="g_vineyards_title_<?php echo $i; ?>">Title</label></th>
+                        <td><input type="text" name="g_vineyards_title_<?php echo $i; ?>" value="<?php echo esc_attr( get_option('g_vineyards_title_'.$i) ); ?>" /></td>
+                    </tr>
+                    <tr valign="top">
+                        <th scope="row"><label for="g_vineyards_text_<?php echo $i; ?>">Text</label></th>
+                        <td>
+                            <textarea name="g_vineyards_text_<?php echo $i; ?>"><?php echo esc_attr( get_option('g_vineyards_text_'.$i) ); ?></textarea>
+                        </td>
+                    </tr>
+                    <tr valign="top">
+                        <th scope="row"><label for="g_vineyards_url_<?php echo $i; ?>">Vineyard page URL</label></th>
+                        <td><input type="text" name="g_vineyards_url_<?php echo $i; ?>" value="<?php echo get_option('g_vineyards_url_'.$i); ?>" /></td>
+                    </tr>
+                    <tr valign="top">
+                        <th scope="row"><label for="g_vineyards_img_<?php echo $i; ?>">Image URL</label></th>
+                        <td><input type="text" name="g_vineyards_img_<?php echo $i; ?>" value="<?php echo get_option('g_vineyards_img_'.$i); ?>" /></td>
                     </tr>
                 </table>
                 <?php submit_button(); ?>

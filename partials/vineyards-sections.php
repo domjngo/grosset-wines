@@ -1,5 +1,5 @@
 <?php
-for ( $i=1 ; $i<=9 ; $i++ ) {
+for ( $i=1 ; $i<=6 ; $i++ ) {
     if ( get_option('g_vineyards_title_'.$i ) ) {
 
         if ( $i%2 ) {
