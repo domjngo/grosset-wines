@@ -1,4 +1,9 @@
 <?php
+/**
+ * Partial for Vineyards landing page (page-vineyards-landing.php)
+ *
+ */
+
 for ( $i=1 ; $i<=6 ; $i++ ) {
     if ( get_option('g_vineyards_title_'.$i ) ) {
 
