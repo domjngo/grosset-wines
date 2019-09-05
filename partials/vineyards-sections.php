@@ -28,7 +28,9 @@ for ( $i=1 ; $i<=6 ; $i++ ) {
                         <div class="vineyard-content">
                             <h2><?php echo get_home_text('g_vineyards_title_'.$i ) ?></h2>
                             <p><?php echo get_home_text('g_vineyards_text_'.$i ) ?></p>
+                            <?php if ( get_option('g_vineyards_url_'.$i ) ) { ?>
                             <p><a href="<?php echo get_option('g_vineyards_url_'.$i ) ?>" class="btn">Read more</a></p>
+                            <?php } ?>
                         </div>
                     </div>
                 </div>
