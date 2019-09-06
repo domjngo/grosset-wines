@@ -460,27 +460,28 @@ add_filter('wp_authenticate_user', 'gw_wc_authenticate_user',10,2);
 add_action('user_register', 'gw_wc_user_register',10,2);
 add_filter( 'woocommerce_new_customer_data', 'gw_wc_email_as_username' );
 
-add_filter('manage_users_columns', 'gw_wc_add_user_activated_column');
+// add_filter('manage_users_columns', 'gw_wc_add_user_activated_column');
 function gw_wc_add_user_activated_column($columns) {
     $columns['is_activated'] = 'Activated';
-    $columns['customer_status'] = 'Status';
     return $columns;
 }
 
-add_action('manage_users_custom_column',  'gw_wc_show_user_activated_column_content', 10, 3);
+
+// add_action('manage_users_custom_column',  'gw_wc_show_user_activated_column_content', 10, 3);
 function gw_wc_show_user_activated_column_content($value, $column_name, $user_id) {
-    $isActivated = get_user_meta($user_id, 'is_activated', true);
-    $status = get_user_meta($user_id, 'customer_status', true);
-    if ( 'is_activated' == $column_name ) {
-        if ( $isActivated == 1 ) {
-            $active = 'Active';
-        } else {
-            $active = 'Pending';
-        }
-        return $active;
+
+    switch($column_name) {
+
+        case 'is_activated' :
+            $isActivated = get_user_meta($user_id, 'is_activated', true);
+            if ( $isActivated == 1 ) {
+                $active = 'Active';
+            } else {
+                $active = 'Pending';
+            }
+            return $active;
+            break;
+
+        default:
     }
-    if ( 'customer_status' == $column_name ) {
-        return $status;
-    }
-    return $value;
 }

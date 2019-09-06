@@ -196,8 +196,19 @@ add_action( 'woocommerce_account_dashboard', 'my_account_content_after' );
 function user_profile_customer_status( $user ) {
     // https://www.cssigniter.com/how-to-add-a-custom-user-field-in-wordpress/
     $status = esc_html( get_the_author_meta( 'customer_status', $user->ID ) );
+    $isActivated = get_the_author_meta( 'is_activated', $user->ID );
+    if ( $isActivated ) {
+        if ( $isActivated == 1 ) {
+            $account = '<p><strong>Account activated</strong></p>';
+        } else {
+            $account = '<p><strong>Account pending</strong></p>';
+        }
+    } else {
+        $account = '';
+    }
     ?>
     <h2>Customer status</h2>
+    <?php echo $account; ?>
     <table class="form-table">
         <tr>
             <th><label for="customer_status">Status</label></th>
