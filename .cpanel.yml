@@ -1,0 +1,5 @@
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/grossetc/public_html/wp-content/themes/grosset-wines/
+    - /bin/cp -R images $DEPLOYPATH
