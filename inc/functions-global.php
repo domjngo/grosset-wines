@@ -4,7 +4,7 @@
 function bc_styles() {
     wp_register_style( 'gw-styles', get_template_directory_uri() . '/css/gw-styles.min.css', array(), GW_VSN, 'all' );
     wp_register_style( 'google-fonts',
-        'https://fonts.googleapis.com/css?family=Open+Sans:400,700,400italic', array(), 1.0, 'all' );
+        'https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700&display=swap', array(), 1.0, 'all' );
     wp_enqueue_style( 'gw-styles' );
     wp_enqueue_style( 'google-fonts' );
 }
@@ -78,7 +78,7 @@ function get_feature_image_as_bg( $size = 'full' ) {
     if ( has_post_thumbnail() ) {
         $image = wp_get_attachment_image_src( get_post_thumbnail_id( $id ), $size );
     } else {
-        $image[0] = get_template_directory_uri() . '/img/bg.jpg';
+        $image = null;
     }
     if ( $image[0] ) {
         return 'style="background-image: url('. $image[0] . ');"';

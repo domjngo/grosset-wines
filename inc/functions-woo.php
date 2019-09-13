@@ -58,7 +58,7 @@ add_filter( 'woocommerce_get_order_item_totals', 'reordering_order_item_totals',
  * Display 24 products per page
  *
  */
-add_filter( 'loop_shop_per_page', create_function( '$cols', 'return 24;' ), 20 );
+// add_filter( 'loop_shop_per_page', create_function( '$cols', 'return 24;' ), 20 );
 
 /**
  * Catalog order
@@ -82,7 +82,7 @@ add_action( 'woocommerce_product_options_pricing', 'wc_member_product_field' );
 
 function wc_member_save_product( $product_id ) {
 
-    if (wp_verify_nonce($_POST['_inline_edit'], 'inlineeditnonce')) {
+    if (isset($_POST['_inline_edit']) && wp_verify_nonce($_POST['_inline_edit'], 'inlineeditnonce')) {
         return;
     }
     if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
@@ -192,3 +192,63 @@ function my_account_content_after() {
     echo '<a href="'.site_url().'/members-online/" class="btn">Members wine shop</a>';
 }
 add_action( 'woocommerce_account_dashboard', 'my_account_content_after' );
+
+function user_profile_customer_status( $user ) {
+    // https://www.cssigniter.com/how-to-add-a-custom-user-field-in-wordpress/
+    $status = esc_html( get_the_author_meta( 'customer_status', $user->ID ) );
+    $isActivated = get_the_author_meta( 'is_activated', $user->ID );
+    if ( $isActivated ) {
+        if ( $isActivated == 1 ) {
+            $account = '<p><strong>Account activated</strong></p>';
+        } else {
+            $account = '<p><strong>Account pending</strong></p>';
+        }
+    } else {
+        $account = '';
+    }
+    ?>
+    <h2>Customer status</h2>
+    <?php echo $account; ?>
+    <table class="form-table">
+        <tr>
+            <th><label for="customer_status">Status</label></th>
+            <td>
+                <select id="customer_status" name="customer_status">
+                    <option value="">No status</option>
+                    <option value="do-not-call" <?php if ( $status == 'do-not-call' ) { echo ' selected="selected"'; }; ?>>Do not call</option>
+                    <option value="platinum" <?php if ( $status == 'Platinum' || $status == 'platinum' ) { echo ' selected="selected"'; }; ?>>Platinum</option>
+                    <option value="silver-clare-valley" <?php if ( $status == 'silver-clare-valley' ) { echo ' selected="selected"'; }; ?>>Silver</option>
+                    <option value="grosset-club-members" <?php if ( $status == 'grosset-club-members' ) { echo ' selected="selected"'; }; ?>>Grosset club member</option>
+                    <option value="grosset-information" <?php if ( $status == 'grosset-information' ) { echo ' selected="selected"'; }; ?>>Grosset information</option>
+                </select>
+            </td>
+        </tr>
+    </table>
+    <?php
+}
+
+function update_user_profile_customer_status( $user_id ) {
+
+    if ( ! current_user_can( 'edit_user', $user_id ) ) {
+        return false;
+    }
+    if ( ! empty( $_POST['customer_status'] ) ) {
+        update_user_meta( $user_id, 'customer_status', $_POST['customer_status'] );
+    }
+}
+
+function add_customer_status_column( $column ) {
+    $column['col_customer_status'] = 'Customer status';
+    return $column;
+}
+
+function add_customer_status_column_value( $val, $column_name, $user_id ) {
+    switch($column_name) {
+
+        case 'col_customer_status' :
+            return get_user_meta($user_id, 'customer_status', true); ;
+            break;
+
+        default:
+    }
+}

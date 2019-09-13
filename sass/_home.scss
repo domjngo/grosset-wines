@@ -37,6 +37,26 @@
     max-height: 360px;
     margin: 0 auto;
   }
+  .entry-img {
+    position: relative;
+    max-width: 340px;
+    height: 340px;
+    margin: 0 auto;
+    background: #eee no-repeat center center;
+    background-size: cover;
+    border: solid 24px #d4dddd;
+  }
+}
+.wine-hero {
+  position: relative;
+  margin: 0 auto;
+  width: 280px;
+  height: 360px;
+  background: transparent no-repeat center center;
+  background-size: cover;
+}
+.bg-grey {
+  background-color: #e4eaea;
 }
 .section-img {
   color: #fff;
@@ -52,6 +72,22 @@
   .section-bg {
     background: rgba(0,0,0,0.2);
     min-height: 480px;
+  }
+  .bg-to-right {
+    background: linear-gradient(to right, rgba(0,0,0,0.6), rgba(0,0,0,0));
+  }
+  .bg-to-left {
+    background: linear-gradient(to left, rgba(0,0,0,0.6), rgba(0,0,0,0));
+  }
+}
+@media (max-width: 960px) {
+  .section-img {
+    color: #fff;
+    text-shadow: #222 2px 3px 5px;
+    background: #d4dddd;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
   }
 }
 .section-intro {

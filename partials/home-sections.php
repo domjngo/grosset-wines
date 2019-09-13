@@ -13,7 +13,7 @@
 </section>
 <?php if ( get_option( 'g_title_2' ) ) { ?>
 <section class="home-section section-img" <?php echo get_home_img( 'g_img_url_2' ) ?>>
-    <div class="section-bg">
+    <div class="section-bg bg-to-right">
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
@@ -33,7 +33,8 @@
             <div class="row">
                 <div class="col-md-6">
                     <?php if ( get_option( 'g_img_url_3' ) ) { ?>
-                        <img src="<?php echo get_option( 'g_img_url_3' ); ?>" class="img-responsive">
+                        <div class="entry-img" <?php echo get_home_img( 'g_img_url_3' ); ?>>
+                        </div>
                     <?php } ?>
                 </div>
                 <div class="col-md-6">
@@ -48,7 +49,7 @@
 <?php } ?>
 <?php if ( get_option( 'g_title_4' ) ) { ?>
 <section class="home-section section-img" <?php echo get_home_img( 'g_img_url_4' ) ?>>
-    <div class="section-bg">
+    <div class="section-bg bg-to-left">
         <div class="container">
             <div class="row">
                 <div class="col-md-6 col-md-offset-6 text-right">
@@ -73,7 +74,8 @@
                 </div>
                 <div class="col-md-6">
                     <?php if ( get_option( 'g_img_url_5' ) ) { ?>
-                        <img src="<?php echo get_option( 'g_img_url_5' ); ?>" class="img-responsive">
+                        <div class="entry-img" <?php echo get_home_img( 'g_img_url_5' ); ?>>
+                        </div>
                     <?php } ?>
                 </div>
             </div>
@@ -83,7 +85,7 @@
 <?php } ?>
 <?php if ( get_option( 'g_title_6' ) ) { ?>
 <section class="home-section section-img" <?php echo get_home_img( 'g_img_url_6' ) ?>>
-    <div class="section-bg">
+    <div class="section-bg bg-to-right">
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
@@ -103,7 +105,8 @@
             <div class="row">
                 <div class="col-md-6">
                     <?php if ( get_option( 'g_img_url_7' ) ) { ?>
-                        <img src="<?php echo get_option( 'g_img_url_7' ); ?>" class="img-responsive">
+                        <div class="entry-img" <?php echo get_home_img( 'g_img_url_7' ); ?>>
+                        </div>
                     <?php } ?>
                 </div>
                 <div class="col-md-6">
