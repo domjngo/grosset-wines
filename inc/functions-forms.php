@@ -395,7 +395,7 @@ function gw_wc_user_register($user_id) {
     $string = array('id'=>$user_id, 'code'=>$code);
     update_user_meta($user_id, 'is_activated', 0);
     update_user_meta($user_id, 'activationcode', $code);
-    $url = get_site_url(). '/my-account/?p=' .base64_encode( serialize($string));
+    $url = get_site_url(). '/my-account/?member=' .base64_encode( serialize($string));
     $html = ( '<p><img src="https://www.grosset.com.au/wp-content/themes/grosset-wines/img/grosset-logo.png"></p><h1>Activate your Grosset Wine Club account</h1><p>Thank you for joining the <strong>Grosset Wine Club</strong>.</p><p>Please <a href="'.$url.'"><strong>click here</strong></a> to verify your email address and complete the registration process.</p><p><strong>Your password has also been sent to you in a separate email</strong>.</p><p>If you have any queries, please don’t hesitate to call the office on 1800 088 223.</p><p>Warm regards,<br><a href="https://www.grosset.com.au">Grosset Wines</a></p>' );
     wc_mail($user_info->user_email, __( 'Activate your Grosset Wine Club account' ), $html);
 }
@@ -403,7 +403,7 @@ function gw_wc_user_register($user_id) {
 // handles all this verification stuff
 function gw_wc_verification_init(){
     // If accessed via an authentification link
-    if(isset($_GET['p'])){
+    if(isset($_GET['member'])){
         $data = unserialize(base64_decode($_GET['p']));
         $code = get_user_meta($data['id'], 'activationcode', true);
         // checks if the account has already been activated. We're doing this to prevent someone from logging in with an outdated confirmation link
