@@ -327,7 +327,6 @@ function register_page_css() {
 
 function gw_wc_extra_register_fields() {
     echo register_page_css();
-    gw_wc_verification_init();
     ?>
     <p class="form-row form-row-wide">
         <label for="reg_billing_first_name"><?php _e( 'First name', 'woocommerce' ); ?></label>
@@ -413,9 +412,9 @@ function gw_wc_verification_init() {
         if( $isActivated ) {
             wc_add_notice( __( 'This account has already been activated. Please log in with your username and password.' ), 'error' );
         }
-        else {
+        elseif( isset($_GET['p']) && !$code) {
             // checks whether the decoded code given is the same as the one in the database
-            if($code == $data['code']){
+            if($code == $data['code']) {
                 // updates the database upon successful activation
                 update_user_meta($data['id'], 'is_activated', 1);
                 // logs the user in
@@ -455,7 +454,7 @@ function gw_wc_email_as_username( $data ) {
 }
 
 // the hooks to make it all work
-// add_action( 'init', 'gw_wc_verification_init' );
+add_action( 'init', 'gw_wc_verification_init' );
 add_filter('woocommerce_registration_redirect', 'gw_wc_registration_redirect');
 add_filter('wp_authenticate_user', 'gw_wc_authenticate_user',10,2);
 add_action('user_register', 'gw_wc_user_register',10,2);
