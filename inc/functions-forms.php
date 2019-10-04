@@ -327,6 +327,7 @@ function register_page_css() {
 
 function gw_wc_extra_register_fields() {
     echo register_page_css();
+    gw_wc_verification_init();
     ?>
     <p class="form-row form-row-wide">
         <label for="reg_billing_first_name"><?php _e( 'First name', 'woocommerce' ); ?></label>
@@ -401,7 +402,7 @@ function gw_wc_user_register($user_id) {
 }
 
 // handles all this verification stuff
-function gw_wc_verification_init(){
+function gw_wc_verification_init() {
     // If accessed via an authentification link
     if(isset($_GET['member'])){
         $data = unserialize(base64_decode($_GET['p']));
@@ -454,7 +455,7 @@ function gw_wc_email_as_username( $data ) {
 }
 
 // the hooks to make it all work
-add_action( 'init', 'gw_wc_verification_init' );
+// add_action( 'init', 'gw_wc_verification_init' );
 add_filter('woocommerce_registration_redirect', 'gw_wc_registration_redirect');
 add_filter('wp_authenticate_user', 'gw_wc_authenticate_user',10,2);
 add_action('user_register', 'gw_wc_user_register',10,2);
