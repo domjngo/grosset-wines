@@ -412,7 +412,7 @@ function gw_wc_verification_init() {
         if( $isActivated ) {
             wc_add_notice( __( 'This account has already been activated. Please log in with your username and password.' ), 'error' );
         }
-        elseif(!$code) {
+        elseif($code) {
             // checks whether the decoded code given is the same as the one in the database
             if($code == $data['code']) {
                 // updates the database upon successful activation
