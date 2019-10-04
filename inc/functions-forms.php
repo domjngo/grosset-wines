@@ -403,8 +403,8 @@ function gw_wc_user_register($user_id) {
 // handles all this verification stuff
 function gw_wc_verification_init() {
     // If accessed via an authentification link
-    if(isset($_GET['member'])){
-        $data = unserialize(base64_decode($_GET['p']));
+    if(isset($_GET['member'])) {
+        $data = unserialize(base64_decode($_GET['member']));
         $code = get_user_meta($data['id'], 'activationcode', true);
         // checks if the account has already been activated. We're doing this to prevent someone from logging in with an outdated confirmation link
         $isActivated = get_user_meta($data['id'], 'is_activated', true);
@@ -412,7 +412,7 @@ function gw_wc_verification_init() {
         if( $isActivated ) {
             wc_add_notice( __( 'This account has already been activated. Please log in with your username and password.' ), 'error' );
         }
-        elseif( isset($_GET['p']) && !$code) {
+        elseif(!$code) {
             // checks whether the decoded code given is the same as the one in the database
             if($code == $data['code']) {
                 // updates the database upon successful activation
