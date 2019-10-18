@@ -16,7 +16,7 @@ get_header(); ?>
                             <div class="col-xs-6 wine-img">
                                 <?php echo get_feature_wine_img( get_the_title() ); ?>
                             </div>
-                            <div class="col-xs-6 col-sm-3">
+                            <div class="col-xs-6 col-sm-4">
                                 <div class="entry-header">
                                     <h1>
                                         <?php the_title(); ?>
@@ -24,7 +24,7 @@ get_header(); ?>
                                     <p>
                                         <?php
                                         if (has_category('members-only')) {
-                                            echo '<a class="btn btn-default" href="https://www.grosset.com.au/members-online/">Buy now <small>(Members only)</small></a>';
+                                            echo '<a class="btn btn-default" href="https://www.grosset.com.au/wine-shop/">Buy now <small>(Members only)</small></a>';
                                         } elseif (has_category('sold-out')) {
                                             echo '';
                                         } else {
