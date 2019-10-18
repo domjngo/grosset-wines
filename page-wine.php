@@ -10,8 +10,8 @@ get_header(); ?>
     <main id="main" class="main wine-page" role="main">
         <div class="content">
             <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-                <div class="container">
-                    <div class="wine-page-header">
+                <div class="wine-page-header">
+                    <div class="container">
                         <div class="row">
                             <div class="col-xs-6 wine-img">
                                 <?php echo get_feature_wine_img( get_the_title() ); ?>
@@ -28,7 +28,7 @@ get_header(); ?>
                                         } elseif (has_category('sold-out')) {
                                             echo '';
                                         } else {
-                                            echo '<a class="btn btn-default" href="https://www.grosset.com.au/wine-shop/">Buy Now</a>';
+                                            echo '<a class="btn btn-default" href="https://www.grosset.com.au/wine-shop/">Buy now</a>';
                                         }
                                         ?>
                                     </p>
@@ -36,7 +36,9 @@ get_header(); ?>
                             </div>
                         </div>
                     </div>
-                    <div class="wine-page-content">
+                </div>
+                <div class="wine-page-content">
+                    <div class="container">
                         <div class="row">
                             <div class="col-md-8 col-md-offset-2">
                                 <div class="entry-content">
