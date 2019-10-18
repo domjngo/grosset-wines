@@ -4040,10 +4040,12 @@ ul {
 .entry-sidebar {
   margin-bottom: 2.4em; }
   .entry-sidebar ul {
-    list-style-type: none; }
+    list-style-type: none;
+    margin: 0;
+    padding: 0; }
     .entry-sidebar ul li a {
       padding: 0.3em 0;
-      border-bottom: 1px solid #eee;
+      border-top: 1px solid #eee;
       width: 100%;
       display: block; }
 
@@ -4368,8 +4370,11 @@ iframe {
     .wines .wine-item {
       width: 48%; } }
 
-.wine-img img {
+.wine-page .wine-page-header {
   margin: 1.6em 0; }
+.wine-page .wine-img img {
+  margin: 0 auto;
+  max-height: 520px; }
 
 .vineyard h2 {
   margin-top: 0; }
