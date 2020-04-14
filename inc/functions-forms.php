@@ -329,16 +329,16 @@ function gw_wc_extra_register_fields() {
     echo register_page_css();
     ?>
     <p class="form-row form-row-wide">
-        <label for="reg_billing_first_name"><?php _e( 'First name', 'woocommerce' ); ?></label>
-        <input type="text" class="input-text" name="billing_first_name" id="reg_billing_first_name" value="<?php if ( ! empty( $_POST['billing_first_name'] ) ) esc_attr_e( $_POST['billing_first_name'] ); ?>" />
+        <label for="reg_billing_first_name"><?php _e( 'First name', 'woocommerce' ); ?> <span class="required">*</span></label>
+        <input type="text" class="input-text" name="billing_first_name" id="reg_billing_first_name" value="<?php if ( ! empty( $_POST['billing_first_name'] ) ) esc_attr_e( $_POST['billing_first_name'] ); ?>" required>
     </p>
     <p class="form-row form-row-wide">
-        <label for="reg_billing_last_name"><?php _e( 'Last name', 'woocommerce' ); ?></label>
-        <input type="text" class="input-text" name="billing_last_name" id="reg_billing_last_name" value="<?php if ( ! empty( $_POST['billing_last_name'] ) ) esc_attr_e( $_POST['billing_last_name'] ); ?>" />
+        <label for="reg_billing_last_name"><?php _e( 'Last name', 'woocommerce' ); ?> <span class="required">*</span></label>
+        <input type="text" class="input-text" name="billing_last_name" id="reg_billing_last_name" value="<?php if ( ! empty( $_POST['billing_last_name'] ) ) esc_attr_e( $_POST['billing_last_name'] ); ?>" required>
     </p>
     <p class="form-row form-row-wide">
-        <label for="reg_billing_phone"><?php _e( 'Phone', 'woocommerce' ); ?></label>
-        <input type="text" class="input-text" name="billing_phone" id="reg_billing_phone" value="<?php if ( ! empty( $_POST['billing_phone'] ) ) esc_attr_e( $_POST['billing_phone'] ); ?>" />
+        <label for="reg_billing_phone"><?php _e( 'Phone', 'woocommerce' ); ?> <span class="required">*</span></label>
+        <input type="text" class="input-text" name="billing_phone" id="reg_billing_phone" value="<?php if ( ! empty( $_POST['billing_phone'] ) ) esc_attr_e( $_POST['billing_phone'] ); ?>" required>
     </p>
     <div class="clear"></div>
     <?php
@@ -396,8 +396,23 @@ function gw_wc_user_register($user_id) {
     update_user_meta($user_id, 'is_activated', 0);
     update_user_meta($user_id, 'activationcode', $code);
     $url = get_site_url(). '/my-club-account/?member=' .base64_encode( serialize($string));
-    $html = ( '<p><img src="https://www.grosset.com.au/wp-content/themes/grosset-wines/img/grosset-logo.png"></p><h1>Activate your Grosset Wine Club account</h1><p>Thank you for joining the <strong>Grosset Wine Club</strong>.</p><p>Please <a href="'.$url.'"><strong>click here</strong></a> to verify your email address and complete the registration process.</p><p><strong>Your password has also been sent to you in a separate email</strong>.</p><p>If you have any queries, please don’t hesitate to call the office on 1800 088 223.</p><p>Warm regards,<br><a href="https://www.grosset.com.au">Grosset Wines</a></p>' );
-    wc_mail($user_info->user_email, __( 'Activate your Grosset Wine Club account' ), $html);
+    $user_html = ( '<p><img src="https://www.grosset.com.au/wp-content/themes/grosset-wines/img/grosset-logo.png"></p>
+        <h1>Your Grosset Wine Club account</h1>
+        <p>Thank you for your interest in becoming a <strong>Grosset Wine Club Member</strong>. You’re nearly there!</p>
+        <p>Within the next 48 hours, Sharna, Kath or Lisa from our winery will contact you to finalise your first order and
+        your account will be activated. If you prefer, you can call us on 1800 088 223.</p>
+        <p>Remember, once you purchase six bottles or more, your membership is valid for 12 months.</p>
+        <p>Warm regards,<br><a href="https://www.grosset.com.au">Grosset Wines</a></p>' );
+    $gw_html = ( '<p><img src="https://www.grosset.com.au/wp-content/themes/grosset-wines/img/grosset-logo.png"></p>
+        <h1>New Grosset Wine Club member account</h1>
+        <p>Name: '.$user_info->first_name.' '.$user_info->last_name.'</p>
+        <p>Phone: '.$user_info->billing_phone.'</p>
+        <p>Email: '.$user_info->user_email.'</p>
+        <p><a href="'.$url.'"><strong>Click here to activate this account</strong></a>.</p>' );
+    wc_mail('grossetwines@gmail.com', __( 'New Grosset Wine Club member account' ), $gw_html);
+    wc_mail('cb.creatistic@gmail.com', __( 'New Grosset Wine Club member account' ), $gw_html);
+    wc_mail($user_info->user_email, __( 'New Grosset Wine Club member account' ), $user_html);
+    wc_mail('cb.creatistic@gmail.com', __( 'New Grosset Wine Club member account' ), $user_html);
 }
 
 // handles all this verification stuff
