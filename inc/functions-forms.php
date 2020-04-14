@@ -391,6 +391,9 @@ function gw_wc_authenticate_user( $userdata ) {
 // when a user registers, sends them an email to verify their account
 function gw_wc_user_register($user_id) {
     $user_info = get_userdata($user_id);
+    $user_phone = get_user_meta( $user_id, 'billing_phone', true );
+    $user_first_name = get_user_meta( $user_id, 'first_name', true );
+    $user_last_name = get_user_meta( $user_id, 'last_name', true );
     $code = md5(time());
     $string = array('id'=>$user_id, 'code'=>$code);
     update_user_meta($user_id, 'is_activated', 0);
@@ -405,14 +408,14 @@ function gw_wc_user_register($user_id) {
         <p>Warm regards,<br><a href="https://www.grosset.com.au">Grosset Wines</a></p>' );
     $gw_html = ( '<p><img src="https://www.grosset.com.au/wp-content/themes/grosset-wines/img/grosset-logo.png"></p>
         <h1>New Grosset Wine Club member account</h1>
-        <p>Name: '.$user_info->first_name.' '.$user_info->last_name.'</p>
-        <p>Phone: '.$user_info->billing_phone.'</p>
+        <p>Name: '.$user_first_name.' '.$user_last_name.'</p>
+        <p>Phone: '.$user_phone.'</p>
         <p>Email: '.$user_info->user_email.'</p>
         <p><a href="'.$url.'"><strong>Click here to activate this account</strong></a>.</p>' );
     wc_mail('grossetwines@gmail.com', __( 'New Grosset Wine Club member account' ), $gw_html);
     wc_mail('cb.creatistic@gmail.com', __( 'New Grosset Wine Club member account' ), $gw_html);
-    wc_mail($user_info->user_email, __( 'New Grosset Wine Club member account' ), $user_html);
-    wc_mail('cb.creatistic@gmail.com', __( 'New Grosset Wine Club member account' ), $user_html);
+    wc_mail($user_info->user_email, __( 'Your Grosset Wine Club member account' ), $user_html);
+    wc_mail('cb.creatistic@gmail.com', __( 'Your Grosset Wine Club member account' ), $user_html);
 }
 
 // handles all this verification stuff
@@ -459,7 +462,10 @@ function gw_wc_verification_init() {
     }
     // If account has been freshly created
     if(isset($_GET['n'])){
-        wc_add_notice( __( '<p><strong>Thank you for creating your account</strong></p><p>You will need to confirm your email address in order to activate your account. An email containing the activation link has been sent to your email address. If the email does not arrive within a few minutes, check your spam folder.</p><p><strong>Your password will be sent to you in a separate email</strong>.</p>' ), 'notice' );
+        wc_add_notice( __( '<p><strong>Thank you for creating your account</strong></p>
+            <p>Within the next 48 hours, Sharna, Kath or Lisa from our winery will contact you to finalise your first 
+            order and your account will be activated. If you prefer, you can call us on 1800 088 223.</p>
+            <p>Remember, once you purchase six bottles or more, your membership is valid for 12 months.</p>' ), 'notice' );
     }
 }
 
