@@ -68,7 +68,7 @@ function grosset_wines_settings_page() {
             <?php do_settings_sections( 'gw-wines-group' ); ?>
 
             <h2>Content</h2>
-            <?php for ( $i=1 ; $i<=9 ; $i++ ) { ?>
+            <?php for ( $i=1 ; $i<=10 ; $i++ ) { ?>
                 <hr>
                 <h3>Wine <?php echo $i; ?> </h3>
                 <table class="form-table">

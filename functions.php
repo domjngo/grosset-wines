@@ -30,6 +30,7 @@ add_filter( 'wp_title', 'bc_wp_title', 10, 2 );
 add_filter( 'the_content', 'add_image_responsive_class' );
 add_filter( 'next_posts_link_attributes', 'posts_link_attributes' );
 add_filter( 'previous_posts_link_attributes', 'posts_link_attributes' );
+add_filter( 'xmlrpc_enabled', '__return_false' );
 
 add_shortcode( 'wine', 'wine_shortcode' );
 add_shortcode( 'vineyard', 'vineyard_shortcode' );
