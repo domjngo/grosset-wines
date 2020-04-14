@@ -27,7 +27,17 @@ for ( $i=1 ; $i<=9 ; $i++ ) {
                     <div class="<?php echo $second_col_position ?>">
                         <h2><?php echo get_home_text('g_wine_title_'.$i ) ?></h2>
                         <p><?php echo get_home_text('g_wine_text_'.$i ) ?></p>
-                        <p><a href="<?php echo get_option('g_wine_url_'.$i ) ?>" class="btn">Read more</a></p>
+                        <p>
+                            <a href="<?php echo get_option('g_wine_url_'.$i ) ?>" class="btn">Read more</a>
+                            <?php
+                            if ( is_user_logged_in() ) {
+                                $shop = 'members-online/';
+                            } else {
+                                $shop = 'wine-shop/';
+                            }
+                            echo '<a class="btn btn-default" href="https://www.grosset.com.au/'.$shop.'">Buy now</a>';
+                            ?>
+                        </p>
                     </div>
                 </div>
             </div>
