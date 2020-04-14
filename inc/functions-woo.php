@@ -180,7 +180,7 @@ function shop_is_member_shortcode()
         $html = '<h2>Welcome Grosset Wine Club member!</h2>';
     } else {
         $html = '<p>If you\'re a <strong>Grosset Wine Club member</strong> please ';
-        $html .= '<strong><a href="'.site_url().'/my-account/">sign in here</a></strong> for your member\'s pricing.<br>';
+        $html .= '<strong><a href="'.site_url().'/my-club-account/">sign in here</a></strong> for your member\'s pricing.<br>';
         $html .= 'Not yet a member? <a href="'.site_url().'/contact/grosset-wine-club-member/">Click here to join</a>.</p>';
     }
 
