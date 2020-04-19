@@ -477,7 +477,7 @@ function gw_wc_email_as_username( $data ) {
 // the hooks to make it all work
 add_action( 'init', 'gw_wc_verification_init' );
 add_filter('woocommerce_registration_redirect', 'gw_wc_registration_redirect');
-add_filter('wp_authenticate_user', 'gw_wc_authenticate_user',10,2);
+// add_filter('wp_authenticate_user', 'gw_wc_authenticate_user',10,2);
 add_action('user_register', 'gw_wc_user_register',10,2);
 add_filter( 'woocommerce_new_customer_data', 'gw_wc_email_as_username' );
 
