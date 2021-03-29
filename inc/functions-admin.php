@@ -30,11 +30,12 @@ function grosset_settings_page_admin() {
         register_setting( 'gw-group', 'g_url_'.$i );
     }
 
-    for ( $i=1 ; $i<=9 ; $i++ ) {
+    for ( $i=1 ; $i<=12 ; $i++ ) {
         register_setting( 'gw-wines-group', 'g_wine_title_'.$i );
         register_setting( 'gw-wines-group', 'g_wine_text_'.$i );
         register_setting( 'gw-wines-group', 'g_wine_img_'.$i );
         register_setting( 'gw-wines-group', 'g_wine_url_'.$i );
+		register_setting( 'gw-wines-group', 'g_wine_cat'.$i );
     }
 
     for ( $i=1 ; $i<=6 ; $i++ ) {
@@ -68,7 +69,7 @@ function grosset_wines_settings_page() {
             <?php do_settings_sections( 'gw-wines-group' ); ?>
 
             <h2>Content</h2>
-            <?php for ( $i=1 ; $i<=10 ; $i++ ) { ?>
+            <?php for ( $i=1 ; $i<=12 ; $i++ ) { ?>
                 <hr>
                 <h3>Wine <?php echo $i; ?> </h3>
                 <table class="form-table">
@@ -89,6 +90,10 @@ function grosset_wines_settings_page() {
                     <tr valign="top">
                         <th scope="row"><label for="g_wine_img_<?php echo $i; ?>">Image URL</label></th>
                         <td><input type="text" name="g_wine_img_<?php echo $i; ?>" value="<?php echo get_option('g_wine_img_'.$i); ?>" /></td>
+                    </tr>
+					<tr valign="top">
+                        <th scope="row"><label for="category<?php echo $i; ?>">Category</label></th>
+                        <td><input type="text" name="category<?php echo $i; ?>" value="<?php echo get_option('category'.$i); ?>" /></td>
                     </tr>
                 </table>
                 <?php submit_button(); ?>

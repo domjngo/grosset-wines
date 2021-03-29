@@ -10,8 +10,8 @@ function my_password_form() {
     </form>
 	<p><strong>Free freight</strong> for orders of 6 bottles or more.</p>
 	<p><strong>You must be 18 years or older to enter the Mount Horrocks online shop. By clicking ‘Submit’ you are verifying this.</strong></p>
-	<p>Having trouble logging in to purchase? Just phone us on (08) 8849 2243, or email <a href="mailto:sales@mounthorrocks.com">sales@mounthorrocks.com</a> and we can help.</p>
-	<p>If not a member, join our <a href="http://www.mounthorrocks.com/contact/join-our-mailing-list/">mailing list</a></p>
+	<p>Having trouble logging in to purchase? Just phone us on (08) 8849 2175, or email <a href="mailto:info@grosset.com.au">info@grosset.com.au</a> and we can help.</p>
+	<p>If not a member, join our <a href="http://www.grosset.com.au/contact/join-our-mailing-list/">mailing list</a></p>
     ';
     return $o;
 }

@@ -218,7 +218,8 @@ function user_profile_customer_status( $user ) {
                     <option value="do-not-call" <?php if ( $status == 'do-not-call' ) { echo ' selected="selected"'; }; ?>>Do not call</option>
                     <option value="platinum" <?php if ( $status == 'Platinum' || $status == 'platinum' ) { echo ' selected="selected"'; }; ?>>Platinum</option>
                     <option value="silver-clare-valley" <?php if ( $status == 'silver-clare-valley' ) { echo ' selected="selected"'; }; ?>>Silver</option>
-                    <option value="grosset-club-members" <?php if ( $status == 'grosset-club-members' ) { echo ' selected="selected"'; }; ?>>Grosset club member</option>
+                    <option value="gold" <?php if ( $status == 'gold' ) { echo ' selected="selected"'; }; ?>>Gold</option>
+   					<option value="grosset-club-members" <?php if ( $status == 'grosset-club-members' ) { echo ' selected="selected"'; }; ?>>Grosset club member</option>
                     <option value="grosset-information" <?php if ( $status == 'grosset-information' ) { echo ' selected="selected"'; }; ?>>Grosset information</option>
                 </select>
             </td>

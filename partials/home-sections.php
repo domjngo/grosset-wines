@@ -119,3 +119,66 @@
     </div>
 </section>
 <?php } ?>
+<?php if ( get_option( 'g_title_8' ) ) { ?>
+<section class="home-section">
+    <div class="section-bg">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <?php if ( get_option( 'g_img_url_8' ) ) { ?>
+                        <div class="entry-img" <?php echo get_home_img( 'g_img_url_8' ); ?>>
+                        </div>
+                    <?php } ?>
+                </div>
+                <div class="col-md-6">
+                    <h2><?php echo get_home_text('g_title_8'); ?></h2>
+                    <p><?php echo get_home_text('g_text_8'); ?></p>
+                    <?php echo get_button('g_button_8', 'g_url_8' ) ; ?>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<?php } ?>
+<?php if ( get_option( 'g_title_9' ) ) { ?>
+<section class="home-section">
+    <div class="section-bg">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <?php if ( get_option( 'g_img_url_9' ) ) { ?>
+                        <div class="entry-img" <?php echo get_home_img( 'g_img_url_9' ); ?>>
+                        </div>
+                    <?php } ?>
+                </div>
+                <div class="col-md-6">
+                    <h2><?php echo get_home_text('g_title_9'); ?></h2>
+                    <p><?php echo get_home_text('g_text_9'); ?></p>
+                    <?php echo get_button('g_button_9', 'g_url_9' ) ; ?>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<?php } ?>
+<?php if ( get_option( 'g_title_10' ) ) { ?>
+<section class="home-section">
+    <div class="section-bg">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <?php if ( get_option( 'g_img_url_10' ) ) { ?>
+                        <div class="entry-img" <?php echo get_home_img( 'g_img_url_10' ); ?>>
+                        </div>
+                    <?php } ?>
+                </div>
+                <div class="col-md-6">
+                    <h2><?php echo get_home_text('g_title_10'); ?></h2>
+                    <p><?php echo get_home_text('g_text_10'); ?></p>
+                    <?php echo get_button('g_button_10', 'g_url_10' ) ; ?>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<?php } ?>

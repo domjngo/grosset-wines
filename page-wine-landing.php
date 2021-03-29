@@ -16,6 +16,7 @@ get_header(); ?>
                             <div class="entry-header">
                                 <h1>
                                     <?php the_title(); ?>
+
                                 </h1>
                             </div>
                         </div>
@@ -32,7 +33,6 @@ get_header(); ?>
             <?php get_template_part( 'partials/wine-sections' ); ?>
         </div>
     </main>
-
 <?php endwhile; ?>
 
 <?php get_footer(); ?>

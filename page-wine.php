@@ -14,8 +14,8 @@
 	            <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 	                <div class="wine-page-header">
 	                    <div class="container">
-	                        <div class="row">
-	                            <div class="col-xs-6 wine-img">
+                        <div class="row">
+                            <div class="col-xs-6 wine-img">
 	                                <?php echo get_feature_wine_img( get_the_title() ); ?>
 	                            </div>
 	                            <div class="col-xs-6 col-sm-4">
@@ -34,6 +34,8 @@
 	                                            echo '<a class="btn btn-default" href="https://www.grosset.com.au/'.$shop.'">Buy now <small>(Members only)</small></a>';
 	                                        } elseif (has_category('sold-out')) {
 	                                            echo '<a class="btn btn-default" href="">Sold out</a>';
+	                                        } elseif (has_category('coming-soon')) {
+	                                            echo '<a class="btn btn-default" href="">Coming Soon</a>';
 	                                        } else {
 	                                            echo '<a class="btn btn-default" href="https://www.grosset.com.au/'.$shop.'">Buy now</a>';
 	                                        }
@@ -69,4 +71,3 @@
 
 
 	<?php get_footer(); ?>
-

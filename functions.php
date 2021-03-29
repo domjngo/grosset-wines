@@ -19,6 +19,15 @@ include 'inc/functions-woo.php';
 
 add_theme_support( 'post-thumbnails' );
 
+if ( function_exists( 'add_theme_support' ) ) {
+    add_theme_support( 'post-thumbnails' );
+    set_post_thumbnail_size( 50, 50 ); // 50 pixels wide by 50 pixels tall, resize mode
+ 
+    // additional image sizes
+    // delete the next line if you do not need additional image sizes
+    add_image_size( 'category-thumb', 300, 9999 ); // 300 pixels wide (and unlimited height)
+ }
+
 add_action( 'wp_enqueue_scripts', 'bc_styles' );
 add_action( 'wp_enqueue_scripts', 'bc_scripts' );
 add_action( 'after_setup_theme', 'register_bc_menu' );

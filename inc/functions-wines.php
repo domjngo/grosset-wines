@@ -8,7 +8,8 @@ function wine_shortcode( $atts )
         'link' => '',
         'start' => false,
         'last' => false
-    ), $atts);
+
+    ), $atts);	
 
     $first = '';
     $last = '';

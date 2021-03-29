@@ -402,7 +402,7 @@ function gw_wc_user_register($user_id) {
     $user_html = ( '<p><img src="https://www.grosset.com.au/wp-content/themes/grosset-wines/img/grosset-logo.png"></p>
         <h1>Your Grosset Wine Club account</h1>
         <p>Thank you for your interest in becoming a <strong>Grosset Wine Club Member</strong>. You’re nearly there!</p>
-        <p>Within the next 48 hours, Sharna, Kath or Lisa from our winery will contact you to finalise your first order and
+        <p>Within the next 48 hours, Sharna, Kath or Kim from our winery will contact you to finalise your first order and
         your account will be activated. If you prefer, you can call us on 1800 088 223.</p>
         <p>Remember, once you purchase six bottles or more, your membership is valid for 12 months.</p>
         <p>Warm regards,<br><a href="https://www.grosset.com.au">Grosset Wines</a></p>' );
@@ -463,7 +463,7 @@ function gw_wc_verification_init() {
     // If account has been freshly created
     if(isset($_GET['n'])){
         wc_add_notice( __( '<p><strong>Thank you for creating your account</strong></p>
-            <p>Within the next 48 hours, Sharna, Kath or Lisa from our winery will contact you to finalise your first 
+            <p>Within the next 48 hours, Sharna, Kath or Kim from our winery will contact you to finalise your first 
             order and your account will be activated. If you prefer, you can call us on 1800 088 223.</p>
             <p>Remember, once you purchase six bottles or more, your membership is valid for 12 months.</p>' ), 'notice' );
     }

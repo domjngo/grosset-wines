@@ -4,7 +4,7 @@
  *
  */
 
-for ( $i=1 ; $i<=9 ; $i++ ) {
+for ( $i=1 ; $i<=12 ; $i++ ) {
     if ( get_option('g_wine_title_'.$i ) ) {
 
         if ( $i%2 ) {
@@ -30,12 +30,20 @@ for ( $i=1 ; $i<=9 ; $i++ ) {
                         <p>
                             <a href="<?php echo get_option('g_wine_url_'.$i ) ?>" class="btn">Read more</a>
                             <?php
-                            if ( is_user_logged_in() ) {
-                                $shop = 'members-online/';
-                            } else {
-                                $shop = 'wine-shop/';
-                            }
-                            echo '<a class="btn btn-default" href="https://www.grosset.com.au/'.$shop.'">Buy now</a>';
+								if ( is_user_logged_in() ) {
+									$shop = 'members-online/';
+								} else {
+									$shop = 'wine-shop/';
+								}
+                                if (has_category('members-only')) {
+                                    echo '<a class="btn btn-default" href="https://www.grosset.com.au/'.$shop.'">Buy now <small>(Members only)</small></a>';
+                                } elseif (has_category('sold-out')) {
+                                    echo '<a class="btn btn-default" href="">Sold out</a>';
+                                } elseif (has_category('coming-soon')) {
+                                    echo '<a class="btn btn-default" href="">Coming Soon</a>';
+                                } else {
+                                    echo '<a class="btn btn-default" href="https://www.grosset.com.au/'.$shop.'">Buy now</a>';
+                                }
                             ?>
                         </p>
                     </div>
