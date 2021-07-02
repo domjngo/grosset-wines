@@ -31,6 +31,7 @@ function grosset_settings_page_admin() {
     }
 
     for ( $i=1 ; $i<=12 ; $i++ ) {
+        register_setting( 'gw-wines-group', 'g_wine_product_id_'.$i );
         register_setting( 'gw-wines-group', 'g_wine_title_'.$i );
         register_setting( 'gw-wines-group', 'g_wine_text_'.$i );
         register_setting( 'gw-wines-group', 'g_wine_img_'.$i );
@@ -74,6 +75,10 @@ function grosset_wines_settings_page() {
                 <hr>
                 <h3>Wine <?php echo $i; ?> </h3>
                 <table class="form-table">
+                    <tr valign="top">
+                        <th scope="row"><label for="g_wine_product_id_<?php echo $i; ?>">Product ID</label></th>
+                        <td><input type="text" name="g_wine_product_id_<?php echo $i; ?>" value="<?php echo esc_attr( get_option('g_wine_product_id_'.$i) ); ?>" /></td>
+                    </tr>
                     <tr valign="top">
                         <th scope="row"><label for="g_wine_title_<?php echo $i; ?>">Title</label></th>
                         <td><input type="text" name="g_wine_title_<?php echo $i; ?>" value="<?php echo esc_attr( get_option('g_wine_title_'.$i) ); ?>" /></td>

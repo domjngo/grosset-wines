@@ -48,9 +48,8 @@ for ( $i=1 ; $i<=12 ; $i++ ) {
                             ?>
                             <a class="btn btn-default" href="<?php echo $shop_page ?>"><?php echo $shop_btn_text ?></a>
                             <?php
-                            $wine   = get_post( get_home_text('g_wine_page_id_'.$i ) );
-                            if ($wine) {
-                            $featured_img_url = get_the_post_thumbnail_url($wine->ID,'medium');
+                            $product = wc_get_product( get_home_text('g_wine_product_id_'.$i ) );
+                            if ($product) {
                             ?>
                             <a href="#" class="btn" data-toggle="modal" data-target="#wineModal<?php echo $i ?>">Read more</a>
                             <div class="modal fade" id="wineModal<?php echo $i ?>" tabindex="-1" role="dialog" aria-labelledby="ModalLabel<?php echo $i ?>">
@@ -58,20 +57,24 @@ for ( $i=1 ; $i<=12 ; $i++ ) {
                                     <div class="modal-content">
                                         <div class="modal-header">
                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                            <h3 class="modal-title" id="ModalLabel<?php echo $i ?>"><?php echo $wine->post_title ?></h3>
                                         </div>
                                         <div class="modal-body">
                                             <div class="row">
                                                 <div class="col-md-3">
-                                                    <img src="<?php echo $featured_img_url ?>" alt="Bottle image of <?php echo $wine->post_title ?>" class="img-responsive">
+                                                    <?php
+                                                    $image_id  = $product->get_image_id();
+                                                    $image_url = wp_get_attachment_image_url( $image_id, 'full' );
+                                                    ?>
+                                                    <img src="<?php echo $image_url ?>" alt="Bottle image of <?php echo $product->get_name() ?>" class="img-responsive">
                                                 </div>
                                                 <div class="col-md-9">
-                                                    <p><a class="btn btn-default" href="<?php echo $shop_page ?>"><?php echo $shop_btn_text ?></a></p>
-                                                    <?php echo $wine->post_content ?>
+                                                    <h3 id="ModalLabel<?php echo $i ?>"><?php echo $product->get_name(); ?></h3>
+                                                    <?php echo wpautop($product->get_description()) ?>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="modal-footer">
+                                            <a class="btn btn-default" href="<?php echo $shop_page ?>"><?php echo $shop_btn_text ?></a>
                                             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                                         </div>
                                     </div>

@@ -7398,6 +7398,13 @@ iframe {
   margin: 1.6em 0;
 }
 
+.modal .img-responsive {
+  max-width: 180px;
+}
+.modal .modal-footer .btn {
+  margin-bottom: 0;
+}
+
 .wines-landing .entry-header h1 {
   margin-bottom: 0.3em;
 }
