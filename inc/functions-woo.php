@@ -253,3 +253,34 @@ function add_customer_status_column_value( $val, $column_name, $user_id ) {
         default:
     }
 }
+
+function add_variation_members_pricing( $loop, $variation_data, $variation ){
+
+    woocommerce_wp_text_input( array(
+        'id' => '_members_price_'.$loop,
+        'wrapper_class' => 'form-row form-row-first',
+        'class' => 'short wc_input_price',
+        'label' => __( 'Members price', 'woocommerce' ) . ' (' . get_woocommerce_currency_symbol() . ')',
+        'value' => wc_format_localized_price( get_post_meta( $variation->ID, '_members_price', true ) ),
+        'data_type' => 'price',
+    ) );
+}
+
+function save_variation_members_pricing( $variation_id, $loop ){
+    if( isset($_POST['_members_price_'.$loop]) ) {
+        update_post_meta(
+                $variation_id,
+                '_members_price',
+                wc_clean( wp_unslash( str_replace( ',', '.', $_POST['_members_price_'.$loop] ) ) )
+        );
+    }
+}
+
+function member_get_price( $price, $variation  ) {
+    if( is_user_logged_in() ) {
+        if( $members_price = $variation->get_meta('_members_price') ) {
+            $price = $members_price;
+        }
+    }
+    return $price;
+}
