@@ -25,9 +25,13 @@ for ( $i=1 ; $i<=12 ; $i++ ) {
                         <div class="wine-hero" style="background-image: url(<?php echo get_site_url().get_option('g_wine_img_'.$i ) ?>)"></div>
                     </div>
                     <div class="<?php echo $second_col_position ?>">
+                        <?php
+                        $product = wc_get_product( get_home_text('g_wine_product_id_'.$i ) );
+                        ?>
                         <h2><?php echo get_home_text('g_wine_title_'.$i ) ?></h2>
-                        <p><?php echo get_home_text('g_wine_text_'.$i ) ?></p>
-
+                        <p><?php if ($product) {
+                                echo $product->get_short_description();
+                            } ?></p>
                             <?php
                             if ( is_user_logged_in() ) {
                                 $shop_page = get_site_url().'/members-online/';
@@ -47,10 +51,7 @@ for ( $i=1 ; $i<=12 ; $i++ ) {
                             }
                             ?>
                             <a class="btn btn-default" href="<?php echo $shop_page ?>"><?php echo $shop_btn_text ?></a>
-                            <?php
-                            $product = wc_get_product( get_home_text('g_wine_product_id_'.$i ) );
-                            if ($product) {
-                            ?>
+                            <?php if ($product) { ?>
                             <a href="#" class="btn" data-toggle="modal" data-target="#wineModal<?php echo $i ?>">Read more</a>
                             <div class="modal fade" id="wineModal<?php echo $i ?>" tabindex="-1" role="dialog" aria-labelledby="ModalLabel<?php echo $i ?>">
                                 <div class="modal-dialog modal-lg" role="document">
@@ -60,14 +61,12 @@ for ( $i=1 ; $i<=12 ; $i++ ) {
                                         </div>
                                         <div class="modal-body">
                                             <div class="row">
-                                                <div class="col-md-3">
+                                                <div class="col-md-10 col-md-offset-1">
                                                     <?php
                                                     $image_id  = $product->get_image_id();
                                                     $image_url = wp_get_attachment_image_url( $image_id, 'full' );
                                                     ?>
                                                     <img src="<?php echo $image_url ?>" alt="Bottle image of <?php echo $product->get_name() ?>" class="img-responsive">
-                                                </div>
-                                                <div class="col-md-9">
                                                     <h3 id="ModalLabel<?php echo $i ?>"><?php echo $product->get_name(); ?></h3>
                                                     <?php echo wpautop($product->get_description()) ?>
                                                 </div>
@@ -80,10 +79,7 @@ for ( $i=1 ; $i<=12 ; $i++ ) {
                                     </div>
                                 </div>
                             </div>
-                            <?php } else { ?>
-                                <a href="<?php echo get_option('g_wine_url_'.$i ) ?>" class="btn">Read more</a>
                             <?php } ?>
-
                     </div>
                 </div>
             </div>
