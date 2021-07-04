@@ -31,7 +31,9 @@ for ( $i=1 ; $i<=12 ; $i++ ) {
                         <h2><?php echo get_home_text('g_wine_title_'.$i ) ?></h2>
                         <p><?php if ($product) {
                                 echo $product->get_short_description();
-                            } ?></p>
+                            } else {
+                                echo get_home_text('g_wine_text_'.$i );
+                            }?></p>
                             <?php
                             if ( is_user_logged_in() ) {
                                 $shop_page = get_site_url().'/members-online/';
@@ -79,6 +81,8 @@ for ( $i=1 ; $i<=12 ; $i++ ) {
                                     </div>
                                 </div>
                             </div>
+                            <?php } else { ?>
+                                <a href="<?php echo get_option('g_wine_url_'.$i ) ?>" class="btn">Read more</a>
                             <?php } ?>
                     </div>
                 </div>
