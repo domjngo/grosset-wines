@@ -80,7 +80,7 @@ function get_feature_image_as_bg( $size = 'full' ) {
     } else {
         $image = null;
     }
-    if ( $image[0] ) {
+    if ( isset($image) && $image[0] ) {
         return 'style="background-image: url('. $image[0] . ');"';
     } else {
         return false;
