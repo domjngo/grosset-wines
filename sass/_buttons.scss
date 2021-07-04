@@ -3,16 +3,16 @@
   text-shadow: none;
   text-decoration: none;
   font-size: 0.9em;
-  background-color: rgba(0,0,0,0.6);
-  border-color: transparent;
+  background-color: #1c3f95;
+  border: solid 3px #d4dddd;
   border-radius: 0;
-  padding: 0.6em 1em;
+  padding: 0.4em 0.9em;
   margin: 0.6em 0;
 }
-.btn:hover {
-  color: #fff;
-  background-color: #1c3f95;
-}
+.btn:hover,
+.btn:focus,
+.btn:active,
+.btn.active,
 .btn-default:hover,
 .btn-default:focus,
 .btn-default:active,
@@ -21,8 +21,13 @@
   color: #fff;
   text-decoration: none;
   background-color: #3b94d9;
+  border: solid 3px #1c3f95;
 }
 .btn-xs {
   padding: 1px 5px;
   margin: 0;
+  border: 0;
+  &:hover {
+    border: 0;
+  }
 }
