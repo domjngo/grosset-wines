@@ -36,7 +36,6 @@ function grosset_settings_page_admin() {
         register_setting( 'gw-wines-group', 'g_wine_text_'.$i );
         register_setting( 'gw-wines-group', 'g_wine_img_'.$i );
         register_setting( 'gw-wines-group', 'g_wine_url_'.$i );
-        register_setting( 'gw-wines-group', 'g_wine_page_id_'.$i );
 		register_setting( 'gw-wines-group', 'g_wine_cat'.$i );
     }
 
@@ -88,10 +87,6 @@ function grosset_wines_settings_page() {
                     <tr valign="top">
                         <th scope="row"><label for="g_wine_url_<?php echo $i; ?>">Wine page URL</label></th>
                         <td><input type="text" name="g_wine_url_<?php echo $i; ?>" value="<?php echo get_option('g_wine_url_'.$i); ?>" /></td>
-                    </tr>
-                    <tr valign="top">
-                        <th scope="row"><label for="g_wine_page_id_<?php echo $i; ?>">Wine page ID</label></th>
-                        <td><input type="text" name="g_wine_page_id_<?php echo $i; ?>" value="<?php echo get_option('g_wine_page_id_'.$i); ?>" /></td>
                     </tr>
                     <tr valign="top">
                         <th scope="row"><label for="g_wine_img_<?php echo $i; ?>">Image URL</label></th>
