@@ -7505,6 +7505,29 @@ fieldset {
   position: inherit;
 }
 
+.card a {
+  display: block;
+  text-decoration: none;
+}
+.card a p {
+  color: #000;
+}
+.card h3 {
+  margin: 0.2em 0 0.5em 0;
+}
+.card .panel {
+  border-radius: 0;
+  border-color: #d4dddd;
+}
+.card .panel:hover {
+  background-color: #fcf8e3;
+}
+.card .panel-heading {
+  min-height: 128px;
+  background: center center no-repeat;
+  background-size: cover;
+}
+
 .woocommerce .single-product {
   margin-top: 2.4em;
 }

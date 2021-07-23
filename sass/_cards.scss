@@ -1,0 +1,24 @@
+.card {
+  a {
+    display: block;
+    text-decoration: none;
+    p {
+      color: #000;
+    }
+  }
+  h3 {
+    margin: 0.2em 0 0.5em 0;
+  }
+  .panel {
+    border-radius: 0;
+    border-color: #d4dddd;
+    &:hover {
+      background-color: #fcf8e3;
+    }
+  }
+  .panel-heading {
+    min-height: 128px;
+    background: center center no-repeat;
+    background-size: cover;
+  }
+}
