@@ -7406,6 +7406,50 @@ iframe {
   margin-bottom: 0;
 }
 
+.gw-product-list h1 {
+  font-size: 1.25em;
+  margin: 0 !important;
+}
+.gw-product-list div.images {
+  margin: 0 !important;
+}
+.gw-product-list div.images img {
+  max-width: 148px;
+  max-height: 48px !important;
+  margin-right: 0.7em !important;
+}
+.gw-product-list p.price {
+  font-size: 1em !important;
+  margin: 0 !important;
+}
+.gw-product-list div.summary {
+  width: 100% !important;
+  margin: 0 !important;
+}
+.gw-product-list td.label {
+  display: none;
+}
+.gw-product-list td.value {
+  padding: 0 !important;
+}
+.gw-product-list tr.product-row {
+  border: 1px solid #ddd;
+}
+.gw-product-list tr.product-row td {
+  padding: 0.3em;
+}
+.gw-product-list tr.product-row td.product-add-to-cart .woocommerce-variation-add-to-cart {
+  text-align: center;
+}
+.gw-product-list tr.product-row td.product-add-to-cart button {
+  padding: 0.3em 0.5em !important;
+}
+.gw-product-list tr.product-row .quantity .qty {
+  padding: 0 0.5em !important;
+  width: 3.631em !important;
+  font-size: 1em !important;
+}
+
 .wines-landing .entry-header h1 {
   margin-bottom: 0.3em;
 }
