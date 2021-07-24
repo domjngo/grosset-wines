@@ -1,6 +1,6 @@
 <?php
 /**
- * Template Name: Story landing
+ * Template Name: Page with children
  *
  */
 get_header(); ?>
@@ -55,7 +55,7 @@ get_header(); ?>
             <?php endwhile; ?>
             <div class="container">
                 <div class="row">
-                    <?php get_template_part( 'partials/story-children' ); ?>
+                    <?php get_template_part( 'partials/children' ); ?>
                 </div>
             </div>
         </div>
