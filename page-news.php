@@ -58,11 +58,13 @@ get_header(); ?>
             <div class="container">
                 <div class="row row-flex">
                     <?php
+                    $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
                     $args = array(
                         'posts_per_page' => 12,
                         'post_type' => 'post',
                         'post_status' => 'publish',
-                        'category_name' => 'news'
+                        'category_name' => 'news',
+                        'paged' => $paged
                     );
                     $articles = new WP_Query( $args );
 
