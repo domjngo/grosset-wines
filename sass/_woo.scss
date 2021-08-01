@@ -67,4 +67,7 @@
       margin: 0;
     }
   }
+  form.cart, p.stock {
+    display: none !important;
+  }
 }

@@ -7588,6 +7588,12 @@ fieldset {
   float: none !important;
   width: 100% !important;
 }
+.gw-single-product .buy-now-btn .btn {
+  margin: 0;
+}
+.gw-single-product form.cart, .gw-single-product p.stock {
+  display: none !important;
+}
 
 .lcp_catlist {
   list-style: none;

@@ -55,6 +55,7 @@ for ( $i=1 ; $i<=12 ; $i++ ) {
                             <a class="btn btn-default" href="<?php echo $shop_page ?>"><?php echo $shop_btn_text ?></a>
                             <?php if ($product) { ?>
                             <a href="<?php echo $product->get_permalink() ?>" class="btn">Read more</a>
+                            <!-- <a href="#" class="btn" data-toggle="modal" data-target="#wineModal--><?php //echo $i ?><!--">Read more</a>-->
                             <div class="modal fade" id="wineModal<?php echo $i ?>" tabindex="-1" role="dialog" aria-labelledby="ModalLabel<?php echo $i ?>">
                                 <div class="modal-dialog modal-lg" role="document">
                                     <div class="modal-content">
