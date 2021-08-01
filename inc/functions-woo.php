@@ -125,13 +125,12 @@ remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_output_r
 
 function woo_wine_wrapper_start()
 {
-    echo '<main id="main" class="main single-product" role="main">';
     echo '<div id="content" class="content"><div class="container"><div class="row">';
     echo '<div class="col-md-8 col-md-offset-2">';
 }
 function woo_wine_wrapper_end()
 {
-    echo '</div></div></div></div></main>';
+    echo '</div></div></div></div>';
 }
 add_action('woocommerce_before_main_content', 'woo_wine_wrapper_start', 10);
 add_action('woocommerce_after_main_content', 'woo_wine_wrapper_end', 10);
@@ -285,7 +284,7 @@ function member_get_price( $price, $variation  ) {
     return $price;
 }
 
-function buy_now_button() {
+function buy_now_button( $join = false ) {
     if ( is_user_logged_in() ) {
         $shop_page = get_site_url().'/members-online/';
         $shop_btn_text = 'Buy now';
@@ -302,8 +301,12 @@ function buy_now_button() {
         $shop_page = '#';
         $shop_btn_text = 'Coming Soon';
     }
+    $join_btn = '';
+    if ($join && !is_user_logged_in()) {
+        $join_btn = '<a class="btn btn-default" href="'.get_site_url().'/contact/grosset-wine-club-member/">Join</a>';
+    }
 
-    echo '<div class="buy-now-btn text-center"><a class="btn btn-default" href="'.$shop_page.'">'.$shop_btn_text.'</a></div>';
+    echo '<div class="buy-now-btn text-center">'.$join_btn.'<a class="btn btn-default" href="'.$shop_page.'">'.$shop_btn_text.'</a></div>';
 }
 
 function remove_product_image_link( $html, $post_id ) {

@@ -7215,6 +7215,14 @@ ul.buttons li a:hover {
   padding: 1em 0;
 }
 
+.action-buttons {
+  border-top: solid 1px #fff;
+  background-color: #e4eaea;
+}
+.action-buttons .btn {
+  margin: 0.9em 0.3em;
+}
+
 footer {
   padding: 1em 0;
   background-color: #e4eaea;
@@ -7533,8 +7541,8 @@ fieldset {
   background-size: cover;
 }
 
-.woocommerce .single-product {
-  margin-top: 2.4em;
+.woocommerce .gw-single-product {
+  margin-top: 1.6em;
 }
 .woocommerce table.shop_table td.product-thumbnail {
   display: none !important;
