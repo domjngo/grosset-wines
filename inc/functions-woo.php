@@ -284,3 +284,28 @@ function member_get_price( $price, $variation  ) {
     }
     return $price;
 }
+
+function buy_now_button() {
+    if ( is_user_logged_in() ) {
+        $shop_page = get_site_url().'/members-online/';
+        $shop_btn_text = 'Buy now';
+    } else {
+        $shop_page = get_site_url().'/wine-shop/';
+        $shop_btn_text = 'Buy now';
+    }
+    if (has_category('members-only')) {
+        $shop_btn_text = 'Buy now <small>(Members only)</small>';
+    } elseif (has_category('sold-out')) {
+        $shop_page = '#';
+        $shop_btn_text = 'Sold out';
+    } elseif (has_category('coming-soon')) {
+        $shop_page = '#';
+        $shop_btn_text = 'Coming Soon';
+    }
+
+    echo '<div class="buy-now-btn text-center"><a class="btn btn-default" href="'.$shop_page.'">'.$shop_btn_text.'</a></div>';
+}
+
+function remove_product_image_link( $html, $post_id ) {
+    return preg_replace( "!<(a|/a).*?>!", '', $html );
+}

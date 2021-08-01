@@ -7584,6 +7584,11 @@ fieldset {
   width: 100%;
 }
 
+.gw-single-product div.images, .gw-single-product div.summary {
+  float: none !important;
+  width: 100% !important;
+}
+
 .lcp_catlist {
   list-style: none;
   margin: 0;

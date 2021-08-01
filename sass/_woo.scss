@@ -57,3 +57,14 @@
     width: 100%;
   }
 }
+.gw-single-product {
+  div.images, div.summary {
+    float: none !important;
+    width: 100% !important;
+  }
+  .buy-now-btn {
+    .btn {
+      margin: 0;
+    }
+  }
+}

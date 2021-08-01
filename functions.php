@@ -51,4 +51,12 @@ add_action( 'show_user_profile', 'user_profile_customer_status' );
 add_action( 'edit_user_profile', 'user_profile_customer_status' );
 add_action( 'woocommerce_variation_options_pricing', 'add_variation_members_pricing', 10, 3 );
 add_action( 'woocommerce_save_product_variation', 'save_variation_members_pricing', 10, 2 );
+add_action( 'woocommerce_single_product_summary', 'buy_now_button', 25 );
+
 add_filter( 'woocommerce_product_variation_get_price', 'member_get_price', 10, 2 );
+add_filter( 'woocommerce_single_product_image_thumbnail_html', 'remove_product_image_link', 10, 2 );
+
+remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_price', 10 );
+remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_add_to_cart', 10 );
+remove_action( 'woocommerce_single_variation', 'woocommerce_single_variation_add_to_cart_button', 20 );
+remove_action( 'woocommerce_variable_add_to_cart', 'woocommerce_variable_add_to_cart', 30 );
