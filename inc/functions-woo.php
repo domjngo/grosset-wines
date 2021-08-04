@@ -326,25 +326,27 @@ function cards_below_single_product_summary() {
     foreach ($pages as $page) {
         if (isset($page) && $page != null) {
             $p = get_post( $page );
-            $background = '';
-            $image = wp_get_attachment_image_src( get_post_thumbnail_id( $page ), 'full' );
-            if ($image) {
-                $background = 'style="background-image: url('. $image[0] . ');"';
+            if (isset($p)) {
+                $background = '';
+                $image = wp_get_attachment_image_src( get_post_thumbnail_id( $page ), 'full' );
+                if ($image) {
+                    $background = 'style="background-image: url('. $image[0] . ');"';
+                }
+                ?>
+                <div class="col-md-6 card post-">
+                    <a href="<?php echo esc_url( get_permalink($page) ); ?>" title="">
+                        <div class="panel panel-default">
+                            <div class="panel-heading" <?php echo $background ?>>
+                            </div>
+                            <div class="panel-body">
+                                <h3><?php echo $p->post_title; ?></h3>
+                                <p><?php echo wp_trim_words($p->post_excerpt, 24); ?></p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <?php
             }
-            ?>
-            <div class="col-md-6 card post-">
-                <a href="<?php echo esc_url( get_permalink($page) ); ?>" title="">
-                    <div class="panel panel-default">
-                        <div class="panel-heading" <?php echo $background ?>>
-                        </div>
-                        <div class="panel-body">
-                            <h3><?php echo $p->post_title; ?></h3>
-                            <p><?php echo wp_trim_words($p->post_excerpt, 24); ?></p>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <?php
         }
     }
     echo '</div></div></div></div></div>';
