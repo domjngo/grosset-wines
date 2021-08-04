@@ -292,12 +292,13 @@ function buy_now_button( $join = false ) {
         $shop_page = get_site_url().'/wine-shop/';
         $shop_btn_text = 'Buy now';
     }
-    if (has_category('members-only')) {
+    if (has_term( 'members-only', 'product_cat' )) {
+        $shop_page = '#';
         $shop_btn_text = 'Buy now <small>(Members only)</small>';
-    } elseif (has_category('sold-out')) {
+    } elseif (has_term( 'sold-out', 'product_cat' )) {
         $shop_page = '#';
         $shop_btn_text = 'Sold out';
-    } elseif (has_category('coming-soon')) {
+    } elseif (has_term( 'coming-soon', 'product_cat' )) {
         $shop_page = '#';
         $shop_btn_text = 'Coming Soon';
     }
@@ -311,4 +312,103 @@ function buy_now_button( $join = false ) {
 
 function remove_product_image_link( $html, $post_id ) {
     return preg_replace( "!<(a|/a).*?>!", '', $html );
+}
+
+function cards_below_single_product_summary() {
+    global $post;
+    $pages = [
+        get_post_meta($post->ID, '_product_review_page_id', true),
+        get_post_meta($post->ID, '_product_vineyard_page_id', true),
+        get_post_meta($post->ID, '_product_previous_vintages_page_id', true),
+        get_post_meta($post->ID, '_product_other_wines_page_id', true)
+    ];
+    echo '<div class="related-content"><div class="container"><div class="row"><div class="col-md-8 col-md-offset-2"><div class="row">';
+    foreach ($pages as $page) {
+        if (isset($page) && $page != null) {
+            $p = get_post( $page );
+            $background = '';
+            $image = wp_get_attachment_image_src( get_post_thumbnail_id( $page ), 'full' );
+            if ($image) {
+                $background = 'style="background-image: url('. $image[0] . ');"';
+            }
+            ?>
+            <div class="col-md-6 card post-">
+                <a href="<?php echo esc_url( get_permalink($page) ); ?>" title="">
+                    <div class="panel panel-default">
+                        <div class="panel-heading" <?php echo $background ?>>
+                        </div>
+                        <div class="panel-body">
+                            <h3><?php echo $p->post_title; ?></h3>
+                            <p><?php echo wp_trim_words($p->post_excerpt, 24); ?></p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <?php
+        }
+    }
+    echo '</div></div></div></div></div>';
+}
+
+function product_related_pages_custom_fields()
+{
+    global $woocommerce, $post;
+    echo '<div class="product_custom_field">';
+    woocommerce_wp_text_input(
+        array(
+            'id' => '_product_review_page_id',
+            'placeholder' => 'Review page ID',
+            'label' => __('Review page ID', 'woocommerce'),
+            'desc_tip' => 'true'
+        )
+    );
+    woocommerce_wp_text_input(
+        array(
+            'id' => '_product_vineyard_page_id',
+            'placeholder' => 'Vineyard page ID',
+            'label' => __('Vineyard page ID', 'woocommerce'),
+            'desc_tip' => 'true'
+        )
+    );
+    woocommerce_wp_text_input(
+        array(
+            'id' => '_product_previous_vintages_page_id',
+            'placeholder' => 'Previous vintages page ID',
+            'label' => __('Previous vintages page ID', 'woocommerce'),
+            'desc_tip' => 'true'
+        )
+    );
+    woocommerce_wp_text_input(
+        array(
+            'id' => '_product_other_wines_page_id',
+            'placeholder' => 'Other wines page ID',
+            'label' => __('Other wines page ID', 'woocommerce'),
+            'desc_tip' => 'true'
+        )
+    );
+    echo '</div>';
+}
+
+function product_related_pages_custom_fields_save($post_id)
+{
+    if (!empty($_POST['_product_review_page_id'])) {
+        update_post_meta($post_id, '_product_review_page_id', esc_attr($_POST['_product_review_page_id']));
+    } else {
+        update_post_meta($post_id, '_product_review_page_id', null);
+    }
+    if (!empty($_POST['_product_vineyard_page_id'])) {
+        update_post_meta($post_id, '_product_vineyard_page_id', esc_attr($_POST['_product_vineyard_page_id']));
+    } else {
+        update_post_meta($post_id, '_product_vineyard_page_id', null);
+    }
+    if (!empty($_POST['_product_previous_vintages_page_id'])) {
+        update_post_meta($post_id, '_product_previous_vintages_page_id', esc_attr($_POST['_product_previous_vintages_page_id']));
+    } else {
+        update_post_meta($post_id, '_product_previous_vintages_page_id', null);
+    }
+    if (!empty($_POST['_product_other_wines_page_id'])) {
+        update_post_meta($post_id, '_product_other_wines_page_id', esc_attr($_POST['_product_other_wines_page_id']));
+    } else {
+        update_post_meta($post_id, '_product_other_wines_page_id', null);
+    }
 }

@@ -17,8 +17,11 @@ if ( $parent->have_posts() ) : ?>
     <?php while ( $parent->have_posts() ) : $parent->the_post();
         global $post;
         $id = $post->ID;
+        $background = '';
         $image = wp_get_attachment_image_src( get_post_thumbnail_id( $id ), 'full' );
-        $background = 'style="background-image: url('. $image[0] . ');"';
+        if ($image) {
+            $background = 'style="background-image: url('. $image[0] . ');"';
+        }
     ?>
         <div class="col-md-6 card post-<?php the_ID(); ?>">
             <a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">
