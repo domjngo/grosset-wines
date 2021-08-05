@@ -7562,6 +7562,29 @@ fieldset {
   position: inherit;
 }
 
+.card a {
+  display: block;
+  text-decoration: none;
+}
+.card a p {
+  color: #000;
+}
+.card h3 {
+  margin: 0.2em 0 0.5em 0;
+}
+.card .panel {
+  border-radius: 0;
+  border-color: #d4dddd;
+}
+.card .panel:hover {
+  background-color: #fcf8e3;
+}
+.card .panel-heading {
+  min-height: 128px;
+  background: center center no-repeat #e4eaea;
+  background-size: cover;
+}
+
 .woocommerce .single-product {
   margin-top: 1.4em;
   border-top: 1px solid #ddd;
@@ -7572,6 +7595,9 @@ fieldset {
 }
 .woocommerce .single-product .product-row .product_title {
   margin-bottom: 0.5em !important;
+}
+.woocommerce .gw-single-product {
+  margin-top: 1.6em;
 }
 .woocommerce table.shop_table td.product-thumbnail {
   display: none !important;
@@ -7628,7 +7654,7 @@ fieldset {
 .gw-single-product .buy-now-btn .btn {
   margin: 0;
 }
-.gw-single-product form.cart, .gw-single-product p.stock {
+.gw-single-product form.cart, .gw-single-product p.stock, .gw-single-product p.price {
   display: none !important;
 }
 

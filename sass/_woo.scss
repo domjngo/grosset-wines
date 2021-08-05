@@ -11,6 +11,7 @@
         margin-bottom: 0.5em !important;
       }
     }
+  }
   .gw-single-product {
     margin-top: 1.6em;
   }
@@ -79,7 +80,7 @@
       margin: 0;
     }
   }
-  form.cart, p.stock {
+  form.cart, p.stock, p.price {
     display: none !important;
   }
 }
