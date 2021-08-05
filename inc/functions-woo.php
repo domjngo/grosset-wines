@@ -333,8 +333,8 @@ function cards_below_single_product_summary() {
                     $background = 'style="background-image: url('. $image[0] . ');"';
                 }
                 ?>
-                <div class="col-md-6 card post-">
-                    <a href="<?php echo esc_url( get_permalink($page) ); ?>" title="">
+                <div class="col-md-6 card post-<?php echo $page ?>">
+                    <a href="<?php echo esc_url( get_permalink($page) ); ?>" title="<?php echo $p->post_title; ?>">
                         <div class="panel panel-default">
                             <div class="panel-heading" <?php echo $background ?>>
                             </div>
