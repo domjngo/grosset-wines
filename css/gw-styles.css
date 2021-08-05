@@ -7550,7 +7550,15 @@ fieldset {
 }
 
 .woocommerce .single-product {
-  margin-top: 2.4em;
+  margin-top: 1.4em;
+  border-top: 1px solid #ddd;
+  padding-top: 1em;
+}
+.woocommerce .single-product .product-row p {
+  margin: 0;
+}
+.woocommerce .single-product .product-row .product_title {
+  margin-bottom: 0.5em !important;
 }
 .woocommerce table.shop_table td.product-thumbnail {
   display: none !important;
