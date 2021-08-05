@@ -7419,6 +7419,50 @@ iframe {
   margin-bottom: 0;
 }
 
+.gw-product-list h1 {
+  font-size: 1.25em;
+  margin: 0 !important;
+}
+.gw-product-list div.images {
+  margin: 0 !important;
+}
+.gw-product-list div.images img {
+  max-width: 148px;
+  max-height: 48px !important;
+  margin-right: 0.7em !important;
+}
+.gw-product-list p.price {
+  font-size: 1em !important;
+  margin: 0 !important;
+}
+.gw-product-list div.summary {
+  width: 100% !important;
+  margin: 0 !important;
+}
+.gw-product-list td.label {
+  display: none;
+}
+.gw-product-list td.value {
+  padding: 0 !important;
+}
+.gw-product-list tr.product-row {
+  border: 1px solid #ddd;
+}
+.gw-product-list tr.product-row td {
+  padding: 0.3em;
+}
+.gw-product-list tr.product-row td.product-add-to-cart .woocommerce-variation-add-to-cart {
+  text-align: center;
+}
+.gw-product-list tr.product-row td.product-add-to-cart button {
+  padding: 0.3em 0.5em !important;
+}
+.gw-product-list tr.product-row .quantity .qty {
+  padding: 0 0.5em !important;
+  width: 3.631em !important;
+  font-size: 1em !important;
+}
+
 .wines-landing .entry-header h1 {
   margin-bottom: 0.3em;
 }
@@ -7518,31 +7562,16 @@ fieldset {
   position: inherit;
 }
 
-.card a {
-  display: block;
-  text-decoration: none;
+.woocommerce .single-product {
+  margin-top: 1.4em;
+  border-top: 1px solid #ddd;
+  padding-top: 1em;
 }
-.card a p {
-  color: #000;
+.woocommerce .single-product .product-row p {
+  margin: 0;
 }
-.card h3 {
-  margin: 0.2em 0 0.5em 0;
-}
-.card .panel {
-  border-radius: 0;
-  border-color: #d4dddd;
-}
-.card .panel:hover {
-  background-color: #fcf8e3;
-}
-.card .panel-heading {
-  min-height: 128px;
-  background: center center no-repeat #e4eaea;
-  background-size: cover;
-}
-
-.woocommerce .gw-single-product {
-  margin-top: 1.6em;
+.woocommerce .single-product .product-row .product_title {
+  margin-bottom: 0.5em !important;
 }
 .woocommerce table.shop_table td.product-thumbnail {
   display: none !important;

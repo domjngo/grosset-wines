@@ -1,4 +1,16 @@
 .woocommerce {
+  .single-product {
+    margin-top: 1.4em;
+    border-top: 1px solid #ddd;
+    padding-top: 1em;
+    .product-row {
+      p {
+        margin: 0;
+      }
+      .product_title {
+        margin-bottom: 0.5em !important;
+      }
+    }
   .gw-single-product {
     margin-top: 1.6em;
   }
