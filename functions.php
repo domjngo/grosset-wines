@@ -1,6 +1,6 @@
 <?php
 // Theme version
-define( 'GW_VSN', '0.9.1' );
+define( 'GW_VSN', '1.3' );
 
 function maintenance_mode() {
 
@@ -18,6 +18,7 @@ include 'inc/functions-forms.php';
 include 'inc/functions-woo.php';
 
 add_theme_support( 'post-thumbnails' );
+add_post_type_support( 'page', 'excerpt' );
 
 if ( function_exists( 'add_theme_support' ) ) {
     add_theme_support( 'post-thumbnails' );
@@ -51,5 +52,16 @@ add_action( 'show_user_profile', 'user_profile_customer_status' );
 add_action( 'edit_user_profile', 'user_profile_customer_status' );
 add_action( 'woocommerce_variation_options_pricing', 'add_variation_members_pricing', 10, 3 );
 add_action( 'woocommerce_save_product_variation', 'save_variation_members_pricing', 10, 2 );
+add_action( 'woocommerce_single_product_summary', 'buy_now_button', 25 );
+add_action( 'woocommerce_product_options_general_product_data', 'product_related_pages_custom_fields' );
+add_action( 'woocommerce_process_product_meta', 'product_related_pages_custom_fields_save' );
+add_action( 'woocommerce_after_main_content', 'cards_below_single_product_summary', 20 );
+
 add_filter( 'woocommerce_product_variation_get_price', 'member_get_price', 10, 2 );
 remove_action( 'woocommerce_single_variation', 'woocommerce_single_variation', 10 );
+add_filter( 'woocommerce_single_product_image_thumbnail_html', 'remove_product_image_link', 10, 2 );
+
+remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_price', 10 );
+remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_add_to_cart', 10 );
+remove_action( 'woocommerce_single_variation', 'woocommerce_single_variation_add_to_cart_button', 20 );
+remove_action( 'woocommerce_variable_add_to_cart', 'woocommerce_variable_add_to_cart', 30 );

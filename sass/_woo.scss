@@ -11,6 +11,8 @@
         margin-bottom: 0.5em !important;
       }
     }
+  .gw-single-product {
+    margin-top: 1.6em;
   }
   table.shop_table td.product-thumbnail {
     display: none !important;
@@ -65,5 +67,19 @@
 .woocommerce-account {
   .col-md-8 {
     width: 100%;
+  }
+}
+.gw-single-product {
+  div.images, div.summary {
+    float: none !important;
+    width: 100% !important;
+  }
+  .buy-now-btn {
+    .btn {
+      margin: 0;
+    }
+  }
+  form.cart, p.stock {
+    display: none !important;
   }
 }

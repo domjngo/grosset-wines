@@ -7046,6 +7046,11 @@ ul {
   margin: 0;
 }
 
+.row-flex {
+  display: flex;
+  flex-wrap: wrap;
+}
+
 .entry-header h1 {
   margin: 1.6em 0;
   font-size: 2.4em;
@@ -7208,6 +7213,14 @@ ul.buttons li a:hover {
 .social {
   background-color: #d4dddd;
   padding: 1em 0;
+}
+
+.action-buttons {
+  border-top: solid 1px #fff;
+  background-color: #e4eaea;
+}
+.action-buttons .btn {
+  margin: 0.9em 0.3em;
 }
 
 footer {
@@ -7606,6 +7619,17 @@ fieldset {
 
 .woocommerce-account .col-md-8 {
   width: 100%;
+}
+
+.gw-single-product div.images, .gw-single-product div.summary {
+  float: none !important;
+  width: 100% !important;
+}
+.gw-single-product .buy-now-btn .btn {
+  margin: 0;
+}
+.gw-single-product form.cart, .gw-single-product p.stock {
+  display: none !important;
 }
 
 .lcp_catlist {

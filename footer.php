@@ -1,3 +1,12 @@
+<div class="action-buttons">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <?php buy_now_button( true ) ?>
+            </div>
+        </div>
+    </div>
+</div>
 <div class="social">
     <div class="container">
         <div class="row">

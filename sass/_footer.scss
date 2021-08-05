@@ -2,6 +2,13 @@
   background-color: #d4dddd;
   padding: 1em 0;
 }
+.action-buttons {
+  border-top: solid 1px #fff;
+  background-color: #e4eaea;
+  .btn {
+    margin: 0.9em 0.3em;
+  }
+}
 footer {
   padding: 1em 0;
   background-color: #e4eaea;
