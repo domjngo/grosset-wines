@@ -1,6 +1,6 @@
 <?php
 // Theme version
-define( 'GW_VSN', '1.3' );
+define( 'GW_VSN', '1.3.1' );
 
 function maintenance_mode() {
 

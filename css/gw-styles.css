@@ -7599,6 +7599,9 @@ fieldset {
 .woocommerce .single-product .product-row select {
   width: 100%;
 }
+.woocommerce .single-product .product-row p.in-stock {
+  display: none !important;
+}
 .woocommerce .gw-single-product {
   margin-top: 1.6em;
 }
@@ -7657,7 +7660,7 @@ fieldset {
 .gw-single-product .buy-now-btn .btn {
   margin: 0;
 }
-.gw-single-product form.cart, .gw-single-product p.stock, .gw-single-product p.price {
+.gw-single-product form.cart, .gw-single-product p.stock, .gw-single-product p.price, .gw-single-product p.in-stock {
   display: none !important;
 }
 

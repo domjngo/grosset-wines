@@ -13,6 +13,9 @@
       select {
         width: 100%;
       }
+      p.in-stock {
+        display: none !important;
+      }
     }
   }
   .gw-single-product {
@@ -83,7 +86,7 @@
       margin: 0;
     }
   }
-  form.cart, p.stock, p.price {
+  form.cart, p.stock, p.price, p.in-stock {
     display: none !important;
   }
 }
