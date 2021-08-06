@@ -41,6 +41,7 @@ foreach ( $products as $single_product_id => $single_product ) :
                     <div class="col-md-3 col-sm-3 col-xs-12">
                         <?php
                         woocommerce_template_single_title();
+                        woocommerce_template_single_price();
                         ?>
                     </div>
                     <div class="col-md-7 col-sm-9 col-xs-12 product-add-to-cart">

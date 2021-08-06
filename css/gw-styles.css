@@ -7596,6 +7596,9 @@ fieldset {
 .woocommerce .single-product .product-row .product_title {
   margin-bottom: 0.5em !important;
 }
+.woocommerce .single-product .product-row select {
+  width: 100%;
+}
 .woocommerce .gw-single-product {
   margin-top: 1.6em;
 }
