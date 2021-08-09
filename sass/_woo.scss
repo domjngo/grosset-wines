@@ -16,6 +16,9 @@
       p.in-stock {
         display: none !important;
       }
+      .simple-price p.price {
+        font-size: 1.25em !important;
+      }
       @media (max-width: 768px) {
         div.images img {
           margin: 0 auto !important;

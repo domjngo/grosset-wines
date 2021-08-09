@@ -7602,6 +7602,9 @@ fieldset {
 .woocommerce .single-product .product-row p.in-stock {
   display: none !important;
 }
+.woocommerce .single-product .product-row .simple-price p.price {
+  font-size: 1.25em !important;
+}
 @media (max-width: 768px) {
   .woocommerce .single-product .product-row div.images img {
     margin: 0 auto !important;

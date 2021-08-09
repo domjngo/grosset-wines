@@ -37,7 +37,10 @@ if ( $product->is_in_stock() ) : ?>
 
             <div class="col-sm-8">
                 <div class="row">
-                    <div class="col-md-4 col-sm-4 col-xs-12">
+                    <div class="col-md-4 col-sm-4 col-xs-12 simple-price">
+                        <?php
+                        woocommerce_template_single_price();
+                        ?>
                     </div>
                     <div class="col-md-4 col-sm-4 col-xs-12">
 		<?php
