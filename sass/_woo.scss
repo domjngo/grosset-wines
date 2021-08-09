@@ -16,6 +16,27 @@
       p.in-stock {
         display: none !important;
       }
+      @media (max-width: 768px) {
+        div.images img {
+          margin: 0 auto !important;
+        }
+        h1, .woocommerce-variation-price, .add-to-cart-btn {
+          text-align: center;
+        }
+        p.price {
+          text-align: center !important;
+          margin-bottom: 0.3em !important;
+        }
+        .quantity {
+          float: none;
+          margin-right: 0;
+          text-align: center !important;
+          margin-bottom: 0.3em !important;
+        }
+        table {
+          margin: 0 auto;
+        }
+      }
     }
   }
   .gw-single-product {

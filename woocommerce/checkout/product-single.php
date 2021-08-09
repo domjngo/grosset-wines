@@ -27,7 +27,7 @@ foreach ( $products as $single_product_id => $single_product ) :
 		<div id="product-<?php the_ID(); ?>" <?php wc_product_class( '', $product ); ?>>
 
                 <div class="product-row row">
-                    <div class="col-md-2 hidden-sm hidden-xs">
+                    <div class="col-md-2 col-sm-4 col-xs-12">
                         <?php
                         /**
                          * woocommerce_before_single_product_summary hook
@@ -38,13 +38,13 @@ foreach ( $products as $single_product_id => $single_product ) :
                         do_action( 'woocommerce_before_single_product_summary' );
                         ?>
                     </div>
-                    <div class="col-md-3 col-sm-3 col-xs-12">
+                    <div class="col-md-3 col-sm-8 col-xs-12">
                         <?php
                         woocommerce_template_single_title();
                         woocommerce_template_single_price();
                         ?>
                     </div>
-                    <div class="col-md-7 col-sm-9 col-xs-12 product-add-to-cart">
+                    <div class="col-md-7 col-sm-12 col-xs-12 product-add-to-cart">
                         <div class="summary entry-summary product-item <?php if ( wcopc_get_products_prop( $product, 'in_cart' ) ) { echo 'selected'; } ?>">
 
                             <div class="opc-product-quantity product-quantity">

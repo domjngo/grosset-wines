@@ -7602,6 +7602,27 @@ fieldset {
 .woocommerce .single-product .product-row p.in-stock {
   display: none !important;
 }
+@media (max-width: 768px) {
+  .woocommerce .single-product .product-row div.images img {
+    margin: 0 auto !important;
+  }
+  .woocommerce .single-product .product-row h1, .woocommerce .single-product .product-row .woocommerce-variation-price, .woocommerce .single-product .product-row .add-to-cart-btn {
+    text-align: center;
+  }
+  .woocommerce .single-product .product-row p.price {
+    text-align: center !important;
+    margin-bottom: 0.3em !important;
+  }
+  .woocommerce .single-product .product-row .quantity {
+    float: none;
+    margin-right: 0;
+    text-align: center !important;
+    margin-bottom: 0.3em !important;
+  }
+  .woocommerce .single-product .product-row table {
+    margin: 0 auto;
+  }
+}
 .woocommerce .gw-single-product {
   margin-top: 1.6em;
 }
