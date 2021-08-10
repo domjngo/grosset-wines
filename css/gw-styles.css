@@ -7626,6 +7626,9 @@ fieldset {
     margin: 0 auto;
   }
 }
+.woocommerce .wcopc {
+  margin-bottom: 1.6em;
+}
 .woocommerce .gw-single-product {
   margin-top: 1.6em;
 }
