@@ -284,6 +284,36 @@ function member_get_price( $price, $variation  ) {
     return $price;
 }
 
+function variable_product_members_price_range( $price, $product ) {
+
+    if( is_user_logged_in() ) {
+        $children = $product->get_children();
+
+        $prices = [];
+        foreach ($children as $child) {
+            $variation = wc_get_product( $child );
+            $prices[] = $variation->get_meta('_members_price');
+        }
+
+        if ( min($prices) ) {
+            if ( min($prices) == max($prices) ) {
+                $price = '$ ' . min($prices);
+            } else {
+                $price = '$ ' . min($prices) . ' - $ ' . max($prices);
+            }
+        } else {
+            $min = $product->get_variation_regular_price( 'min', true );
+            $max = $product->get_variation_regular_price( 'max', true );
+            if ( $min == $max ) {
+                $price = '$ ' . $min;
+            } else {
+                $price = '$ ' . $min . ' - $ ' . $max;
+            }
+        }
+    }
+    return $price;
+}
+
 function buy_now_button( $join = false ) {
     if ( is_user_logged_in() ) {
         $shop_page = get_site_url().'/members-online/';

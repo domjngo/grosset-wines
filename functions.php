@@ -59,6 +59,7 @@ add_action( 'woocommerce_after_main_content', 'cards_below_single_product_summar
 
 add_filter( 'woocommerce_product_variation_get_price', 'member_get_price', 10, 2 );
 add_filter( 'woocommerce_single_product_image_thumbnail_html', 'remove_product_image_link', 10, 2 );
+add_filter( 'woocommerce_variable_price_html', 'variable_product_members_price_range', 10, 2 );
 
 if (is_product()) {
     remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_price', 10 );
