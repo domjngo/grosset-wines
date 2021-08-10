@@ -297,17 +297,17 @@ function variable_product_members_price_range( $price, $product ) {
 
         if ( min($prices) ) {
             if ( min($prices) == max($prices) ) {
-                $price = '$ ' . min($prices);
+                $price = '$' . min($prices);
             } else {
-                $price = '$ ' . min($prices) . ' - $ ' . max($prices);
+                $price = '$' . min($prices) . ' - $' . max($prices);
             }
         } else {
             $min = $product->get_variation_regular_price( 'min', true );
             $max = $product->get_variation_regular_price( 'max', true );
             if ( $min == $max ) {
-                $price = '$ ' . $min;
+                $price = '$' . $min;
             } else {
-                $price = '$ ' . $min . ' - $ ' . $max;
+                $price = '$' . $min . ' - $' . $max;
             }
         }
     }
