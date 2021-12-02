@@ -3,11 +3,24 @@
  * Template Name: Container width
  *
  */
+$class = 'not-logged-in';
+$categories = get_the_category();
+foreach ($categories as $cat){
+    if ( $cat->slug == 'members-only' ) {
+        $user = wp_get_current_user();
+        if ( is_user_logged_in() && (in_array( 'customer', (array) $user->roles ) || in_array( 'administrator', (array) $user->roles )) ) {
+            $class = 'members-only';
+        } else {
+            wp_redirect( home_url() ); exit;
+        }
+    }
+}
+
 get_header(); ?>
 
 <?php while (have_posts()) : the_post(); ?>
 
-    <main id="main" class="main" role="main">
+    <main id="main" class="main <?php echo $class; ?>" role="main">
         <div class="content">
             <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
                 <div class="container">

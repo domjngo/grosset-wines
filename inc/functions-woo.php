@@ -188,7 +188,10 @@ function shop_is_member_shortcode()
 add_shortcode( 'is-member', 'shop_is_member_shortcode' );
 
 function my_account_content_after() {
-    echo '<a href="'.site_url().'/members-online/" class="btn">Members wine shop</a>';
+    $user = wp_get_current_user();
+    if ( in_array( 'customer', (array) $user->roles ) ) {
+        echo '<a href="' . site_url() . '/members-online/" class="btn">Members wine shop</a>';
+    }
 }
 add_action( 'woocommerce_account_dashboard', 'my_account_content_after' );
 
@@ -315,7 +318,8 @@ function variable_product_members_price_range( $price, $product ) {
 }
 
 function buy_now_button( $join = false ) {
-    if ( is_user_logged_in() ) {
+    $user = wp_get_current_user();
+    if ( is_user_logged_in() && in_array( 'customer', (array) $user->roles ) ) {
         $shop_page = get_site_url().'/members-online/';
         $shop_btn_text = 'Buy now';
     } else {
