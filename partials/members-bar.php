@@ -2,13 +2,12 @@
     <div class="container-fluid">
         <div class="row">
             <?php
-            $user = wp_get_current_user();
             if ( is_user_logged_in() ) { ?>
             <div class="col-md-6">
                 Welcome, you are <strong>signed in</strong>
             </div>
             <div class="col-md-6 text-right">
-                <?php if ( in_array( 'customer', (array) $user->roles ) ) { ?>
+                <?php if ( is_member() ) { ?>
                     <a href="<?php echo site_url(); ?>/members-online/" class="btn btn-xs">Members wine shop</a>
                 <?php } else { ?>
                     <a href="<?php echo site_url(); ?>/wine-shop/" class="btn btn-xs">Wine shop</a>

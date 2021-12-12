@@ -188,8 +188,7 @@ function shop_is_member_shortcode()
 add_shortcode( 'is-member', 'shop_is_member_shortcode' );
 
 function my_account_content_after() {
-    $user = wp_get_current_user();
-    if ( in_array( 'customer', (array) $user->roles ) ) {
+    if ( is_member() ) {
         echo '<a href="' . site_url() . '/members-online/" class="btn">Members wine shop</a>';
     }
 }
@@ -279,7 +278,7 @@ function save_variation_members_pricing( $variation_id, $loop ){
 }
 
 function member_get_price( $price, $variation  ) {
-    if( is_user_logged_in() ) {
+    if( is_member() ) {
         if( $members_price = $variation->get_meta('_members_price') ) {
             $price = $members_price;
         }
@@ -318,8 +317,7 @@ function variable_product_members_price_range( $price, $product ) {
 }
 
 function buy_now_button( $join = false ) {
-    $user = wp_get_current_user();
-    if ( is_user_logged_in() && in_array( 'customer', (array) $user->roles ) ) {
+    if ( is_member() ) {
         $shop_page = get_site_url().'/members-online/';
         $shop_btn_text = 'Buy now';
     } else {
@@ -447,4 +445,14 @@ function product_related_pages_custom_fields_save($post_id)
     } else {
         update_post_meta($post_id, '_product_other_wines_page_id', null);
     }
+}
+
+function is_member() {
+    if (is_user_logged_in()) {
+        $user = wp_get_current_user();
+        if ( in_array( 'customer', (array) $user->roles ) || in_array( 'administrator', (array) $user->roles ) ) {
+            return true;
+        }
+    }
+    return false;
 }

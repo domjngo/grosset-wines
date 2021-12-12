@@ -7,8 +7,7 @@ $class = 'not-logged-in';
 $categories = get_the_category();
 foreach ($categories as $cat){
     if ( $cat->slug == 'members-only' ) {
-        $user = wp_get_current_user();
-        if ( is_user_logged_in() && (in_array( 'customer', (array) $user->roles ) || in_array( 'administrator', (array) $user->roles )) ) {
+        if ( is_member() ) {
             $class = 'members-only';
         } else {
             wp_redirect( home_url() ); exit;
